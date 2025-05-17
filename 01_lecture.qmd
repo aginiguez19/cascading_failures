@@ -1,0 +1,142 @@
+---
+title: "Cascading Failures"
+author: "Abraham and Marwin"
+---
+
+Below, you will find some recommendations for topics to discuss for your presentation on Cascading Failures. This is not an exhaustive list of topics and you are free to alter or depart from this outline depending on how you see fit. After the outline, you will find some arguments that may help in editing your `.qmd` file.
+
+For the PSC-290 students, please proceed through the headings as if you are instructing a course. You'll be expected to discuss the mathematical formalisms of these different techniques for generating and simulating failure cascade in networks and generating considerations for what types of variable systems follow the different cascade types.
+
+and comment on their estimation. Also, please adjust your `.qmd` file to be `week6_2.qmd` when you submit to me.
+
+# Failures in Graphs?
+
+Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.
+
+In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you're feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system[^1]. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.
+
+[^1]: *Cascading failures in complex networks (Valdez et al., 2020)*
+
+Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[^2]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
+
+[^2]: *A simple model of global cascades on random networks (Watts, 2002)*
+
+Cascading failures leads us to questions such as:
+
+-   How does the structure of a network impact its resilience to failures?
+
+-   How can we enhance a system to mitigate further cascading failures?
+
+-   Where are the vulnerable components in a system. Are they the high-degree or low-degree nodes?
+
+-   When do components transition states (i.e., at a well-defined threshold)?
+
+As an illustrative example:
+
+::: center
+![](images/EnergyGrid.jpg){fig-align="center" width="90%"}
+:::
+
+A group of students are running experiments and simulations in their respective labs. Suddenly a blackout occurs! Welp, there goes their precious research. Let's explain to these poor students that a cascading failure may have occurred.
+
+1.  Overloading or zeroing of a component in the electrical power grid. *A group of Davis bikers crash into a substation*.
+
+2.  Power is redistributed from the failed component. There is an increase in the loadings of other components.
+
+3.  The system is stressed out and loadings are higher than the capacity of components. Leading to a cascading failure.
+
+4.  Blackout all around Davis.
+
+# Recap on Graph Structures
+
+-   Focus on re-describing the Erdős–Rényi and Barabási–Albert random graphs
+    -   With Barabási–Albert, talk more in-depth about preferential attachment and the "growth" of graphs
+    -   E.g., graphs in the real-world add and incorporate vertices over time and the addition of vertices follows some known procedures
+    -   Define the terms: Preferential attachment and Assortative mixing and how they relate to the evolution of a network's structure
+
+## Compare and Contrast to these idea of "controlling" a network
+
+# Define Watt's general form of a Cascasing Failure by Thresholds
+
+> Define the simple model not the proof. When we meet, you'll receive code for simulating a cascading failure using Watts' approach
+
+# Define the CASCADE model for Cascading Failures
+
+> You can skim this paper by [Dobson et al., 2007](https://pubs.aip.org/aip/cha/article/17/2/026103/934765) for the general formulation of the model. Below, I get you started:
+
+Formally, CASCADE models are defined by selecting a graph with $N$ vertices that each share a random load value. The minimum value of a given load is $L^{\text{min}}$ and the maximum load is $L^{\text{max}}$. For all $N$ vertices, they are given an initial load, $L_{j}$ which is distributed uniformly between $[L^{\text{min}}, L^{\text{max}}]$.
+
+The normalized initial load for the $j^{th}$ vertex is given by $\ell_{j}$ where:
+
+$$
+  \ell_{j} = \frac{L_{j} - L^{\text{min}}}{L^{\text{max}} - L^{\text{min}}}
+$$
+
+# Compare and Contrast Watts' Cascades from the CASCADE Model
+
+> The Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail
+
+## Can We Know the Thresholds for Vertices?
+
+-   What is a "threshold" for psychological vertices?
+
+# Weave in Graph Structures
+
+-   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why?
+-   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play?
+    -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain.
+
+# Discussion
+
+# Header
+
+Adding a figure can be done via:
+
+::: center
+![](images/Fig3.jpeg){width="60%"}
+:::
+
+When running this locally, change the pathing but when you submit to me, send any images and change paths to "images/\[figurename\].jpeg"
+
+For hyperlinks to websites, you can use [text goes here](https://www.google.com)
+
+## Subheading
+
+To subset an equation on a separate line you can use:
+
+$$y = mx + b$$
+
+To reference equation components in-line, you simply use $y$ as a single value without breaking the lines.
+
+If you want to create a list, you can simply write:
+
+-   List element 1
+-   List element 2
+    -   Sublist element 1
+-   List element 3
+
+Some common symbols for graphs in $\LaTeX$ format can be found at detextify's website online. Get a matrix given by:
+
+$$
+\underset{p\times p}{\mathbf{A}} = 
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+$$
+
+You might want to italicize or emphasize text by *adding asterisks*. You can also **bold and emphasize text**. $\texttt{R}$ chunks may be added by:
+
+```{r, message = TRUE, warning = TRUE, echo = TRUE}
+```
+
+<details>
+
+<summary>Hidden Message.</summary>
+
+You can add hidden messages that only appear once clicked on with this surrounding code.
+
+</details>
+
+> You can also indent text by using the greater than symbol to begin a sentence
