@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Abraham and Marwin">
+
+<title>Cascading Failures</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="01_lecture_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01_lecture_files/libs/quarto-html/quarto.js"></script>
+<script src="01_lecture_files/libs/quarto-html/popper.min.js"></script>
+<script src="01_lecture_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="01_lecture_files/libs/quarto-html/anchor.min.js"></script>
+<link href="01_lecture_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01_lecture_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="01_lecture_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="01_lecture_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="01_lecture_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cascading Failures</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Abraham and Marwin </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Below, you will find some recommendations for topics to discuss for your presentation on Cascading Failures. This is not an exhaustive list of topics and you are free to alter or depart from this outline depending on how you see fit. After the outline, you will find some arguments that may help in editing your <code>.qmd</code> file.</p>
+<p>For the PSC-290 students, please proceed through the headings as if you are instructing a course. You’ll be expected to discuss the mathematical formalisms of these different techniques for generating and simulating failure cascade in networks and generating considerations for what types of variable systems follow the different cascade types.</p>
+<p>and comment on their estimation. Also, please adjust your <code>.qmd</code> file to be <code>week6_2.qmd</code> when you submit to me.</p>
+<section id="failures-in-graphs" class="level1">
+<h1>Failures in Graphs?</h1>
+<p>Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.</p>
+<p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.</p>
+<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
+<p>Cascading failures leads us to questions such as:</p>
+<ul>
+<li><p>How does the structure of a network impact its resilience to failures?</p></li>
+<li><p>How can we enhance a system to mitigate further cascading failures?</p></li>
+<li><p>Where are the vulnerable components in a system. Are they the high-degree or low-degree nodes?</p></li>
+<li><p>When do components transition states (i.e., at a well-defined threshold)?</p></li>
+</ul>
+<p>As an illustrative example:</p>
+<div class="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/EnergyGrid.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<p>A group of students are running experiments and simulations in their respective labs. Suddenly a blackout occurs! Welp, there goes their precious research. Let’s explain to these poor students that a cascading failure may have occurred.</p>
+<ol type="1">
+<li><p>Overloading or zeroing of a component in the electrical power grid. <em>A group of Davis bikers crash into a substation</em>.</p></li>
+<li><p>Power is redistributed from the failed component. There is an increase in the loadings of other components.</p></li>
+<li><p>The system is stressed out and loadings are higher than the capacity of components. Leading to a cascading failure.</p></li>
+<li><p>Blackout all around Davis.</p></li>
+</ol>
+</section>
+<section id="recap-on-graph-structures" class="level1">
+<h1>Recap on Graph Structures</h1>
+<ul>
+<li>Focus on re-describing the Erdős–Rényi and Barabási–Albert random graphs
+<ul>
+<li>With Barabási–Albert, talk more in-depth about preferential attachment and the “growth” of graphs</li>
+<li>E.g., graphs in the real-world add and incorporate vertices over time and the addition of vertices follows some known procedures</li>
+<li>Define the terms: Preferential attachment and Assortative mixing and how they relate to the evolution of a network’s structure</li>
+</ul></li>
+</ul>
+<section id="compare-and-contrast-to-these-idea-of-controlling-a-network" class="level2">
+<h2 class="anchored" data-anchor-id="compare-and-contrast-to-these-idea-of-controlling-a-network">Compare and Contrast to these idea of “controlling” a network</h2>
+</section>
+</section>
+<section id="define-watts-general-form-of-a-cascasing-failure-by-thresholds" class="level1">
+<h1>Define Watt’s general form of a Cascasing Failure by Thresholds</h1>
+<blockquote class="blockquote">
+<p>Define the simple model not the proof. When we meet, you’ll receive code for simulating a cascading failure using Watts’ approach</p>
+</blockquote>
+</section>
+<section id="define-the-cascade-model-for-cascading-failures" class="level1">
+<h1>Define the CASCADE model for Cascading Failures</h1>
+<blockquote class="blockquote">
+<p>You can skim this paper by <a href="https://pubs.aip.org/aip/cha/article/17/2/026103/934765">Dobson et al., 2007</a> for the general formulation of the model. Below, I get you started:</p>
+</blockquote>
+<p>Formally, CASCADE models are defined by selecting a graph with <span class="math inline">\(N\)</span> vertices that each share a random load value. The minimum value of a given load is <span class="math inline">\(L^{\text{min}}\)</span> and the maximum load is <span class="math inline">\(L^{\text{max}}\)</span>. For all <span class="math inline">\(N\)</span> vertices, they are given an initial load, <span class="math inline">\(L_{j}\)</span> which is distributed uniformly between <span class="math inline">\([L^{\text{min}}, L^{\text{max}}]\)</span>.</p>
+<p>The normalized initial load for the <span class="math inline">\(j^{th}\)</span> vertex is given by <span class="math inline">\(\ell_{j}\)</span> where:</p>
+<p><span class="math display">\[
+  \ell_{j} = \frac{L_{j} - L^{\text{min}}}{L^{\text{max}} - L^{\text{min}}}
+\]</span></p>
+</section>
+<section id="compare-and-contrast-watts-cascades-from-the-cascade-model" class="level1">
+<h1>Compare and Contrast Watts’ Cascades from the CASCADE Model</h1>
+<blockquote class="blockquote">
+<p>The Watt’s description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail</p>
+</blockquote>
+<section id="can-we-know-the-thresholds-for-vertices" class="level2">
+<h2 class="anchored" data-anchor-id="can-we-know-the-thresholds-for-vertices">Can We Know the Thresholds for Vertices?</h2>
+<ul>
+<li>What is a “threshold” for psychological vertices?</li>
+</ul>
+</section>
+</section>
+<section id="weave-in-graph-structures" class="level1">
+<h1>Weave in Graph Structures</h1>
+<ul>
+<li>Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why?</li>
+<li>For Barabási–Albert random graphs, do you expect the property of assortivity to come into play?
+<ul>
+<li>The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain.</li>
+</ul></li>
+</ul>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+</section>
+<section id="header" class="level1">
+<h1>Header</h1>
+<p>Adding a figure can be done via:</p>
+<div class="center">
+<p><img src="images/Fig3.jpeg" class="img-fluid" style="width:60.0%"></p>
+</div>
+<p>When running this locally, change the pathing but when you submit to me, send any images and change paths to “images/[figurename].jpeg”</p>
+<p>For hyperlinks to websites, you can use <a href="https://www.google.com">text goes here</a></p>
+<section id="subheading" class="level2">
+<h2 class="anchored" data-anchor-id="subheading">Subheading</h2>
+<p>To subset an equation on a separate line you can use:</p>
+<p><span class="math display">\[y = mx + b\]</span></p>
+<p>To reference equation components in-line, you simply use <span class="math inline">\(y\)</span> as a single value without breaking the lines.</p>
+<p>If you want to create a list, you can simply write:</p>
+<ul>
+<li>List element 1</li>
+<li>List element 2
+<ul>
+<li>Sublist element 1</li>
+</ul></li>
+<li>List element 3</li>
+</ul>
+<p>Some common symbols for graphs in <span class="math inline">\(\LaTeX\)</span> format can be found at detextify’s website online. Get a matrix given by:</p>
+<p><span class="math display">\[
+\underset{p\times p}{\mathbf{A}} =
+\begin{bmatrix}
+a_{11} &amp; a_{12} &amp; a_{13} \\
+a_{21} &amp; a_{22} &amp; a_{23} \\
+a_{31} &amp; a_{32} &amp; a_{33}
+\end{bmatrix}
+\]</span></p>
+<p>You might want to italicize or emphasize text by <em>adding asterisks</em>. You can also <strong>bold and emphasize text</strong>. <span class="math inline">\(\texttt{R}\)</span> chunks may be added by:</p>
+<details>
+<summary>
+Hidden Message.
+</summary>
+<p>You can add hidden messages that only appear once clicked on with this surrounding code.</p>
+</details>
+<blockquote class="blockquote">
+<p>You can also indent text by using the greater than symbol to begin a sentence</p>
+</blockquote>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><em>Cascading failures in complex networks (Valdez et al., 2020)</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><em>A simple model of global cascades on random networks (Watts, 2002)</em><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
