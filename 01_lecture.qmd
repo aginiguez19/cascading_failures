@@ -66,13 +66,49 @@ A group of students are running experiments and simulations in their respective 
 
 > You can skim this paper by [Dobson et al., 2007](https://pubs.aip.org/aip/cha/article/17/2/026103/934765) for the general formulation of the model. Below, I get you started:
 
-Formally, CASCADE models are defined by selecting a graph with $N$ vertices that each share a random load value. The minimum value of a given load is $L^{\text{min}}$ and the maximum load is $L^{\text{max}}$. For all $N$ vertices, they are given an initial load, $L_{j}$ which is distributed uniformly between $[L^{\text{min}}, L^{\text{max}}]$.
+The CASCADE is a probabilistic model for understanding the propagation of cascading failures [@dobson2007caijons]. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. It focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.
 
-The normalized initial load for the $j^{th}$ vertex is given by $\ell_{j}$ where:
+## Formal definition of the CASCADE model:
+
+The model considers a system with $N$ components, each with a random initial load.
+
+1. **Initial load** ($L_j$):
+  - Each component $j$ (for $j = 1, 2, ..., N$) has an initial load $L_j$.
+  - The minimum value of a given load is $L^{\text{min}}$ and the maximum load is $L^{\text{max}}$.
+  - $L_{j}$ is distributed uniformly between $[L^{\text{min}}, L^{\text{max}}]$.
+  - The initial loads $L_{1},L_{2},...,L_{N}$ are independent of each other.
+
+2. **Failure threshold** ($L^\text{fail}$):
+  - Components fail if their total load exceeds a certain failure threshold, $L^\text{fail}$
+  
+3. **Load transfer** ($P$):
+  - When a component fails, a fixed amount of additional load, $P$, is transferred to each of the other remaining components in the system.
+  
+4. **Initial disturbance** ($D$):
+  - The cascade is initiated by an initial disturbance that adds an amount of load $D$ to each component.
+
+5. **Normalized initial load**  ($\ell_{j}$):
+  - The normalized initial load for the $j^{th}$ vertex is given by $\ell_{j}$ where:
 
 $$
   \ell_{j} = \frac{L_{j} - L^{\text{min}}}{L^{\text{max}} - L^{\text{min}}}
 $$
+  
+  - This normalization maps the load $L_j$ to a value $\ell_{j}$ that is uniformly distributed on the interval $[0,1]$.
+  
+6. **Normalized parameters**:
+  - The load transfer $P$ and initial disturbance $D$ are also normalized. Let $p$ be the normalized load increment and $d$ be the normalized initial disturbance: 
+
+$$
+\begin{aligned}
+  p = & \frac{P}{L^{\text{max}}-L^{\text{min}}} \\
+  d = & \frac{D + L^{\text{max}} - L^{\text{fail}}}{L^{\text{max}}-L^{\text{min}}}
+\end{aligned}
+$$
+
+7. **Cascading process**:
+  - After the initial disturbance $D$, components whose total load $(L_j+D)$ exceeds $L^{\text{fail}}$ will fail.
+  - The failure of these components then distributes an additional load $P$ (or $p$ in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.
 
 # Compare and Contrast Watts' Cascades from the CASCADE Model
 
