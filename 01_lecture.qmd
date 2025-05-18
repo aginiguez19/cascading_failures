@@ -64,9 +64,7 @@ A group of students are running experiments and simulations in their respective 
 
 # Define the CASCADE model for Cascading Failures
 
-> You can skim this paper by [Dobson et al., 2007](https://pubs.aip.org/aip/cha/article/17/2/026103/934765) for the general formulation of the model. Below, I get you started:
-
-The CASCADE is a probabilistic model for understanding the propagation of cascading failures [@dobson2007caijons]. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. It focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.
+The CASCADE is a probabilistic model for understanding the propagation of cascading failures [@dobson2007caijons]. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. CASCADE focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.
 
 ## Formal definition of the CASCADE model:
 
@@ -114,7 +112,44 @@ $$
 
 > The Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail
 
+# Watt's Cascades vs. CASCADE Model
+
+In summary, the Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let's break it down.
+
+### Thresholds and Failure
+
+- **Watt's model**: Failure is determined by the fraction of a node's neighbors that have already failed. A node $i$ with degree $k_i$ and threshold $\phi_i$ fails if at least $k_i \cdot \phi_i$ of its neighbors have failed. The threshold $\phi_i$ is an intrinsic property of the node, representing its susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood.
+
+- **CASCADE**: Failure is determined by a node's internal load exceeding its predefined capacity ($L^{\text{fail}}}$). Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components. The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense (though load transfer makes it indirectly dependent).
+
+### Influence mechanism
+
+- **Watt's model**: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. The structure of the network (who is connected to whom) is paramount.
+
+- **CASCADE**:Influence is through load redistribution. When a node fails, it transfers a fixed amount of load $P$ to other components (often modeled as all other components or a subset). While the underlying network structure can be implicitly present in how loads might realistically be distributed (though the basic CASCADE model simplifies this), the primary mechanism is the global or semi-global impact of load addition.
+
+### Vertex properties
+
+
+- **Watt's model**: Vertices are primarily characterized by their degree k and their individual threshold $\phi$. There isn't an explicit concept of "resilience" beyond the threshold itself.
+
+- **CASCADE**:Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$ (or a capacity derived from initial load plus a tolerance, in some variants ). The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This allows for more nuanced dynamics in how they fail, as a node with a high initial load is more vulnerable.
+
+### Complexity of Dynamics
+
+- **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades. The model explores how network structure (especially connectivity and the clustering of vulnerable nodes) leads to different cascade regimes (power-law vs. bimodal distributions of cascade sizes).
+
+- **CASCADE**:The dynamics are driven by accumulating load. The system's overall stress (related to how close initial loads are to Lfail and the magnitude of D and P) is a key factor. It often examines the probability distribution of the total number of failed components and how this distribution changes as system parameters (like overall loading or the load transfer $P$) approach a critical point.
+
+### Focus
+
+- **Watt's model**: Focuses on how local interaction rules and network topology can lead to global phenomena and explain the emergence of large, rare cascades from small shocks in social and interconnected systems more broadly.
+
+- **CASCADE**:Often motivated by and applied to infrastructure systems like power grids, focusing on how system-wide stress and load redistribution contribute to blackout probabilities and sizes.
+
 ## Can We Know the Thresholds for Vertices?
+
+In the CASCADE model, the threshold is essentially defined by a node's capacity and its load. In Watts' model, the threshold ($\phi$) for a node determines the fraction of its neighbors that must be "on" for it to switch "on."
 
 -   What is a "threshold" for psychological vertices?
 
