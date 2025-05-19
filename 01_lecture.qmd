@@ -1,8 +1,8 @@
 ---
 title: "Cascading Failures"
-author: "Abraham and Marwin"
+author: "Abraham Iniguez and Marwin Carmo"
 bibliography: references.bib
-biblio-style: apa
+csl: https://www.zotero.org/styles/apa
 ---
 
 Below, you will find some recommendations for topics to discuss for your presentation on Cascading Failures. This is not an exhaustive list of topics and you are free to alter or depart from this outline depending on how you see fit. After the outline, you will find some arguments that may help in editing your `.qmd` file.
@@ -126,7 +126,7 @@ A brief distinction between the two models is that the Watt's description is mor
 
 - **Watt's model**: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. What matters is the structure of the network (who is connected to whom).
 
-- **CASCADE**:Influence is through load redistribution. When a node fails, it transfers a fixed load $P$ to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.
+- **CASCADE**: Influence is through load redistribution. When a node fails, it transfers a fixed load $P$ to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.
 
 ### Vertex properties
 
@@ -157,7 +157,7 @@ In **social/economical/biological systems** a threshold could relate to the poin
 -   What is a "threshold" for psychological vertices?
 
 <details>
-<summary>An example of insomnia.</summary>
+<summary>An example of insomnia development.</summary>
 
 Let's consider insomnia as a complex system where various psychological and behavioral factors interact, much like nodes in a network. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual's "sleep regulation network." Let's build our example using the popular **3P model** [@spielmanBehavioralPerspectiveInsomnia1987]:
 
@@ -178,9 +178,44 @@ Let's consider insomnia as a complex system where various psychological and beha
 
 # Weave in Graph Structures
 
--   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why?
--   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play?
-    -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain.
+## Contrasting Erdős–Rényi and Barabási–Albert random graphs
+
+### Erdős–Rényi (ER) Graphs
+
+In ER graphs, most nodes have a similar number of connections.
+
+-   They are relatively resilient to the random removal of a few nodes because the connectivity is distributed relatively evenly. A cascade might be triggered if a critical density of nodes fails, overwhelming the capacity of the remaining network.
+
+-   Since there are no specific "super-hubs," targeted attacks are not dramatically more effective than random failures unless a significant number of nodes are removed to fragment the network or the attack specifically targets a set of nodes that, if removed, would overload their collective neighbors beyond a critical point.
+
+-   Once a cascade starts, it might spread more diffusely due to the homogeneity. However, if the overall network is stressed (e.g., low tolerance parameters in capacity models), even this diffuse spread can lead to widespread failure.
+
+### Barabási–Albert (BA) Graphs
+
+BA graphs are characterized by a few high-degree "hubs" and many low-degree nodes.
+
+-   Removing a random (likely low-degree) node typically has little impact on the overall network integrity because the hubs maintain connectivity.
+
+-   Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can: 
+  1. Disconnect large parts of the network.
+  2. Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade. 
+
+-   The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.
+
+<!-- -   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why? -->
+<!-- -   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play? -->
+<!--     -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain. -->
+
+#### Assortativeness in Barabási–Albert Graphs
+
+> "A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections." [@ash2007pasmaia, p.6]
+
+Recall the "rich get richer" property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. 
+
+Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network's backbone.
+
+The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.
+
 
 # Discussion
 
@@ -189,7 +224,7 @@ Let's consider insomnia as a complex system where various psychological and beha
 Adding a figure can be done via:
 
 ::: center
-![](images/Fig3.jpeg){width="60%"}
+![](images/EnergyGrid.jpg){width="60%"}
 :::
 
 When running this locally, change the pathing but when you submit to me, send any images and change paths to "images/\[figurename\].jpeg"

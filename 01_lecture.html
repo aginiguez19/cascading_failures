@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Abraham and Marwin">
+<meta name="author" content="Abraham Iniguez and Marwin Carmo">
 
 <title>Cascading Failures</title>
 <style>
@@ -105,7 +105,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Abraham and Marwin </p>
+             <p>Abraham Iniguez and Marwin Carmo </p>
           </div>
   </div>
     
@@ -124,7 +124,7 @@ window.Quarto = {
 <section id="failures-in-graphs" class="level1">
 <h1>Failures in Graphs?</h1>
 <p>Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.</p>
-<p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al. 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure. <!-- Added a citation to the article. But feel free to revert it back if you prefer using notes --> <!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* --></p>
+<p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al., 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure. <!-- Added a citation to the article. But feel free to revert it back if you prefer using notes --> <!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* --></p>
 <p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
 <p>Cascading failures leads us to questions such as:</p>
 <ul>
@@ -171,7 +171,7 @@ window.Quarto = {
 </section>
 <section id="the-cascade-model-for-cascading-failures" class="level1">
 <h1>The CASCADE model for Cascading Failures</h1>
-<p>The CASCADE is a probabilistic model for understanding the propagation of cascading failures <span class="citation" data-cites="dobson2007caijons">(<a href="#ref-dobson2007caijons" role="doc-biblioref">Dobson et al. 2007</a>)</span>. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. CASCADE focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.</p>
+<p>The CASCADE is a probabilistic model for understanding the propagation of cascading failures <span class="citation" data-cites="dobson2007caijons">(<a href="#ref-dobson2007caijons" role="doc-biblioref">Dobson et al., 2007</a>)</span>. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. CASCADE focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.</p>
 <section id="formal-definition-of-the-cascade-model" class="level2">
 <h2 class="anchored" data-anchor-id="formal-definition-of-the-cascade-model">Formal definition of the CASCADE model:</h2>
 <p>The model considers a system with <span class="math inline">\(N\)</span> components, each with a random initial load.</p>
@@ -253,7 +253,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="influence-mechanism">Influence mechanism</h3>
 <ul>
 <li><p><strong>Watt’s model</strong>: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. What matters is the structure of the network (who is connected to whom).</p></li>
-<li><p><strong>CASCADE</strong>:Influence is through load redistribution. When a node fails, it transfers a fixed load <span class="math inline">\(P\)</span> to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.</p></li>
+<li><p><strong>CASCADE</strong>: Influence is through load redistribution. When a node fails, it transfers a fixed load <span class="math inline">\(P\)</span> to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.</p></li>
 </ul>
 </section>
 <section id="vertex-properties" class="level3">
@@ -288,9 +288,9 @@ window.Quarto = {
 </ul>
 <details>
 <summary>
-Hidden Message.
+An example of insomnia development.
 </summary>
-<p>Let’s consider insomnia as a complex system where various psychological and behavioral factors interact, much like nodes in a network. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual’s “sleep regulation network.” Let’s build our example using the popular <strong>3P model</strong> <span class="citation" data-cites="spielmanBehavioralPerspectiveInsomnia1987">(<a href="#ref-spielmanBehavioralPerspectiveInsomnia1987" role="doc-biblioref">Spielman, Caruso, and Glovinsky 1987</a>)</span>:</p>
+<p>Let’s consider insomnia as a complex system where various psychological and behavioral factors interact, much like nodes in a network. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual’s “sleep regulation network.” Let’s build our example using the popular <strong>3P model</strong> <span class="citation" data-cites="spielmanBehavioralPerspectiveInsomnia1987">(<a href="#ref-spielmanBehavioralPerspectiveInsomnia1987" role="doc-biblioref">Spielman et al., 1987</a>)</span>:</p>
 <ul>
 <li><p><strong>Predisposing Factors</strong>: These are like the initial conditions or inherent vulnerabilities of certain nodes in our network. Think of genetic propensity, a tendency towards ruminative thoughts, or a generally anxious disposition. These factors don’t cause insomnia on their own but lower the “failure threshold” of certain psychological states. For example, a “ruminative thought” node might have a naturally lower threshold to become “active” (i.e., start interfering with sleep).</p></li>
 <li><p><strong>Precipitating Factors</strong>: These are the initial “shocks” or “failures” in the system. A stressful life event, a temporary illness, or a change in routine could be a precipitating factor that “activates” or “causes the failure” of an initial set of nodes – perhaps leading to a few nights of poor sleep. In our cascade model, this is the initial <span class="math inline">\(\phi_0\)</span> of “failed” nodes.</p></li>
@@ -310,13 +310,43 @@ Hidden Message.
 </section>
 <section id="weave-in-graph-structures" class="level1">
 <h1>Weave in Graph Structures</h1>
+<section id="contrasting-erdősrényi-and-barabásialbert-random-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="contrasting-erdősrényi-and-barabásialbert-random-graphs">Contrasting Erdős–Rényi and Barabási–Albert random graphs</h2>
+<section id="erdősrényi-er-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="erdősrényi-er-graphs">Erdős–Rényi (ER) Graphs</h3>
+<p>In ER graphs, most nodes have a similar number of connections.</p>
 <ul>
-<li>Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why?</li>
-<li>For Barabási–Albert random graphs, do you expect the property of assortivity to come into play?
-<ul>
-<li>The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain.</li>
-</ul></li>
+<li><p>They are relatively resilient to the random removal of a few nodes because the connectivity is distributed relatively evenly. A cascade might be triggered if a critical density of nodes fails, overwhelming the capacity of the remaining network.</p></li>
+<li><p>Since there are no specific “super-hubs,” targeted attacks are not dramatically more effective than random failures unless a significant number of nodes are removed to fragment the network or the attack specifically targets a set of nodes that, if removed, would overload their collective neighbors beyond a critical point.</p></li>
+<li><p>Once a cascade starts, it might spread more diffusely due to the homogeneity. However, if the overall network is stressed (e.g., low tolerance parameters in capacity models), even this diffuse spread can lead to widespread failure.</p></li>
 </ul>
+</section>
+<section id="barabásialbert-ba-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="barabásialbert-ba-graphs">Barabási–Albert (BA) Graphs</h3>
+<p>BA graphs are characterized by a few high-degree “hubs” and many low-degree nodes.</p>
+<ul>
+<li><p>Removing a random (likely low-degree) node typically has little impact on the overall network integrity because the hubs maintain connectivity.</p></li>
+<li><p>Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can:</p></li>
+</ul>
+<ol type="1">
+<li>Disconnect large parts of the network.</li>
+<li>Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade.</li>
+</ol>
+<ul>
+<li>The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.</li>
+</ul>
+<!-- -   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why? -->
+<!-- -   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play? -->
+<!--     -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain. -->
+<section id="assortivity-in-barabásialbert-graphs" class="level4">
+<h4 class="anchored" data-anchor-id="assortivity-in-barabásialbert-graphs">Assortivity in Barabási–Albert Graphs</h4>
+<blockquote class="blockquote">
+<p>A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections. <span class="citation" data-cites="ash2007pasmaia">(<a href="#ref-ash2007pasmaia" role="doc-biblioref">Ash &amp; Newth, 2007, p. 6</a>)</span></p>
+</blockquote>
+<p>A property of BA graphs is that high-degree nodes tend to connect to many low-degree nodes. Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
+</section>
+</section>
+</section>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
@@ -325,7 +355,7 @@ Hidden Message.
 <h1>Header</h1>
 <p>Adding a figure can be done via:</p>
 <div class="center">
-<p><img src="images/Fig3.jpeg" class="img-fluid" style="width:60.0%"></p>
+<p><img src="images/EnergyGrid.jpg" class="img-fluid" style="width:60.0%"></p>
 </div>
 <p>When running this locally, change the pathing but when you submit to me, send any images and change paths to “images/[figurename].jpeg”</p>
 <p>For hyperlinks to websites, you can use <a href="https://www.google.com">text goes here</a></p>
@@ -374,15 +404,18 @@ Hidden Message.
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-ash2007pasmaia" class="csl-entry" role="listitem">
+Ash, J., &amp; Newth, D. (2007). Optimizing complex networks for resilience against cascading failure. <em>Physica A: Statistical Mechanics and Its Applications</em>, <em>380</em>, 673–683. <a href="https://doi.org/10.1016/j.physa.2006.12.058">https://doi.org/10.1016/j.physa.2006.12.058</a>
+</div>
 <div id="ref-dobson2007caijons" class="csl-entry" role="listitem">
-Dobson, Ian, Benjamin A. Carreras, Vickie E. Lynch, and David E. Newman. 2007. <span>“Complex Systems Analysis of Series of Blackouts: <span>Cascading</span> Failure, Critical Points, and Self-Organization.”</span> <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em> 17 (2): 026103. <a href="https://doi.org/10.1063/1.2737822">https://doi.org/10.1063/1.2737822</a>.
+Dobson, I., Carreras, B. A., Lynch, V. E., &amp; Newman, D. E. (2007). Complex systems analysis of series of blackouts: <span>Cascading</span> failure, critical points, and self-organization. <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em>, <em>17</em>(2), 026103. <a href="https://doi.org/10.1063/1.2737822">https://doi.org/10.1063/1.2737822</a>
 </div>
 <div id="ref-spielmanBehavioralPerspectiveInsomnia1987" class="csl-entry" role="listitem">
-Spielman, A. J., L. S. Caruso, and P. B. Glovinsky. 1987. <span>“A Behavioral Perspective on Insomnia Treatment.”</span> <em>The Psychiatric Clinics of North America</em> 10 (4): 541–53. <a href="https://www.ncbi.nlm.nih.gov/pubmed/3332317">https://www.ncbi.nlm.nih.gov/pubmed/3332317</a>.
+Spielman, A. J., Caruso, L. S., &amp; Glovinsky, P. B. (1987). A behavioral perspective on insomnia treatment. <em>The Psychiatric Clinics of North America</em>, <em>10</em>(4), 541–553. <a href="https://www.ncbi.nlm.nih.gov/pubmed/3332317">https://www.ncbi.nlm.nih.gov/pubmed/3332317</a>
 </div>
 <div id="ref-valdez2020jcn" class="csl-entry" role="listitem">
-Valdez, Lucas D, Louis Shekhtman, Cristian E La Rocca, Xin Zhang, Sergey V Buldyrev, Paul A Trunfio, Lidia A Braunstein, and Shlomo Havlin. 2020. <span>“Cascading Failures in Complex Networks.”</span> Edited by Ernesto Estrada. <em>Journal of Complex Networks</em> 8 (2): cnaa013. <a href="https://doi.org/10.1093/comnet/cnaa013">https://doi.org/10.1093/comnet/cnaa013</a>.
+Valdez, L. D., Shekhtman, L., La Rocca, C. E., Zhang, X., Buldyrev, S. V., Trunfio, P. A., Braunstein, L. A., &amp; Havlin, S. (2020). Cascading failures in complex networks. <em>Journal of Complex Networks</em>, <em>8</em>(2), cnaa013. <a href="https://doi.org/10.1093/comnet/cnaa013">https://doi.org/10.1093/comnet/cnaa013</a>
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
