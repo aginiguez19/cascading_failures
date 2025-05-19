@@ -11,17 +11,15 @@ For the PSC-290 students, please proceed through the headings as if you are inst
 
 and comment on their estimation. Also, please adjust your `.qmd` file to be `week6_2.qmd` when you submit to me.
 
-# Failures in Graphs?
+# Failures in graphs?
 
 Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.
 
-In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you're feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system [@valdez2020jcn]. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.
-<!-- Added a citation to the article. But feel free to revert it back if you prefer using notes -->
-<!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* -->
+In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you're feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system [@valdez2020jcn]. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure. <!-- Added a citation to the article. But feel free to revert it back if you prefer using notes --> <!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* -->
 
-Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[^2]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
+Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[^1]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
 
-[^2]: *A simple model of global cascades on random networks (Watts, 2002)*
+[^1]: *A simple model of global cascades on random networks (Watts, 2002)*
 
 Cascading failures leads us to questions such as:
 
@@ -58,9 +56,40 @@ A group of students are running experiments and simulations in their respective 
 
 ## Compare and Contrast to these idea of "controlling" a network
 
-# Define Watt's general form of a Cascasing Failure by Thresholds
+# The Watt's model for Cascading Failures
 
-> Define the simple model not the proof. When we meet, you'll receive code for simulating a cascading failure using Watts' approach
+As aforementioned, cascading failures can be looked at as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt's model focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we'll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it's difficult to predict which node will result in a cascading failure without knowing the structure of the network.
+
+## Formal Definition of the Watt's model
+
+Formally, the Watt's model can be described as a *simple binary decision rule with externalities*:
+
+1.  **We have a network of components**, G = ($C$, $E$):
+
+-   $C_i$ observes the states of $K$ other components, essentially its *degree*.
+-   $C_i$ adopts state 1 if at least a threshold fraction ($\phi$) of its $K$ neighbors are state 1, otherwise it stays inactive.
+
+2.  **Component threshold**:
+
+-   To account for component variation, both the threshold and number of $K$ neighbors are allowed to be heterogeneous. Each component is assigned a threshold $\phi$ randomly drawn from a distribution $f(\phi)$ where $f(\phi)$ is a distribution defined on $[0,1]$, with $\int_0^1 f(\phi) \, d\phi = 1$.
+
+3.  **Network connection**:
+
+-   Each component is connected to $K$ neighbors with probability $P_k$ and the average number of neighbors is $\langle k \rangle = z$. Simply, $P_k$ is the degree distribution of the graph and $z$ is the *average degree.*
+
+4.  **Modeling Dynamics of Cascades**
+
+-   The population is initially all off (state 0) and perturbed at $t$ = 0 by a small fraction of $\phi_0 \ll 1$ that are switched to state 1.
+
+5.  **Subsequent Steps:**
+
+-   The system evolves at successive time steps with each component updating their state according to their threshold and the rule mentioned in $\text{step 1}$. Once a component is active in this system it will stay active for the duration of time steps.
+
+**Important Considerations**
+
+- *Local dependencies* occur in that the threshold rule ensures a component's state is determined by the states of neighboring nodes. 
+- *Fraction not a max*, the more signal one receives when making a choice, the less important the signal becomes. A key reason why we love In-N-Out's short menu. In other words, the threshold rule does not take into account all of a component's neighbors but a fraction.
+- *A heterogeneous system*, this one is self-explanatory. 
 
 # The CASCADE model for Cascading Failures
 
@@ -70,32 +99,38 @@ The CASCADE is a probabilistic model for understanding the propagation of cascad
 
 The model considers a system with $N$ components, each with a random initial load.
 
-1. **Initial load** ($L_j$):
-  - Each component $j$ (for $j = 1, 2, ..., N$) has an initial load $L_j$.
-  - The minimum value of a given load is $L^{\text{min}}$ and the maximum load is $L^{\text{max}}$.
-  - $L_{j}$ is distributed uniformly between $[L^{\text{min}}, L^{\text{max}}]$.
-  - The initial loads $L_{1},L_{2},...,L_{N}$ are independent of each other.
+1.  **Initial load** ($L_j$):
 
-2. **Failure threshold** ($L^\text{fail}$):
-  - Components fail if their total load exceeds a certain failure threshold, $L^\text{fail}$
-  
-3. **Load transfer** ($P$):
-  - When a component fails, a fixed amount of additional load, $P$, is transferred to each of the other remaining components in the system.
-  
-4. **Initial disturbance** ($D$):
-  - The cascade is initiated by an initial disturbance that adds an amount of load $D$ to each component.
+-   Each component $j$ (for $j = 1, 2, ..., N$) has an initial load $L_j$.
+-   The minimum value of a given load is $L^{\text{min}}$ and the maximum load is $L^{\text{max}}$.
+-   $L_{j}$ is distributed uniformly between $[L^{\text{min}}, L^{\text{max}}]$.
+-   The initial loads $L_{1},L_{2},...,L_{N}$ are independent of each other.
 
-5. **Normalized initial load**  ($\ell_{j}$):
-  - The normalized initial load for the $j^{th}$ vertex is given by $\ell_{j}$ where:
+2.  **Failure threshold** ($L^\text{fail}$):
+
+-   Components fail if their total load exceeds a certain failure threshold, $L^\text{fail}$
+
+3.  **Load transfer** ($P$):
+
+-   When a component fails, a fixed amount of additional load, $P$, is transferred to each of the other remaining components in the system.
+
+4.  **Initial disturbance** ($D$):
+
+-   The cascade is initiated by an initial disturbance that adds an amount of load $D$ to each component.
+
+5.  **Normalized initial load** ($\ell_{j}$):
+
+-   The normalized initial load for the $j^{th}$ vertex is given by $\ell_{j}$ where:
 
 $$
   \ell_{j} = \frac{L_{j} - L^{\text{min}}}{L^{\text{max}} - L^{\text{min}}}
 $$
-  
-  - This normalization maps the load $L_j$ to a value $\ell_{j}$ that is uniformly distributed on the interval $[0,1]$.
-  
-6. **Normalized parameters**:
-  - The load transfer $P$ and initial disturbance $D$ are also normalized. Let $p$ be the normalized load increment and $d$ be the normalized initial disturbance: 
+
+-   This normalization maps the load $L_j$ to a value $\ell_{j}$ that is uniformly distributed on the interval $[0,1]$.
+
+6.  **Normalized parameters**:
+
+-   The load transfer $P$ and initial disturbance $D$ are also normalized. Let $p$ be the normalized load increment and $d$ be the normalized initial disturbance:
 
 $$
 \begin{aligned}
@@ -104,9 +139,10 @@ $$
 \end{aligned}
 $$
 
-7. **Cascading process**:
-  - After the initial disturbance $D$, components whose total load $(L_j+D)$ exceeds $L^{\text{fail}}$ will fail.
-  - The failure of these components then distributes an additional load $P$ (or $p$ in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.
+7.  **Cascading process**:
+
+-   After the initial disturbance $D$, components whose total load $(L_j+D)$ exceeds $L^{\text{fail}}$ will fail.
+-   The failure of these components then distributes an additional load $P$ (or $p$ in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.
 
 <!-- # Compare and Contrast Watts' Cascades from the CASCADE Model -->
 
@@ -118,29 +154,28 @@ A brief distinction between the two models is that the Watt's description is mor
 
 ### Thresholds and Failure
 
-- **Watt's model**: Failure is determined by the fraction of a node's *neighbors* that have already failed. A node $i$ with degree $k_i$ and threshold $\phi_i$ fails if at least a threshold fraction $\phi$ out of its $k$ neighbors are in state 1 (fail state), otherwise it adopts state 0. The threshold $\phi_i$ represents the node's susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood.
+-   **Watt's model**: Failure is determined by the fraction of a node's *neighbors* that have already failed. A node $i$ with degree $k_i$ and threshold $\phi_i$ fails if at least a threshold fraction $\phi$ out of its $k$ neighbors are in state 1 (fail state), otherwise it adopts state 0. The threshold $\phi_i$ represents the node's susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood.
 
-- **CASCADE**: Failure is determined by a node's internal load exceeding its predefined capacity ($L^{\text{fail}}$). Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components. The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense.
+-   **CASCADE**: Failure is determined by a node's internal load exceeding its predefined capacity ($L^{\text{fail}}$). Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components. The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense.
 
 ### Influence mechanism
 
-- **Watt's model**: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. What matters is the structure of the network (who is connected to whom).
+-   **Watt's model**: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. What matters is the structure of the network (who is connected to whom).
 
-- **CASCADE**: Influence is through load redistribution. When a node fails, it transfers a fixed load $P$ to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.
+-   **CASCADE**: Influence is through load redistribution. When a node fails, it transfers a fixed load $P$ to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.
 
 ### Vertex properties
 
-- **Watt's model**: Vertices are primarily characterized by their degree $k$ and their individual threshold $\phi$. There isn't an explicit concept of "resilience" beyond the threshold itself.
+-   **Watt's model**: Vertices are primarily characterized by their degree $k$ and their individual threshold $\phi$. There isn't an explicit concept of "resilience" beyond the threshold itself.
 
-- **CASCADE**: Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$. The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This allows for more nuanced dynamics in how they fail, as a node with a high initial load is more vulnerable.
+-   **CASCADE**: Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$. The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This allows for more nuanced dynamics in how they fail, as a node with a high initial load is more vulnerable.
 
 ### Complexity of Dynamics
 
-- **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades. 
-  - In the *low connectivity* regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point, cascade sizes follow a power law.
-  - In the *high connectivity* regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.
-
-- **CASCADE**: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold ($L^{\text{fail}}$) and the magnitudes of $D$ and $P$. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point.
+-   **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades.
+    -   In the *low connectivity* regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point, cascade sizes follow a power law.
+    -   In the *high connectivity* regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.
+-   **CASCADE**: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold ($L^{\text{fail}}$) and the magnitudes of $D$ and $P$. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point.
 
 In summary, Watts' model is more focused on the contagion of states through local, fractional influence within a network, where nodes don't have intrinsic load capacities but rather susceptibility thresholds. The CASCADE model, conversely, emphasizes the accumulation of load on components that have defined capacities, where failure is a consequence of exceeding this capacity, leading to further load redistribution.
 
@@ -157,22 +192,24 @@ In **social/economical/biological systems** a threshold could relate to the poin
 -   What is a "threshold" for psychological vertices?
 
 <details>
+
 <summary>An example of insomnia development.</summary>
 
 Let's consider insomnia as a complex system where various psychological and behavioral factors interact, much like nodes in a network. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual's "sleep regulation network." Let's build our example using the popular **3P model** [@spielmanBehavioralPerspectiveInsomnia1987]:
 
-- **Predisposing Factors**: These are like the initial conditions or inherent vulnerabilities of certain nodes in our network. Think of genetic propensity, a tendency towards ruminative thoughts, or a generally anxious disposition. These factors don't cause insomnia on their own but lower the "failure threshold" of certain psychological states. For example, a "ruminative thought" node might have a naturally lower threshold to become "active" (i.e., start interfering with sleep).
+-   **Predisposing Factors**: These are like the initial conditions or inherent vulnerabilities of certain nodes in our network. Think of genetic propensity, a tendency towards ruminative thoughts, or a generally anxious disposition. These factors don't cause insomnia on their own but lower the "failure threshold" of certain psychological states. For example, a "ruminative thought" node might have a naturally lower threshold to become "active" (i.e., start interfering with sleep).
 
-- **Precipitating Factors**: These are the initial "shocks" or "failures" in the system. A stressful life event, a temporary illness, or a change in routine could be a precipitating factor that "activates" or "causes the failure" of an initial set of nodes – perhaps leading to a few nights of poor sleep. In our cascade model, this is the initial $\phi_0$ of "failed" nodes.
+-   **Precipitating Factors**: These are the initial "shocks" or "failures" in the system. A stressful life event, a temporary illness, or a change in routine could be a precipitating factor that "activates" or "causes the failure" of an initial set of nodes – perhaps leading to a few nights of poor sleep. In our cascade model, this is the initial $\phi_0$ of "failed" nodes.
 
-- **Perpetuating Factors**: These are crucial for the "cascade." These are behaviors and beliefs adopted to cope with initial sleep disturbance but end up reinforcing and exacerbating it. 
+-   **Perpetuating Factors**: These are crucial for the "cascade." These are behaviors and beliefs adopted to cope with initial sleep disturbance but end up reinforcing and exacerbating it.
 
-  - Take, for example, the node "Excessive Time in Bed": An individual experiences a few nights of poor sleep (precipitating factor). To compensate, they start spending excessive time in bed (a perpetuating behavior). This "Excessive Time in Bed" node now becomes "active."
+    -   Take, for example, the node "Excessive Time in Bed": An individual experiences a few nights of poor sleep (precipitating factor). To compensate, they start spending excessive time in bed (a perpetuating behavior). This "Excessive Time in Bed" node now becomes "active."
 
-  - Neighboring Nodes & Thresholds:
-      - This "Excessive Time in Bed" node influences other nodes, like "Sleep Fragmentation" and "Weakened Sleep-Wake Cycle."
-      - The "Sleep Fragmentation" node might have a threshold: if "Excessive Time in Bed" is active AND, say, "Anxiety about Sleep" (another node, perhaps activated by the precipitating factor) is also active, its threshold is met, and it "fails" (sleep becomes more fragmented).
-      - The "Weakened Sleep-Wake Cycle" node might fail if "Excessive Time in Bed" stays active for a certain duration or intensity.
+    -   Neighboring Nodes & Thresholds:
+
+        -   This "Excessive Time in Bed" node influences other nodes, like "Sleep Fragmentation" and "Weakened Sleep-Wake Cycle."
+        -   The "Sleep Fragmentation" node might have a threshold: if "Excessive Time in Bed" is active AND, say, "Anxiety about Sleep" (another node, perhaps activated by the precipitating factor) is also active, its threshold is met, and it "fails" (sleep becomes more fragmented).
+        -   The "Weakened Sleep-Wake Cycle" node might fail if "Excessive Time in Bed" stays active for a certain duration or intensity.
 
 </details>
 
@@ -196,26 +233,28 @@ BA graphs are characterized by a few high-degree "hubs" and many low-degree node
 
 -   Removing a random (likely low-degree) node typically has little impact on the overall network integrity because the hubs maintain connectivity.
 
--   Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can: 
-  1. Disconnect large parts of the network.
-  2. Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade. 
+-   Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can:
+
+1.  Disconnect large parts of the network.
+2.  Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade.
 
 -   The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.
 
 <!-- -   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why? -->
+
 <!-- -   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play? -->
+
 <!--     -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain. -->
 
 #### Assortativeness in Barabási–Albert Graphs
 
 > "A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections." [@ash2007pasmaia, p.6]
 
-Recall the "rich get richer" property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. 
+Recall the "rich get richer" property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes.
 
 Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network's backbone.
 
 The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.
-
 
 # Discussion
 
