@@ -62,7 +62,7 @@ A group of students are running experiments and simulations in their respective 
 
 > Define the simple model not the proof. When we meet, you'll receive code for simulating a cascading failure using Watts' approach
 
-# Define the CASCADE model for Cascading Failures
+# The CASCADE model for Cascading Failures
 
 The CASCADE is a probabilistic model for understanding the propagation of cascading failures [@dobson2007caijons]. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. CASCADE focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.
 
@@ -108,50 +108,73 @@ $$
   - After the initial disturbance $D$, components whose total load $(L_j+D)$ exceeds $L^{\text{fail}}$ will fail.
   - The failure of these components then distributes an additional load $P$ (or $p$ in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.
 
-# Compare and Contrast Watts' Cascades from the CASCADE Model
+<!-- # Compare and Contrast Watts' Cascades from the CASCADE Model -->
 
 > The Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail
 
 # Watt's Cascades vs. CASCADE Model
 
-In summary, the Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let's break it down.
+A brief distinction between the two models is that the Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let's break down their differences.
 
 ### Thresholds and Failure
 
-- **Watt's model**: Failure is determined by the fraction of a node's neighbors that have already failed. A node $i$ with degree $k_i$ and threshold $\phi_i$ fails if at least $k_i \cdot \phi_i$ of its neighbors have failed. The threshold $\phi_i$ is an intrinsic property of the node, representing its susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood.
+- **Watt's model**: Failure is determined by the fraction of a node's *neighbors* that have already failed. A node $i$ with degree $k_i$ and threshold $\phi_i$ fails if at least a threshold fraction $\phi$ out of its $k$ neighbors are in state 1 (fail state), otherwise it adopts state 0. The threshold $\phi_i$ represents the node's susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood.
 
-- **CASCADE**: Failure is determined by a node's internal load exceeding its predefined capacity ($L^{\text{fail}}}$). Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components. The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense (though load transfer makes it indirectly dependent).
+- **CASCADE**: Failure is determined by a node's internal load exceeding its predefined capacity ($L^{\text{fail}}$). Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components. The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense.
 
 ### Influence mechanism
 
-- **Watt's model**: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. The structure of the network (who is connected to whom) is paramount.
+- **Watt's model**: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. What matters is the structure of the network (who is connected to whom).
 
-- **CASCADE**:Influence is through load redistribution. When a node fails, it transfers a fixed amount of load $P$ to other components (often modeled as all other components or a subset). While the underlying network structure can be implicitly present in how loads might realistically be distributed (though the basic CASCADE model simplifies this), the primary mechanism is the global or semi-global impact of load addition.
+- **CASCADE**:Influence is through load redistribution. When a node fails, it transfers a fixed load $P$ to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.
 
 ### Vertex properties
 
+- **Watt's model**: Vertices are primarily characterized by their degree $k$ and their individual threshold $\phi$. There isn't an explicit concept of "resilience" beyond the threshold itself.
 
-- **Watt's model**: Vertices are primarily characterized by their degree k and their individual threshold $\phi$. There isn't an explicit concept of "resilience" beyond the threshold itself.
-
-- **CASCADE**:Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$ (or a capacity derived from initial load plus a tolerance, in some variants ). The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This allows for more nuanced dynamics in how they fail, as a node with a high initial load is more vulnerable.
+- **CASCADE**: Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$. The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This allows for more nuanced dynamics in how they fail, as a node with a high initial load is more vulnerable.
 
 ### Complexity of Dynamics
 
-- **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades. The model explores how network structure (especially connectivity and the clustering of vulnerable nodes) leads to different cascade regimes (power-law vs. bimodal distributions of cascade sizes).
+- **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades. 
+  - In the *low connectivity* regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point, cascade sizes follow a power law.
+  - In the *high connectivity* regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.
 
-- **CASCADE**:The dynamics are driven by accumulating load. The system's overall stress (related to how close initial loads are to Lfail and the magnitude of D and P) is a key factor. It often examines the probability distribution of the total number of failed components and how this distribution changes as system parameters (like overall loading or the load transfer $P$) approach a critical point.
+- **CASCADE**: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold ($L^{\text{fail}}$) and the magnitudes of $D$ and $P$. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point.
 
-### Focus
+In summary, Watts' model is more focused on the contagion of states through local, fractional influence within a network, where nodes don't have intrinsic load capacities but rather susceptibility thresholds. The CASCADE model, conversely, emphasizes the accumulation of load on components that have defined capacities, where failure is a consequence of exceeding this capacity, leading to further load redistribution.
 
-- **Watt's model**: Focuses on how local interaction rules and network topology can lead to global phenomena and explain the emergence of large, rare cascades from small shocks in social and interconnected systems more broadly.
-
-- **CASCADE**:Often motivated by and applied to infrastructure systems like power grids, focusing on how system-wide stress and load redistribution contribute to blackout probabilities and sizes.
+> Given these differences, which cascading failure model would be more appropriate to your research area?
 
 ## Can We Know the Thresholds for Vertices?
 
 In the CASCADE model, the threshold is essentially defined by a node's capacity and its load. In Watts' model, the threshold ($\phi$) for a node determines the fraction of its neighbors that must be "on" for it to switch "on."
 
+In **engineered/physical systems**, the thresholds can often be estimated or are known from design specifications. For example, a power line has a maximum current capacity, a router has a maximum data throughput, and a bridge has a maximum weight limit. These thresholds are based on physical properties and engineering design tolerances. However, even in these systems, thresholds can be dynamic, affected by environmental conditions (e.g., temperature affecting power line sag and capacity), aging, maintenance levels, or even "hidden failures" where a component's actual capacity is less than assumed.
+
+In **social/economical/biological systems** a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts' model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A "failure" can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.
+
 -   What is a "threshold" for psychological vertices?
+
+<details>
+<summary>An example of insomnia.</summary>
+
+Let's consider insomnia as a complex system where various psychological and behavioral factors interact, much like nodes in a network. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual's "sleep regulation network." Let's build our example using the popular **3P model** [@spielmanBehavioralPerspectiveInsomnia1987]:
+
+- **Predisposing Factors**: These are like the initial conditions or inherent vulnerabilities of certain nodes in our network. Think of genetic propensity, a tendency towards ruminative thoughts, or a generally anxious disposition. These factors don't cause insomnia on their own but lower the "failure threshold" of certain psychological states. For example, a "ruminative thought" node might have a naturally lower threshold to become "active" (i.e., start interfering with sleep).
+
+- **Precipitating Factors**: These are the initial "shocks" or "failures" in the system. A stressful life event, a temporary illness, or a change in routine could be a precipitating factor that "activates" or "causes the failure" of an initial set of nodes – perhaps leading to a few nights of poor sleep. In our cascade model, this is the initial $\phi_0$ of "failed" nodes.
+
+- **Perpetuating Factors**: These are crucial for the "cascade." These are behaviors and beliefs adopted to cope with initial sleep disturbance but end up reinforcing and exacerbating it. 
+
+  - Take, for example, the node "Excessive Time in Bed": An individual experiences a few nights of poor sleep (precipitating factor). To compensate, they start spending excessive time in bed (a perpetuating behavior). This "Excessive Time in Bed" node now becomes "active."
+
+  - Neighboring Nodes & Thresholds:
+      - This "Excessive Time in Bed" node influences other nodes, like "Sleep Fragmentation" and "Weakened Sleep-Wake Cycle."
+      - The "Sleep Fragmentation" node might have a threshold: if "Excessive Time in Bed" is active AND, say, "Anxiety about Sleep" (another node, perhaps activated by the precipitating factor) is also active, its threshold is met, and it "fails" (sleep becomes more fragmented).
+      - The "Weakened Sleep-Wake Cycle" node might fail if "Excessive Time in Bed" stays active for a certain duration or intensity.
+
+</details>
 
 # Weave in Graph Structures
 
@@ -213,5 +236,9 @@ You can add hidden messages that only appear once clicked on with this surroundi
 </details>
 
 > You can also indent text by using the greater than symbol to begin a sentence
+
+# Disclaimer
+
+MC used AI to help with grammar and to generate ideas.
 
 # References
