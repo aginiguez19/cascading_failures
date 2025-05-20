@@ -159,7 +159,8 @@ window.Quarto = {
 <h1>Failures in graphs?</h1>
 <p>Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.</p>
 <p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al., 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure. <!-- Added a citation to the article. But feel free to revert it back if you prefer using notes --> <!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* --></p>
-<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
+<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em> <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
+<!-- [^2]: *A simple model of global cascades on random networks (Watts, 2002)* -->
 <p>Cascading failures leads us to questions such as:</p>
 <ul>
 <li><p>How does the structure of a network impact its resilience to failures?</p></li>
@@ -410,8 +411,14 @@ An example of insomnia development.
 <blockquote class="blockquote">
 <p>“A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections.” <span class="citation" data-cites="ash2007pasmaia">(<a href="#ref-ash2007pasmaia" role="doc-biblioref">Ash &amp; Newth, 2007, p. 6</a>)</span></p>
 </blockquote>
+<<<<<<< HEAD
 <p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.</p>
 <p>The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
+=======
+<p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes.</p>
+<p>Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
+<p>The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
+>>>>>>> 2c651dc (edits on BA)
 </section>
 </section>
 </section>
@@ -624,7 +631,6 @@ Hidden Message.
 
 </section>
 
-
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-ash2007pasmaia" class="csl-entry" role="listitem">
 Ash, J., &amp; Newth, D. (2007). Optimizing complex networks for resilience against cascading failure. <em>Physica A: Statistical Mechanics and Its Applications</em>, <em>380</em>, 673–683. <a href="https://doi.org/10.1016/j.physa.2006.12.058">https://doi.org/10.1016/j.physa.2006.12.058</a>
@@ -638,12 +644,10 @@ Spielman, A. J., Caruso, L. S., &amp; Glovinsky, P. B. (1987). A behavioral pers
 <div id="ref-valdez2020jcn" class="csl-entry" role="listitem">
 Valdez, L. D., Shekhtman, L., La Rocca, C. E., Zhang, X., Buldyrev, S. V., Trunfio, P. A., Braunstein, L. A., &amp; Havlin, S. (2020). Cascading failures in complex networks. <em>Journal of Complex Networks</em>, <em>8</em>(2), cnaa013. <a href="https://doi.org/10.1093/comnet/cnaa013">https://doi.org/10.1093/comnet/cnaa013</a>
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><em>A simple model of global cascades on random networks (Watts, 2002)</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main>
+<div id="ref-watts2002p" class="csl-entry" role="listitem">
+Watts, D. J. (2002). A simple model of global cascades on random networks. <em>PNAS</em>, <em>9</em>(99). <a href="https://doi.org/10.1073 pnas.082090499">https://doi.org/10.1073 pnas.082090499</a>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
