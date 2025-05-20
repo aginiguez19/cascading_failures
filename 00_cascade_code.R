@@ -12,7 +12,7 @@ library(tidyr)
 library(dplyr)
 library(igraph)
 
-cascade.Watts = function(g, thrsh.lim = c(0.05, 0.90), max.steps = 10000){
+cascade.Watts = function(g, thrsh.lim = c(0.1, 0.20), max.steps = 10000){
   Cascades = list()
   metrics = igraph::degree(g)
   # Identify the high, average, and low degree vertices
@@ -117,8 +117,8 @@ for(m in models) {
   legend("bottomright", legend = names(results)[idx],
          col = 1:3, pch = 1:3, bty = "n")
 }
-par(op)
-
+par(op) 
+ 
 
 ### "Complex" Xiang Cascade 
 
@@ -223,3 +223,13 @@ for(m in models) {
 }
 par(op)
 
+
+library(visNetwork)
+g = barabasi.game(n = 20, power = 1)
+V(g)$name = as.character(1:vcount(g))
+nodes = data.frame(id = V(g)$name, label = V(g)$name)
+edges = as_data_frame(g, what = "edges")
+visNetwork(nodes, edges) %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visPhysics(stabilization = TRUE) %>%
+  visInteraction(dragNodes = TRUE, dragView = TRUE)
