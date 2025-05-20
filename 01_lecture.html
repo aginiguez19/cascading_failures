@@ -169,7 +169,14 @@ window.Quarto = {
 </header>
 
 
+<<<<<<< HEAD
 <p><mark>Also, please adjust your <code>.qmd</code> file to be <code>week6_2.qmd</code> when you submit to me</mark></p>
+=======
+<!-- {{< include ./_extensions/r-wasm/live/_knitr.qmd >}} -->
+<p>Below, you will find some recommendations for topics to discuss for your presentation on Cascading Failures. This is not an exhaustive list of topics and you are free to alter or depart from this outline depending on how you see fit. After the outline, you will find some arguments that may help in editing your <code>.qmd</code> file.</p>
+<p>For the PSC-290 students, please proceed through the headings as if you are instructing a course. You’ll be expected to discuss the mathematical formalisms of these different techniques for generating and simulating failure cascade in networks and generating considerations for what types of variable systems follow the different cascade types.</p>
+<p>and comment on their estimation. Also, please adjust your <code>.qmd</code> file to be <code>week6_2.qmd</code> when you submit to me.</p>
+>>>>>>> 395ce1d (comment on code output)
 <section id="failures-in-graphs" class="level1">
 <h1>Failures in graphs?</h1>
 <p>Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.</p>
@@ -854,9 +861,9 @@ An example of insomnia development.
 <ul>
 <li><p><strong>Nodes</strong>, <span class="math inline">\(j = 1, 2, 3, \ldots N\)</span>, have an initial load, <span class="math inline">\(L_j\)</span>, and capacity, <span class="math inline">\(C_j\)</span>.</p></li>
 <li><p>The <strong>initial load</strong> is calculated based on node degree, <span class="math inline">\(k_j\)</span>, and adjustable parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, that control the intensity of the initial load on nodes: <span class="math inline">\(L_j = \beta k^{\alpha}_j\)</span>.</p></li>
-<li><p>The <strong>capacity</strong> <span class="math inline">\(C_j\)</span> of each node is proportional to its initial load and a tolerance factor, <span class="math inline">\(T\)</span>: <span class="math inline">\(C_j = L_j \cdot T\)</span>.</p></li>
+<li><p>The <strong>capacity</strong> <span class="math inline">\(C_j\)</span> of each node is proportional to its initial load and a tolerance factor, <span class="math inline">\(T\)</span>: <span class="math inline">\(C_j = L_j \cdot T\)</span>. If <span class="math inline">\(T = 1.2\)</span>, nodes can handle 20% more than their initial load.</p></li>
 <li><p>Node <span class="math inline">\(j\)</span> will <strong>fail</strong> when the load it receives plus the initial load on its own node is greater than its processing capacity, <span class="math inline">\(L_j + L_{ji} &gt; C_j\)</span></p></li>
-<li><p>When a node fails, its current load is <strong>redistributed</strong> among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to <span class="math inline">\(\alpha\)</span>) receive a larger fraction of the failed node’s load: <span class="math inline">\(\Delta L_{ij} = L_i \frac{k_j^{\alpha}}{\sum_{n \in r_i}k_n^{\alpha}}\)</span>.</p></li>
+<li><p>When a node fails, its current load is <strong>redistributed</strong> among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to <span class="math inline">\(\alpha\)</span>) receive a larger fraction of the failed node’s load: <span class="math inline">\(\Delta L_{ji} = L_i \frac{k_j^{\alpha}}{\underset{n \in r_i}{\sum}k_n^{\alpha}}\)</span>.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -977,6 +984,14 @@ An example of insomnia development.
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="what-do-we-see" class="level3">
+<h3 class="anchored" data-anchor-id="what-do-we-see">What do we see?</h3>
+<ul>
+<li><p><strong>ER &amp; SW</strong>: Tend to show more uniform failure patterns. The specific starting node (high, avg, low degree) has less differential impact because connectivity is more homogeneous. SW models might take longer to fail completely due to their lattice-like local structure.</p></li>
+<li><p><strong>BA</strong>: Show significant heterogeneity. Failing a high-degree hub often leads to rapid and extensive cascades, potentially total failure. Failing a low-degree node might have minimal impact. This is because hubs are often the sole connection for many other nodes.</p></li>
+</ul>
+<p>The choice of which “central” node to target for intervention or to study for failure initiation only makes sense after you understand the network’s underlying degree distribution (topology). Targeting a high-degree node is critical in a power-law network but less so in an ER network.</p>
+</section>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>

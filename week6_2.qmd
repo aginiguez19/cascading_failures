@@ -1,10 +1,26 @@
 ---
 title: "Cascading Failures"
+<<<<<<< HEAD:week6_2.qmd
 author: "Abraham Iñiguez and Marwin Carmo"
+=======
+author: "Abraham Iniguez and Marwin Carmo"
+#format: live-html
+#engine: knitr
+>>>>>>> 395ce1d (comment on code output):01_lecture.qmd
 bibliography: references.bib
 csl: https://www.zotero.org/styles/apa
 ---
 
+<<<<<<< HEAD:week6_2.qmd
+=======
+<!-- {{< include ./_extensions/r-wasm/live/_knitr.qmd >}} -->
+
+Below, you will find some recommendations for topics to discuss for your presentation on Cascading Failures. This is not an exhaustive list of topics and you are free to alter or depart from this outline depending on how you see fit. After the outline, you will find some arguments that may help in editing your `.qmd` file.
+
+For the PSC-290 students, please proceed through the headings as if you are instructing a course. You'll be expected to discuss the mathematical formalisms of these different techniques for generating and simulating failure cascade in networks and generating considerations for what types of variable systems follow the different cascade types.
+
+and comment on their estimation. Also, please adjust your `.qmd` file to be `week6_2.qmd` when you submit to me.
+>>>>>>> 395ce1d (comment on code output):01_lecture.qmd
 
 # Failures in graphs?
 
@@ -582,11 +598,12 @@ Instead of purely random or preferential attachment, real-world networks can be 
 
 - The **initial load** is calculated based on node degree, $k_j$, and adjustable parameters $\alpha$ and $\beta$, that control the intensity of the initial load on nodes: $L_j = \beta k^{\alpha}_j$.
 
-- The **capacity** $C_j$ of each node is proportional to its initial load and a tolerance factor, $T$: $C_j = L_j \cdot T$.
+- The **capacity** $C_j$ of each node is proportional to its initial load and a tolerance factor, $T$: $C_j = L_j \cdot T$. If $T = 1.2$, nodes can handle 20% more than their initial load.
 
 - Node $j$ will **fail** when the load it receives plus the initial load on its own node is greater than its processing capacity, $L_j + L_{ji} > C_j$
 
-- When a node fails, its current load is **redistributed** among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to $\alpha$) receive a larger fraction of the failed node's load: $\Delta L_{ij} = L_i \frac{k_j^{\alpha}}{\sum_{n \in r_i}k_n^{\alpha}}$.
+- When a node fails, its current load is **redistributed** among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to $\alpha$) receive a larger fraction of the failed node's load: $\Delta L_{ji} = L_i \frac{k_j^{\alpha}}{\underset{n \in r_i}{\sum}k_n^{\alpha}}$.
+
 
 ```{r}
 #| message: false
@@ -650,6 +667,7 @@ cascade.Xiang = function(g, beta = 1, T = 1.2, alpha = 1, max.steps = 10000) {
 }
 ```
 
+
 ```{r sim-funk}
 sim.funk = function(rep_id, n_nodes) {
   set.seed(15846 + rep_id) 
@@ -705,7 +723,13 @@ for(m in models) {
 par(op)
 ```
 
+### What do we see?
 
+- **ER & SW**: Tend to show more uniform failure patterns. The specific starting node (high, avg, low degree) has less differential impact because connectivity is more homogeneous. SW models might take longer to fail completely due to their lattice-like local structure.
+
+- **BA**: Show significant heterogeneity. Failing a high-degree hub often leads to rapid and extensive cascades, potentially total failure. Failing a low-degree node might have minimal impact. This is because hubs are often the sole connection for many other nodes.
+
+The choice of which "central" node to target for intervention or to study for failure initiation only makes sense after you understand the network's underlying degree distribution (topology). Targeting a high-degree node is critical in a power-law network but less so in an ER network.
 
 
 
