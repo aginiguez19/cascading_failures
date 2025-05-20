@@ -125,7 +125,8 @@ window.Quarto = {
 <h1>Failures in Graphs?</h1>
 <p>Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.</p>
 <p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al., 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure. <!-- Added a citation to the article. But feel free to revert it back if you prefer using notes --> <!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* --></p>
-<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
+<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em> <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
+<!-- [^2]: *A simple model of global cascades on random networks (Watts, 2002)* -->
 <p>Cascading failures leads us to questions such as:</p>
 <ul>
 <li><p>How does the structure of a network impact its resilience to failures?</p></li>
@@ -234,14 +235,12 @@ window.Quarto = {
 <li>The failure of these components then distributes an additional load <span class="math inline">\(P\)</span> (or <span class="math inline">\(p\)</span> in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.</li>
 </ul>
 <!-- # Compare and Contrast Watts' Cascades from the CASCADE Model -->
-<blockquote class="blockquote">
-<p>The Watt’s description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail</p>
-</blockquote>
+<!-- > The Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail -->
 </section>
 </section>
 <section id="watts-cascades-vs.-cascade-model" class="level1">
 <h1>Watt’s Cascades vs.&nbsp;CASCADE Model</h1>
-<p>A brief distinction between the two models is that the Watt’s description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let’s break down their differences.</p>
+<p>A brief distinction between the two models is that the Watt’s description is more simplistic: vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let’s break down their differences.</p>
 <section id="thresholds-and-failure" class="level3">
 <h3 class="anchored" data-anchor-id="thresholds-and-failure">Thresholds and Failure</h3>
 <ul>
@@ -260,7 +259,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="vertex-properties">Vertex properties</h3>
 <ul>
 <li><p><strong>Watt’s model</strong>: Vertices are primarily characterized by their degree <span class="math inline">\(k\)</span> and their individual threshold <span class="math inline">\(\phi\)</span>. There isn’t an explicit concept of “resilience” beyond the threshold itself.</p></li>
-<li><p><strong>CASCADE</strong>: Vertices are characterized by their initial load <span class="math inline">\(L_j\)</span> and a common failure load <span class="math inline">\(L^{\text{fail}}\)</span>. The “resilience” of a node is the difference between its current load and <span class="math inline">\(L^{\text{fail}}\)</span>. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This allows for more nuanced dynamics in how they fail, as a node with a high initial load is more vulnerable.</p></li>
+<li><p><strong>CASCADE</strong>: Vertices are characterized by their initial load <span class="math inline">\(L_j\)</span> and a common failure load <span class="math inline">\(L^{\text{fail}}\)</span>. The “resilience” of a node is the difference between its current load and <span class="math inline">\(L^{\text{fail}}\)</span>. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable.</p></li>
 </ul>
 </section>
 <section id="complexity-of-dynamics" class="level3">
@@ -268,7 +267,7 @@ window.Quarto = {
 <ul>
 <li><strong>Watt’s model</strong>: The dynamics are driven by changes in neighbor states. The “vulnerable” nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades.
 <ul>
-<li>In the <em>low connectivity</em> regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point, cascade sizes follow a power law.</li>
+<li>In the <em>low connectivity</em> regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point (the system transitions from safe to vulnerable), cascade sizes follow a power law.</li>
 <li>In the <em>high connectivity</em> regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.</li>
 </ul></li>
 <li><strong>CASCADE</strong>: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold (<span class="math inline">\(L^{\text{fail}}\)</span>) and the magnitudes of <span class="math inline">\(D\)</span> and <span class="math inline">\(P\)</span>. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer (<span class="math inline">\(P\)</span>), approach a critical point.</li>
@@ -282,15 +281,15 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="can-we-know-the-thresholds-for-vertices">Can We Know the Thresholds for Vertices?</h2>
 <p>In the CASCADE model, the threshold is essentially defined by a node’s capacity and its load. In Watts’ model, the threshold (<span class="math inline">\(\phi\)</span>) for a node determines the fraction of its neighbors that must be “on” for it to switch “on.”</p>
 <p>In <strong>engineered/physical systems</strong>, the thresholds can often be estimated or are known from design specifications. For example, a power line has a maximum current capacity, a router has a maximum data throughput, and a bridge has a maximum weight limit. These thresholds are based on physical properties and engineering design tolerances. However, even in these systems, thresholds can be dynamic, affected by environmental conditions (e.g., temperature affecting power line sag and capacity), aging, maintenance levels, or even “hidden failures” where a component’s actual capacity is less than assumed.</p>
-<p>In <strong>social/economical/biological systems</strong> a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts’ model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A “failure” can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.</p>
-<ul>
-<li>What is a “threshold” for psychological vertices?</li>
-</ul>
+<p>In <strong>social/economical/biological systems</strong> a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts’ model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A biological “failure” can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.</p>
+<blockquote class="blockquote">
+<p>What is a “threshold” for psychological vertices?</p>
+</blockquote>
 <details>
 <summary>
 An example of insomnia development.
 </summary>
-<p>Let’s consider insomnia as a complex system where various psychological and behavioral factors interact, much like nodes in a network. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual’s “sleep regulation network.” Let’s build our example using the popular <strong>3P model</strong> <span class="citation" data-cites="spielmanBehavioralPerspectiveInsomnia1987">(<a href="#ref-spielmanBehavioralPerspectiveInsomnia1987" role="doc-biblioref">Spielman et al., 1987</a>)</span>:</p>
+<p>Let’s consider insomnia as a complex system where various psychological and behavioral factors interact. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual’s “sleep regulation network.” Let’s build our example using the popular <strong>3P model</strong> <span class="citation" data-cites="spielmanBehavioralPerspectiveInsomnia1987">(<a href="#ref-spielmanBehavioralPerspectiveInsomnia1987" role="doc-biblioref">Spielman et al., 1987</a>)</span>:</p>
 <ul>
 <li><p><strong>Predisposing Factors</strong>: These are like the initial conditions or inherent vulnerabilities of certain nodes in our network. Think of genetic propensity, a tendency towards ruminative thoughts, or a generally anxious disposition. These factors don’t cause insomnia on their own but lower the “failure threshold” of certain psychological states. For example, a “ruminative thought” node might have a naturally lower threshold to become “active” (i.e., start interfering with sleep).</p></li>
 <li><p><strong>Precipitating Factors</strong>: These are the initial “shocks” or “failures” in the system. A stressful life event, a temporary illness, or a change in routine could be a precipitating factor that “activates” or “causes the failure” of an initial set of nodes – perhaps leading to a few nights of poor sleep. In our cascade model, this is the initial <span class="math inline">\(\phi_0\)</span> of “failed” nodes.</p></li>
@@ -323,36 +322,43 @@ An example of insomnia development.
 </section>
 <section id="barabásialbert-ba-graphs" class="level3">
 <h3 class="anchored" data-anchor-id="barabásialbert-ba-graphs">Barabási–Albert (BA) Graphs</h3>
-<p>BA graphs are characterized by a few high-degree “hubs” and many low-degree nodes.</p>
+<p>BA graphs are characterized by a few high-degree “hubs” (specific nodes that are highly connected) and many low-degree nodes.</p>
 <ul>
 <li><p>Removing a random (likely low-degree) node typically has little impact on the overall network integrity because the hubs maintain connectivity.</p></li>
-<li><p>Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can:</p></li>
+<li><p>However, they are more vulnerable to the targeted failure of their hubs. Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can:</p></li>
 </ul>
 <ol type="1">
 <li>Disconnect large parts of the network.</li>
 <li>Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade.</li>
 </ol>
 <ul>
-<li>The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.</li>
+<li>Contrary to ER networks, cascades in BA networks can be rapid and devastating. The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.</li>
 </ul>
 <!-- -   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why? -->
 <!-- -   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play? -->
 <!--     -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain. -->
-<section id="assortivity-in-barabásialbert-graphs" class="level4">
-<h4 class="anchored" data-anchor-id="assortivity-in-barabásialbert-graphs">Assortivity in Barabási–Albert Graphs</h4>
+<section id="assortativeness-in-barabásialbert-graphs" class="level4">
+<h4 class="anchored" data-anchor-id="assortativeness-in-barabásialbert-graphs">Assortativeness in Barabási–Albert Graphs</h4>
 <blockquote class="blockquote">
-<p>A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections. <span class="citation" data-cites="ash2007pasmaia">(<a href="#ref-ash2007pasmaia" role="doc-biblioref">Ash &amp; Newth, 2007, p. 6</a>)</span></p>
+<p>“A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections.” <span class="citation" data-cites="ash2007pasmaia">(<a href="#ref-ash2007pasmaia" role="doc-biblioref">Ash &amp; Newth, 2007, p. 6</a>)</span></p>
 </blockquote>
-<p>A property of BA graphs is that high-degree nodes tend to connect to many low-degree nodes. Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
+<p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes.</p>
+<p>Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
+<p>The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
 </section>
 </section>
 </section>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
-</section>
-<section id="header" class="level1">
-<h1>Header</h1>
+<ul>
+<li>In a electrical power grid, repairs of damaged equipment, frequent maintenance, equipment replacement with more potent ones, or using alarm systems, are some response options to reduce the probability of blackouts. In psychological networks,
+<ul>
+<li>What could be an example of a weak system?</li>
+<li>What could be mitigation and reinforcement strategies to prevent or contain cascades? How to identify and reinforce critical components?</li>
+</ul></li>
+<li><h1 id="header">Header</h1></li>
+</ul>
 <p>Adding a figure can be done via:</p>
 <div class="center">
 <p><img src="images/EnergyGrid.jpg" class="img-fluid" style="width:60.0%"></p>
@@ -403,7 +409,6 @@ Hidden Message.
 
 </section>
 
-
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-ash2007pasmaia" class="csl-entry" role="listitem">
 Ash, J., &amp; Newth, D. (2007). Optimizing complex networks for resilience against cascading failure. <em>Physica A: Statistical Mechanics and Its Applications</em>, <em>380</em>, 673–683. <a href="https://doi.org/10.1016/j.physa.2006.12.058">https://doi.org/10.1016/j.physa.2006.12.058</a>
@@ -417,12 +422,10 @@ Spielman, A. J., Caruso, L. S., &amp; Glovinsky, P. B. (1987). A behavioral pers
 <div id="ref-valdez2020jcn" class="csl-entry" role="listitem">
 Valdez, L. D., Shekhtman, L., La Rocca, C. E., Zhang, X., Buldyrev, S. V., Trunfio, P. A., Braunstein, L. A., &amp; Havlin, S. (2020). Cascading failures in complex networks. <em>Journal of Complex Networks</em>, <em>8</em>(2), cnaa013. <a href="https://doi.org/10.1093/comnet/cnaa013">https://doi.org/10.1093/comnet/cnaa013</a>
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><em>A simple model of global cascades on random networks (Watts, 2002)</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main>
+<div id="ref-watts2002p" class="csl-entry" role="listitem">
+Watts, D. J. (2002). A simple model of global cascades on random networks. <em>PNAS</em>, <em>9</em>(99). <a href="https://doi.org/10.1073 pnas.082090499">https://doi.org/10.1073 pnas.082090499</a>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
