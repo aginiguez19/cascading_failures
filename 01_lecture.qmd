@@ -17,7 +17,6 @@ Well established in this class is the fact that graphs are made up of nodes (com
 
 In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you're feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system [@valdez2020jcn]. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure. <!-- Added a citation to the article. But feel free to revert it back if you prefer using notes --> <!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* -->
 
-<<<<<<< HEAD
 Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[^1]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
 
 [^1]: *A simple model of global cascades on random networks (Watts, 2002)*
@@ -256,6 +255,7 @@ BA graphs are characterized by a few high-degree "hubs" (specific nodes that are
 > "A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections." [@ash2007pasmaia, p.6]
 
 Recall the "rich get richer" property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.
+<<<<<<< HEAD
 
 The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.
 
@@ -410,8 +410,161 @@ for(m in models) {
 par(op)
 ```
 
+=======
+>>>>>>> 66be600 (add real world example and xiang's function)
 
-Therefore, the failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.
+The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.
+
+## Real-world networks' stability
+
+Instead of purely random or preferential attachment, real-world networks can be grown with resilience in mind. This might involve selectively adding redundant links, reinforcing nodes that are becoming too critical, or ensuring that new nodes connect in ways that don't overly stress existing components. Assortativity can be a tool for this:
+
+- By having important nodes (hubs) connect to each other, a robust core can be formed. If one hub in this core fails, other hubs within the core might be able to take up the slack or maintain critical pathways. This can create a resilient core.
+
+- In naturally disassortative networks, recognizing that hubs connect to many low-degree, dependent nodes allows for targeted protection strategies.
+
+- This structure can also help in "islanding" or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network if the inter-modular connections are managed or severed. A failure within one module can be contained, preventing a global cascade.
+
+- High clustering provides alternative pathways through which flows can pass, avoiding the failed component.
+
+- Longer path lengths also promote robustness of the network. A disturbance needs to pass through a greater number of intermediate steps before the entire network is exposed to failure. Longer delays increase the change the network will resolve the perturbation.
+
+#### Disassortative Networks (e.g., Brain):
+
+- Certain control systems (hubs) in the brain might manage specific functions (loners).
+
+- If such a control system (hub) fails, the downstream dependent functions (loners) will fail. However, this failure might be contained within that "module" without causing catastrophic failure of the entire system (e.g., damage to the occipital lobe causes loss of sight, not death).
+
+- This disassortative structure can be a form of modular redundancy, preventing cascades from spreading throughout the entire system.
+
+# Coding load-based models
+
+- **Nodes**, $j = 1, 2, 3, \ldots N$, have an initial load, $L_j$, and capacity, $C_j$.
+
+- The **initial load** is calculated based on node degree, $k_j$, and adjustable parameters $\alpha$ and $\beta$, that control the intensity of the initial load on nodes: $L_j = \beta k^{\alpha}_j$.
+
+- The **capacity** $C_j$ of each node is proportional to its initial load and a tolerance factor, $T$: $C_j = L_j \cdot T$.
+
+- Node $j$ will **fail** when the load it receives plus the initial load on its own node is greater than its processing capacity, $L_j + L_{ji} > C_j$
+
+- When a node fails, its current load is **redistributed** among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to $\alpha$) receive a larger fraction of the failed node's load: $\Delta L_{ij} = L_i \frac{k_j^{\alpha}}{\sum_{n \in r_i}k_n^{\alpha}}$.
+
+```{r}
+#| message: false
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(igraph)
+```
+
+```{r xiang-function}
+### "Complex" Xiang Cascade 
+
+cascade.Xiang = function(g, beta = 1, T = 1.2, alpha = 1, max.steps = 10000) {
+  N = vcount(g)
+  deg = igraph::degree(g)
+  # Load is based on beta, alpha, and degree
+  load0 = beta * (deg^alpha)
+  cap = T * load0
+  # Choose high, average, and lowest degree vertices
+  high = which.max(deg)
+  low = which.min(deg)
+  avg = which.min(abs(deg - mean(deg)))[1]
+  seeds = list(High=high, Average=avg, Low=low)
+  results = lapply(seeds, function(seed) {
+    load = load0
+    failed = logical(N)
+    # Kill the target
+    # Find neighbors
+    # Distribute failure to other neighbors
+    # High degree neighbors take more load
+    failed[seed] = TRUE
+    nbrs = as.integer(neighbors(g,seed))
+    if (length(nbrs)) {
+      wts = deg[nbrs]^alpha
+      load[nbrs] = load[nbrs] + load[seed]*(wts/sum(wts))
+    }
+    load[seed] = 0
+    
+    series = sum(failed)/N
+    t = 1
+    while (t < max.steps) {
+      to_fail = which(!failed & (load > cap))
+      if (!length(to_fail)) break
+      for (v in to_fail) {
+        failed[v] = TRUE
+        nbrs2 = setdiff(as.integer(neighbors(g,v)), which(failed))
+        if (length(nbrs2)) {
+          w2 = deg[nbrs2]^alpha
+          load[nbrs2] = load[nbrs2] + load[v]*(w2/sum(w2))
+        }
+        load[v] = 0
+      }
+      t = t+1
+      series[t] = sum(failed)/N
+    }
+    series
+  })
+  
+  names(results) = names(seeds)
+  results
+}
+```
+
+```{r sim-funk}
+sim.funk = function(rep_id, n_nodes) {
+  set.seed(15846 + rep_id) 
+  g_ba = sample_pa(n = n_nodes, power = 1, m = 2, directed = FALSE)
+  g_er = sample_gnm(n = n_nodes, m = ecount(g_ba), directed = FALSE)
+  g_sw = sample_smallworld(dim = 1, size = n_nodes, nei = floor(ecount(g_ba)/n_nodes), p = 0.05)
+  ER.set = cascade.Xiang(g_er, beta = 1, T = 1.2, alpha = 1, max.steps = 1000)
+  BA.set = cascade.Xiang(g_ba, beta = 1, T = 1.2, alpha = 1, max.steps = 1000)
+  SW.set = cascade.Xiang(g_sw, beta = 1, T = 1.2, alpha = 1, max.steps = 1000)
+  list(
+    ER_high = ER.set$High,
+    ER_avg  = ER.set$Average,
+    ER_low  = ER.set$Low,
+    BA_high = BA.set$High,
+    BA_avg  = BA.set$Average,
+    BA_low  = BA.set$Low,
+    SW_high = SW.set$High,
+    SW_avg  = SW.set$Average,
+    SW_low  = SW.set$Low
+  )
+}
+```
+
+```{r}
+n_nodes = 30
+results = sim.funk(34, n_nodes = n_nodes)
+models = c("ER","BA","SW")
+max_len = 30
+op = par(mfrow=c(3,1), mar=c(4,4,2,1))
+
+for(m in models) {
+  idx = grep(paste0("^", m, "_"), names(results))
+  raw = results[idx]
+  mat = sapply(raw, function(v) {
+    L = length(v)
+    if (L < max_len) {
+      c(v, rep(v[L], max_len - L))
+    } else {
+      v[1:max_len]
+    }
+  })
+  
+  matplot(1:max_len, mat,
+          type = "o", pch = 1:3,
+          col = 1:3, xlab = "Step",
+          ylab = "Prop. Failed",
+          main = paste(m, "model"),
+          xlim = c(1, max_len),
+          ylim = c(0, 1))
+  legend("bottomright", legend = names(results)[idx],
+         col = 1:3, pch = 1:3, bty = "n")
+}
+par(op)
+```
 
 
 
