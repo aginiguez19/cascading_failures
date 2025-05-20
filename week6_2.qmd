@@ -1,26 +1,11 @@
 ---
 title: "Cascading Failures"
-<<<<<<< HEAD:week6_2.qmd
+
 author: "Abraham Iñiguez and Marwin Carmo"
-=======
-author: "Abraham Iniguez and Marwin Carmo"
-#format: live-html
-#engine: knitr
->>>>>>> 395ce1d (comment on code output):01_lecture.qmd
 bibliography: references.bib
 csl: https://www.zotero.org/styles/apa
 ---
 
-<<<<<<< HEAD:week6_2.qmd
-=======
-<!-- {{< include ./_extensions/r-wasm/live/_knitr.qmd >}} -->
-
-Below, you will find some recommendations for topics to discuss for your presentation on Cascading Failures. This is not an exhaustive list of topics and you are free to alter or depart from this outline depending on how you see fit. After the outline, you will find some arguments that may help in editing your `.qmd` file.
-
-For the PSC-290 students, please proceed through the headings as if you are instructing a course. You'll be expected to discuss the mathematical formalisms of these different techniques for generating and simulating failure cascade in networks and generating considerations for what types of variable systems follow the different cascade types.
-
-and comment on their estimation. Also, please adjust your `.qmd` file to be `week6_2.qmd` when you submit to me.
->>>>>>> 395ce1d (comment on code output):01_lecture.qmd
 
 # Failures in graphs?
 
@@ -28,9 +13,9 @@ Well established in this class is the fact that graphs are made up of nodes (com
 
 In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you're feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system [@valdez2020jcn]. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.
 
-Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[@watts2002p]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
+Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities* [@watts2002p]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
 
-Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[@watts2002p]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
+<!-- Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[@watts2002p]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another. -->
 
 
 Cascading failures leads us to questions such as:
@@ -105,10 +90,10 @@ visNetwork(nodes, edges) %>%
 ```
 
 
--   Focus on re-describing the Erdős–Rényi and Barabási–Albert random graphs
-    -   With Barabási–Albert, talk more in-depth about preferential attachment and the "growth" of graphs
-    -   E.g., graphs in the real-world add and incorporate vertices over time and the addition of vertices follows some known procedures
-    -   Define the terms: Preferential attachment and Assortative mixing and how they relate to the evolution of a network's structure
+<!-- -   Focus on re-describing the Erdős–Rényi and Barabási–Albert random graphs -->
+<!--     -   With Barabási–Albert, talk more in-depth about preferential attachment and the "growth" of graphs -->
+<!--     -   E.g., graphs in the real-world add and incorporate vertices over time and the addition of vertices follows some known procedures -->
+<!--     -   Define the terms: Preferential attachment and Assortative mixing and how they relate to the evolution of a network's structure -->
 
 ## Compare and Contrast to these idea of "controlling" a network
 
@@ -739,59 +724,6 @@ The choice of which "central" node to target for intervention or to study for fa
   - What could be an example of a weak system? 
   - What could be mitigation and reinforcement strategies to prevent or contain cascades? How to identify and reinforce critical components?
 
-- 
-# Header
-
-Adding a figure can be done via:
-
-::: center
-![](images/EnergyGrid.jpg){width="60%"}
-:::
-
-When running this locally, change the pathing but when you submit to me, send any images and change paths to "images/\[figurename\].jpeg"
-
-For hyperlinks to websites, you can use [text goes here](https://www.google.com)
-
-## Subheading
-
-To subset an equation on a separate line you can use:
-
-$$y = mx + b$$
-
-To reference equation components in-line, you simply use $y$ as a single value without breaking the lines.
-
-If you want to create a list, you can simply write:
-
--   List element 1
--   List element 2
-    -   Sublist element 1
--   List element 3
-
-Some common symbols for graphs in $\LaTeX$ format can be found at detextify's website online. Get a matrix given by:
-
-$$
-\underset{p\times p}{\mathbf{A}} = 
-\begin{bmatrix}
-a_{11} & a_{12} & a_{13} \\
-a_{21} & a_{22} & a_{23} \\
-a_{31} & a_{32} & a_{33}
-\end{bmatrix}
-$$
-
-You might want to italicize or emphasize text by *adding asterisks*. You can also **bold and emphasize text**. $\texttt{R}$ chunks may be added by:
-
-```{r, message = TRUE, warning = TRUE, echo = TRUE}
-```
-
-<details>
-
-<summary>Hidden Message.</summary>
-
-You can add hidden messages that only appear once clicked on with this surrounding code.
-
-</details>
-
-> You can also indent text by using the greater than symbol to begin a sentence
 
 # Disclaimer
 
