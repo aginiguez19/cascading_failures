@@ -35,6 +35,9 @@ div.sourceCode { overflow: auto; }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
 <<<<<<< HEAD
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+=======
+<<<<<<< HEAD
 pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 =======
 <<<<<<< HEAD
@@ -43,6 +46,7 @@ pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 >>>>>>> 25272bf (Watt's code and start of ER, PA, WS distributions)
 >>>>>>> c663b34 (Changes to Code for Cascading)
+>>>>>>> origin/main
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -249,6 +253,9 @@ window.Quarto = {
 <section id="the-watts-model-for-cascading-failures" class="level1">
 <h1>The Watt’s model for Cascading Failures</h1>
 <<<<<<< HEAD
+<p>As aforementioned, cascading failures can be looked at as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt’s model focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we’ll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it’s difficult to predict which node will result in a cascading failure without knowing the structure of the network.</p>
+=======
+<<<<<<< HEAD
 <p>As aforementioned, cascading failures can be thought of as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt’s model <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span> focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we’ll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it’s difficult to predict which node will result in a cascading failure without knowing the structure of the network.</p>
 =======
 <<<<<<< HEAD
@@ -257,6 +264,7 @@ window.Quarto = {
 <p>As aforementioned, cascading failures can be thought of as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt’s model <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span> focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we’ll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it’s difficult to predict which node will result in a cascading failure without knowing the structure of the network.</p>
 >>>>>>> 25272bf (Watt's code and start of ER, PA, WS distributions)
 >>>>>>> c663b34 (Changes to Code for Cascading)
+>>>>>>> origin/main
 <section id="formal-definition-of-the-watts-model" class="level2">
 <h2 class="anchored" data-anchor-id="formal-definition-of-the-watts-model">Formal Definition of the Watt’s model</h2>
 <p>Formally, the Watt’s model can be described as a <em>simple binary decision rule with externalities</em>:</p>
@@ -300,6 +308,8 @@ window.Quarto = {
 </section>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 </section>
 <section id="application-of-the-watts-model" class="level1">
 <h1>Application of the Watt’s Model</h1>
@@ -621,6 +631,7 @@ window.Quarto = {
 </div>
 </section>
 </section>
+>>>>>>> origin/main
 </section>
 <section id="the-cascade-model-for-cascading-failures" class="level1">
 <h1>The CASCADE model for Cascading Failures</h1>
@@ -687,14 +698,12 @@ window.Quarto = {
 <li>The failure of these components then distributes an additional load <span class="math inline">\(P\)</span> (or <span class="math inline">\(p\)</span> in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.</li>
 </ul>
 <!-- # Compare and Contrast Watts' Cascades from the CASCADE Model -->
-<blockquote class="blockquote">
-<p>The Watt’s description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail</p>
-</blockquote>
+<!-- > The Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail -->
 </section>
 </section>
 <section id="watts-cascades-vs.-cascade-model" class="level1">
 <h1>Watt’s Cascades vs.&nbsp;CASCADE Model</h1>
-<p>A brief distinction between the two models is that the Watt’s description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let’s break down their differences.</p>
+<p>A brief distinction between the two models is that the Watt’s description is more simplistic: vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let’s break down their differences.</p>
 <section id="thresholds-and-failure" class="level3">
 <h3 class="anchored" data-anchor-id="thresholds-and-failure">Thresholds and Failure</h3>
 <ul>
@@ -713,7 +722,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="vertex-properties">Vertex properties</h3>
 <ul>
 <li><p><strong>Watt’s model</strong>: Vertices are primarily characterized by their degree <span class="math inline">\(k\)</span> and their individual threshold <span class="math inline">\(\phi\)</span>. There isn’t an explicit concept of “resilience” beyond the threshold itself.</p></li>
-<li><p><strong>CASCADE</strong>: Vertices are characterized by their initial load <span class="math inline">\(L_j\)</span> and a common failure load <span class="math inline">\(L^{\text{fail}}\)</span>. The “resilience” of a node is the difference between its current load and <span class="math inline">\(L^{\text{fail}}\)</span>. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This allows for more nuanced dynamics in how they fail, as a node with a high initial load is more vulnerable.</p></li>
+<li><p><strong>CASCADE</strong>: Vertices are characterized by their initial load <span class="math inline">\(L_j\)</span> and a common failure load <span class="math inline">\(L^{\text{fail}}\)</span>. The “resilience” of a node is the difference between its current load and <span class="math inline">\(L^{\text{fail}}\)</span>. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable.</p></li>
 </ul>
 </section>
 <section id="complexity-of-dynamics" class="level3">
@@ -721,7 +730,7 @@ window.Quarto = {
 <ul>
 <li><strong>Watt’s model</strong>: The dynamics are driven by changes in neighbor states. The “vulnerable” nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades.
 <ul>
-<li>In the <em>low connectivity</em> regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point, cascade sizes follow a power law.</li>
+<li>In the <em>low connectivity</em> regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point (the system transitions from safe to vulnerable), cascade sizes follow a power law.</li>
 <li>In the <em>high connectivity</em> regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.</li>
 </ul></li>
 <li><strong>CASCADE</strong>: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold (<span class="math inline">\(L^{\text{fail}}\)</span>) and the magnitudes of <span class="math inline">\(D\)</span> and <span class="math inline">\(P\)</span>. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer (<span class="math inline">\(P\)</span>), approach a critical point.</li>
@@ -735,28 +744,24 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="can-we-know-the-thresholds-for-vertices">Can We Know the Thresholds for Vertices?</h2>
 <p>In the CASCADE model, the threshold is essentially defined by a node’s capacity and its load. In Watts’ model, the threshold (<span class="math inline">\(\phi\)</span>) for a node determines the fraction of its neighbors that must be “on” for it to switch “on.”</p>
 <p>In <strong>engineered/physical systems</strong>, the thresholds can often be estimated or are known from design specifications. For example, a power line has a maximum current capacity, a router has a maximum data throughput, and a bridge has a maximum weight limit. These thresholds are based on physical properties and engineering design tolerances. However, even in these systems, thresholds can be dynamic, affected by environmental conditions (e.g., temperature affecting power line sag and capacity), aging, maintenance levels, or even “hidden failures” where a component’s actual capacity is less than assumed.</p>
-<p>In <strong>social/economical/biological systems</strong> a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts’ model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A “failure” can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.</p>
-<ul>
-<li>What is a “threshold” for psychological vertices?</li>
-</ul>
+<p>In <strong>social/economical/biological systems</strong> a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts’ model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A biological “failure” can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.</p>
+<blockquote class="blockquote">
+<p>What is a “threshold” for psychological vertices?</p>
+</blockquote>
 <details>
 <summary>
 An example of insomnia development.
 </summary>
-<p>Let’s consider insomnia as a complex system where various psychological and behavioral factors interact, much like nodes in a network. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual’s “sleep regulation network.” Let’s build our example using the popular <strong>3P model</strong> <span class="citation" data-cites="spielmanBehavioralPerspectiveInsomnia1987">(<a href="#ref-spielmanBehavioralPerspectiveInsomnia1987" role="doc-biblioref">Spielman et al., 1987</a>)</span>:</p>
+<p>Let’s consider insomnia as a complex system where various psychological and behavioral factors interact. We can conceptualize the transition into a state of chronic insomnia, or the worsening of its symptoms, as a form of cascading failure within an individual’s “sleep regulation network.” Let’s build our example using the popular <strong>3P model</strong> <span class="citation" data-cites="spielmanBehavioralPerspectiveInsomnia1987">(<a href="#ref-spielmanBehavioralPerspectiveInsomnia1987" role="doc-biblioref">Spielman et al., 1987</a>)</span>:</p>
 <ul>
 <li><p><strong>Predisposing Factors</strong>: These are like the initial conditions or inherent vulnerabilities of certain nodes in our network. Think of genetic propensity, a tendency towards ruminative thoughts, or a generally anxious disposition. These factors don’t cause insomnia on their own but lower the “failure threshold” of certain psychological states. For example, a “ruminative thought” node might have a naturally lower threshold to become “active” (i.e., start interfering with sleep).</p></li>
 <li><p><strong>Precipitating Factors</strong>: These are the initial “shocks” or “failures” in the system. A stressful life event, a temporary illness, or a change in routine could be a precipitating factor that “activates” or “causes the failure” of an initial set of nodes – perhaps leading to a few nights of poor sleep. In our cascade model, this is the initial <span class="math inline">\(\phi_0\)</span> of “failed” nodes.</p></li>
-<li><p><strong>Perpetuating Factors</strong>: These are crucial for the “cascade.” These are behaviors and beliefs adopted to cope with initial sleep disturbance but end up reinforcing and exacerbating it.</p>
-<ul>
+<li><p><strong>Perpetuating Factors</strong>: These are crucial for the “cascade.” These are behaviors and beliefs adopted to cope with initial sleep disturbance but end up reinforcing and exacerbating it.</p></li>
 <li><p>Take, for example, the node “Excessive Time in Bed”: An individual experiences a few nights of poor sleep (precipitating factor). To compensate, they start spending excessive time in bed (a perpetuating behavior). This “Excessive Time in Bed” node now becomes “active.”</p></li>
-<li><p>Neighboring Nodes &amp; Thresholds:</p>
-<ul>
-<li>This “Excessive Time in Bed” node influences other nodes, like “Sleep Fragmentation” and “Weakened Sleep-Wake Cycle.”</li>
-<li>The “Sleep Fragmentation” node might have a threshold: if “Excessive Time in Bed” is active AND, say, “Anxiety about Sleep” (another node, perhaps activated by the precipitating factor) is also active, its threshold is met, and it “fails” (sleep becomes more fragmented).</li>
-<li>The “Weakened Sleep-Wake Cycle” node might fail if “Excessive Time in Bed” stays active for a certain duration or intensity.</li>
-</ul></li>
-</ul></li>
+<li><p>Neighboring Nodes &amp; Thresholds:</p></li>
+<li><p>This “Excessive Time in Bed” node influences other nodes, like “Sleep Fragmentation” and “Weakened Sleep-Wake Cycle.”</p></li>
+<li><p>The “Sleep Fragmentation” node might have a threshold: if “Excessive Time in Bed” is active AND, say, “Anxiety about Sleep” (another node, perhaps activated by the precipitating factor) is also active, its threshold is met, and it “fails” (sleep becomes more fragmented).</p></li>
+<li><p>The “Weakened Sleep-Wake Cycle” node might fail if “Excessive Time in Bed” stays active for a certain duration or intensity.</p></li>
 </ul>
 </details>
 </section>
@@ -776,17 +781,17 @@ An example of insomnia development.
 </section>
 <section id="barabásialbert-ba-graphs" class="level3">
 <h3 class="anchored" data-anchor-id="barabásialbert-ba-graphs">Barabási–Albert (BA) Graphs</h3>
-<p>BA graphs are characterized by a few high-degree “hubs” and many low-degree nodes.</p>
+<p>BA graphs are characterized by a few high-degree “hubs” (specific nodes that are highly connected) and many low-degree nodes.</p>
 <ul>
 <li><p>Removing a random (likely low-degree) node typically has little impact on the overall network integrity because the hubs maintain connectivity.</p></li>
-<li><p>Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can:</p></li>
+<li><p>However, they are more vulnerable to the targeted failure of their hubs. Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can:</p></li>
 </ul>
 <ol type="1">
 <li>Disconnect large parts of the network.</li>
 <li>Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade.</li>
 </ol>
 <ul>
-<li>The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.</li>
+<li>Contrary to ER networks, cascades in BA networks can be rapid and devastating. The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.</li>
 </ul>
 <!-- -   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why? -->
 <!-- -   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play? -->
@@ -797,10 +802,13 @@ An example of insomnia development.
 <p>“A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections.” <span class="citation" data-cites="ash2007pasmaia">(<a href="#ref-ash2007pasmaia" role="doc-biblioref">Ash &amp; Newth, 2007, p. 6</a>)</span></p>
 </blockquote>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 <p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes.</p>
 <p>Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
 <p>The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
 =======
+>>>>>>> origin/main
 <<<<<<< HEAD
 <p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.</p>
 <p>The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
@@ -808,17 +816,178 @@ An example of insomnia development.
 <p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes.</p>
 <p>Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
 <p>The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
+<<<<<<< HEAD
+>>>>>>> 2c651dc (edits on BA)
+=======
+<p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.</p>
+<p>The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
+>>>>>>> 66be600 (add real world example and xiang's function)
+=======
 >>>>>>> 25272bf (Watt's code and start of ER, PA, WS distributions)
 >>>>>>> c663b34 (Changes to Code for Cascading)
+>>>>>>> origin/main
 </section>
 </section>
 </section>
+<section id="real-world-networks-stability" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-networks-stability">Real-world networks’ stability</h2>
+<p>Instead of purely random or preferential attachment, real-world networks can be grown with resilience in mind. This might involve selectively adding redundant links, reinforcing nodes that are becoming too critical, or ensuring that new nodes connect in ways that don’t overly stress existing components. Assortativity can be a tool for this:</p>
+<ul>
+<li><p>By having important nodes (hubs) connect to each other, a robust core can be formed. If one hub in this core fails, other hubs within the core might be able to take up the slack or maintain critical pathways. This can create a resilient core.</p></li>
+<li><p>In naturally disassortative networks, recognizing that hubs connect to many low-degree, dependent nodes allows for targeted protection strategies.</p></li>
+<li><p>This structure can also help in “islanding” or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network if the inter-modular connections are managed or severed. A failure within one module can be contained, preventing a global cascade.</p></li>
+<li><p>High clustering provides alternative pathways through which flows can pass, avoiding the failed component.</p></li>
+<li><p>Longer path lengths also promote robustness of the network. A disturbance needs to pass through a greater number of intermediate steps before the entire network is exposed to failure. Longer delays increase the change the network will resolve the perturbation.</p></li>
+</ul>
+<section id="disassortative-networks-e.g.-brain" class="level4">
+<h4 class="anchored" data-anchor-id="disassortative-networks-e.g.-brain">Disassortative Networks (e.g., Brain):</h4>
+<ul>
+<li><p>Certain control systems (hubs) in the brain might manage specific functions (loners).</p></li>
+<li><p>If such a control system (hub) fails, the downstream dependent functions (loners) will fail. However, this failure might be contained within that “module” without causing catastrophic failure of the entire system (e.g., damage to the occipital lobe causes loss of sight, not death).</p></li>
+<li><p>This disassortative structure can be a form of modular redundancy, preventing cascades from spreading throughout the entire system.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="coding-load-based-models" class="level1">
+<h1>Coding load-based models</h1>
+<ul>
+<li><p><strong>Nodes</strong>, <span class="math inline">\(j = 1, 2, 3, \ldots N\)</span>, have an initial load, <span class="math inline">\(L_j\)</span>, and capacity, <span class="math inline">\(C_j\)</span>.</p></li>
+<li><p>The <strong>initial load</strong> is calculated based on node degree, <span class="math inline">\(k_j\)</span>, and adjustable parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, that control the intensity of the initial load on nodes: <span class="math inline">\(L_j = \beta k^{\alpha}_j\)</span>.</p></li>
+<li><p>The <strong>capacity</strong> <span class="math inline">\(C_j\)</span> of each node is proportional to its initial load and a tolerance factor, <span class="math inline">\(T\)</span>: <span class="math inline">\(C_j = L_j \cdot T\)</span>.</p></li>
+<li><p>Node <span class="math inline">\(j\)</span> will <strong>fail</strong> when the load it receives plus the initial load on its own node is greater than its processing capacity, <span class="math inline">\(L_j + L_{ji} &gt; C_j\)</span></p></li>
+<li><p>When a node fails, its current load is <strong>redistributed</strong> among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to <span class="math inline">\(\alpha\)</span>) receive a larger fraction of the failed node’s load: <span class="math inline">\(\Delta L_{ij} = L_i \frac{k_j^{\alpha}}{\sum_{n \in r_i}k_n^{\alpha}}\)</span>.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">### "Complex" Xiang Cascade </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cascade.Xiang <span class="ot">=</span> <span class="cf">function</span>(g, <span class="at">beta =</span> <span class="dv">1</span>, <span class="at">T =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">max.steps =</span> <span class="dv">10000</span>) {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">=</span> <span class="fu">vcount</span>(g)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  deg <span class="ot">=</span> igraph<span class="sc">::</span><span class="fu">degree</span>(g)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Load is based on beta, alpha, and degree</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  load0 <span class="ot">=</span> beta <span class="sc">*</span> (deg<span class="sc">^</span>alpha)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  cap <span class="ot">=</span> T <span class="sc">*</span> load0</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Choose high, average, and lowest degree vertices</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  high <span class="ot">=</span> <span class="fu">which.max</span>(deg)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  low <span class="ot">=</span> <span class="fu">which.min</span>(deg)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  avg <span class="ot">=</span> <span class="fu">which.min</span>(<span class="fu">abs</span>(deg <span class="sc">-</span> <span class="fu">mean</span>(deg)))[<span class="dv">1</span>]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  seeds <span class="ot">=</span> <span class="fu">list</span>(<span class="at">High=</span>high, <span class="at">Average=</span>avg, <span class="at">Low=</span>low)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">lapply</span>(seeds, <span class="cf">function</span>(seed) {</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    load <span class="ot">=</span> load0</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    failed <span class="ot">=</span> <span class="fu">logical</span>(N)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Kill the target</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find neighbors</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Distribute failure to other neighbors</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># High degree neighbors take more load</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    failed[seed] <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    nbrs <span class="ot">=</span> <span class="fu">as.integer</span>(<span class="fu">neighbors</span>(g,seed))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(nbrs)) {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      wts <span class="ot">=</span> deg[nbrs]<span class="sc">^</span>alpha</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      load[nbrs] <span class="ot">=</span> load[nbrs] <span class="sc">+</span> load[seed]<span class="sc">*</span>(wts<span class="sc">/</span><span class="fu">sum</span>(wts))</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    load[seed] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    series <span class="ot">=</span> <span class="fu">sum</span>(failed)<span class="sc">/</span>N</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (t <span class="sc">&lt;</span> max.steps) {</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>      to_fail <span class="ot">=</span> <span class="fu">which</span>(<span class="sc">!</span>failed <span class="sc">&amp;</span> (load <span class="sc">&gt;</span> cap))</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="sc">!</span><span class="fu">length</span>(to_fail)) <span class="cf">break</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (v <span class="cf">in</span> to_fail) {</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        failed[v] <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        nbrs2 <span class="ot">=</span> <span class="fu">setdiff</span>(<span class="fu">as.integer</span>(<span class="fu">neighbors</span>(g,v)), <span class="fu">which</span>(failed))</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">length</span>(nbrs2)) {</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>          w2 <span class="ot">=</span> deg[nbrs2]<span class="sc">^</span>alpha</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>          load[nbrs2] <span class="ot">=</span> load[nbrs2] <span class="sc">+</span> load[v]<span class="sc">*</span>(w2<span class="sc">/</span><span class="fu">sum</span>(w2))</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        load[v] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>      t <span class="ot">=</span> t<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>      series[t] <span class="ot">=</span> <span class="fu">sum</span>(failed)<span class="sc">/</span>N</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    series</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(results) <span class="ot">=</span> <span class="fu">names</span>(seeds)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  results</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sim.funk <span class="ot">=</span> <span class="cf">function</span>(rep_id, n_nodes) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">15846</span> <span class="sc">+</span> rep_id) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  g_ba <span class="ot">=</span> <span class="fu">sample_pa</span>(<span class="at">n =</span> n_nodes, <span class="at">power =</span> <span class="dv">1</span>, <span class="at">m =</span> <span class="dv">2</span>, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  g_er <span class="ot">=</span> <span class="fu">sample_gnm</span>(<span class="at">n =</span> n_nodes, <span class="at">m =</span> <span class="fu">ecount</span>(g_ba), <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  g_sw <span class="ot">=</span> <span class="fu">sample_smallworld</span>(<span class="at">dim =</span> <span class="dv">1</span>, <span class="at">size =</span> n_nodes, <span class="at">nei =</span> <span class="fu">floor</span>(<span class="fu">ecount</span>(g_ba)<span class="sc">/</span>n_nodes), <span class="at">p =</span> <span class="fl">0.05</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ER.set <span class="ot">=</span> <span class="fu">cascade.Xiang</span>(g_er, <span class="at">beta =</span> <span class="dv">1</span>, <span class="at">T =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">max.steps =</span> <span class="dv">1000</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  BA.set <span class="ot">=</span> <span class="fu">cascade.Xiang</span>(g_ba, <span class="at">beta =</span> <span class="dv">1</span>, <span class="at">T =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">max.steps =</span> <span class="dv">1000</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  SW.set <span class="ot">=</span> <span class="fu">cascade.Xiang</span>(g_sw, <span class="at">beta =</span> <span class="dv">1</span>, <span class="at">T =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">max.steps =</span> <span class="dv">1000</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_high =</span> ER.set<span class="sc">$</span>High,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_avg  =</span> ER.set<span class="sc">$</span>Average,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_low  =</span> ER.set<span class="sc">$</span>Low,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_high =</span> BA.set<span class="sc">$</span>High,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_avg  =</span> BA.set<span class="sc">$</span>Average,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_low  =</span> BA.set<span class="sc">$</span>Low,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_high =</span> SW.set<span class="sc">$</span>High,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_avg  =</span> SW.set<span class="sc">$</span>Average,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_low  =</span> SW.set<span class="sc">$</span>Low</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">sim.funk</span>(<span class="dv">34</span>, <span class="at">n_nodes =</span> n_nodes)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>models <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ER"</span>,<span class="st">"BA"</span>,<span class="st">"SW"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>max_len <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>op <span class="ot">=</span> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(m <span class="cf">in</span> models) {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">=</span> <span class="fu">grep</span>(<span class="fu">paste0</span>(<span class="st">"^"</span>, m, <span class="st">"_"</span>), <span class="fu">names</span>(results))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  raw <span class="ot">=</span> results[idx]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">=</span> <span class="fu">sapply</span>(raw, <span class="cf">function</span>(v) {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    L <span class="ot">=</span> <span class="fu">length</span>(v)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (L <span class="sc">&lt;</span> max_len) {</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(v, <span class="fu">rep</span>(v[L], max_len <span class="sc">-</span> L))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      v[<span class="dv">1</span><span class="sc">:</span>max_len]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matplot</span>(<span class="dv">1</span><span class="sc">:</span>max_len, mat,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"o"</span>, <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">xlab =</span> <span class="st">"Step"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Prop. Failed"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste</span>(m, <span class="st">"model"</span>),</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1</span>, max_len),</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">names</span>(results)[idx],</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_lecture_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
-</section>
-<section id="header" class="level1">
-<h1>Header</h1>
+<ul>
+<li>In a electrical power grid, repairs of damaged equipment, frequent maintenance, equipment replacement with more potent ones, or using alarm systems, are some response options to reduce the probability of blackouts. In psychological networks,
+<ul>
+<li>What could be an example of a weak system?</li>
+<li>What could be mitigation and reinforcement strategies to prevent or contain cascades? How to identify and reinforce critical components?</li>
+</ul></li>
+<li><h1 id="header">Header</h1></li>
+</ul>
 <p>Adding a figure can be done via:</p>
 <div class="center">
 <p><img src="images/EnergyGrid.jpg" class="img-fluid" style="width:60.0%"></p>
