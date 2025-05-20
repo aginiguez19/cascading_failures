@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Abraham Iniguez and Marwin Carmo">
+<meta name="author" content="Abraham Iñiguez and Marwin Carmo">
 
 <title>Cascading Failures</title>
 <style>
@@ -34,7 +34,19 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
+<<<<<<< HEAD
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+=======
+<<<<<<< HEAD
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+=======
+<<<<<<< HEAD
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+=======
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+>>>>>>> 25272bf (Watt's code and start of ER, PA, WS distributions)
+>>>>>>> c663b34 (Changes to Code for Cascading)
+>>>>>>> origin/main
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -88,8 +100,13 @@ div.csl-indent {
 <script src="01_lecture_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="01_lecture_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="01_lecture_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="01_lecture_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="01_lecture_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="01_lecture_files/libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="01_lecture_files/libs/vis-9.1.0/vis-network.min.js"></script>
+<script src="01_lecture_files/libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -139,7 +156,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Abraham Iniguez and Marwin Carmo </p>
+             <p>Abraham Iñiguez and Marwin Carmo </p>
           </div>
   </div>
     
@@ -152,14 +169,12 @@ window.Quarto = {
 </header>
 
 
-<p>Below, you will find some recommendations for topics to discuss for your presentation on Cascading Failures. This is not an exhaustive list of topics and you are free to alter or depart from this outline depending on how you see fit. After the outline, you will find some arguments that may help in editing your <code>.qmd</code> file.</p>
-<p>For the PSC-290 students, please proceed through the headings as if you are instructing a course. You’ll be expected to discuss the mathematical formalisms of these different techniques for generating and simulating failure cascade in networks and generating considerations for what types of variable systems follow the different cascade types.</p>
-<p>and comment on their estimation. Also, please adjust your <code>.qmd</code> file to be <code>week6_2.qmd</code> when you submit to me.</p>
+<p><mark>Also, please adjust your <code>.qmd</code> file to be <code>week6_2.qmd</code> when you submit to me</mark></p>
 <section id="failures-in-graphs" class="level1">
 <h1>Failures in graphs?</h1>
 <p>Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.</p>
-<p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al., 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure. <!-- Added a citation to the article. But feel free to revert it back if you prefer using notes --> <!-- [^1]: *Cascading failures in complex networks (Valdez et al., 2020)* --></p>
-<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
+<p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al., 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.</p>
+<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
 <p>Cascading failures leads us to questions such as:</p>
 <ul>
 <li><p>How does the structure of a network impact its resilience to failures?</p></li>
@@ -185,6 +200,42 @@ window.Quarto = {
 </section>
 <section id="recap-on-graph-structures" class="level1">
 <h1>Recap on Graph Structures</h1>
+<section id="interactive-display" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-display">Interactive Display</h2>
+<section id="pa" class="level3">
+<h3 class="anchored" data-anchor-id="pa">PA</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-740e9bbef4a9aeb8a881" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-740e9bbef4a9aeb8a881">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"to":["1","2","3","1","1","4","1","7","4","3","8","7","7","6","3","4","16","7","14"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="er" class="level3">
+<h3 class="anchored" data-anchor-id="er">ER</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-fe90c320335c6a8848fb" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-fe90c320335c6a8848fb">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["1","2","4","2","3","2","3","4","6","3","5","6","7","1","3","5","1","3","4","5","1","2","3","6","7","8","1","2","5","7","10","3","8","10","12","2","5","7","8","9","10","11","12","2","3","6","7","8","9","10","11","12","1","4","5","6","9","11","12","13","14","15","1","5","8","9","11","12","13","15","3","5","9","10","12","13","14","1","2","8","17","18","1","3","4","6","7","9","11","14","18","19"],"to":["2","5","5","6","6","7","7","7","7","8","8","8","8","9","9","9","10","10","10","10","11","11","11","11","11","11","12","12","12","12","12","13","13","13","13","14","14","14","14","14","14","14","14","15","15","15","15","15","15","15","15","15","16","16","16","16","16","16","16","16","16","16","17","17","17","17","17","17","17","17","18","18","18","18","18","18","18","19","19","19","19","19","20","20","20","20","20","20","20","20","20","20"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="ws" class="level3">
+<h3 class="anchored" data-anchor-id="ws">WS</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">=</span> <span class="fu">sample_smallworld</span>(<span class="at">dim =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">nei =</span> <span class="dv">2</span>, <span class="at">p =</span> .<span class="dv">5</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>name <span class="ot">=</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(g))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>nodes <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">V</span>(g)<span class="sc">$</span>name, <span class="at">label =</span> <span class="fu">V</span>(g)<span class="sc">$</span>name)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">=</span> <span class="fu">as_data_frame</span>(g, <span class="at">what =</span> <span class="st">"edges"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(nodes, edges) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visOptions</span>(<span class="at">highlightNearest =</span> <span class="cn">TRUE</span>, <span class="at">nodesIdSelection =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">stabilization =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">dragNodes =</span> <span class="cn">TRUE</span>, <span class="at">dragView =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-a56e817550a197c71e17" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a56e817550a197c71e17">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["1","2","3","4","6","1","7","7","9","1","11","10","8","7","5","15","17","18","19","1","1","5","1","2","3","6","5","14","13","8","9","4","5","12","13","6","3","16","15","2"],"to":["2","3","12","5","14","12","8","9","10","11","12","13","12","14","15","17","18","19","20","20","3","19","5","4","5","9","7","19","20","10","11","10","10","14","18","12","14","18","19","13"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 <ul>
 <li>Focus on re-describing the Erdős–Rényi and Barabási–Albert random graphs
 <ul>
@@ -193,13 +244,27 @@ window.Quarto = {
 <li>Define the terms: Preferential attachment and Assortative mixing and how they relate to the evolution of a network’s structure</li>
 </ul></li>
 </ul>
+</section>
+</section>
 <section id="compare-and-contrast-to-these-idea-of-controlling-a-network" class="level2">
 <h2 class="anchored" data-anchor-id="compare-and-contrast-to-these-idea-of-controlling-a-network">Compare and Contrast to these idea of “controlling” a network</h2>
 </section>
 </section>
 <section id="the-watts-model-for-cascading-failures" class="level1">
 <h1>The Watt’s model for Cascading Failures</h1>
+<<<<<<< HEAD
 <p>As aforementioned, cascading failures can be looked at as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt’s model focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we’ll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it’s difficult to predict which node will result in a cascading failure without knowing the structure of the network.</p>
+=======
+<<<<<<< HEAD
+<p>As aforementioned, cascading failures can be thought of as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt’s model <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span> focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we’ll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it’s difficult to predict which node will result in a cascading failure without knowing the structure of the network.</p>
+=======
+<<<<<<< HEAD
+<p>As aforementioned, cascading failures can be looked at as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt’s model focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we’ll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it’s difficult to predict which node will result in a cascading failure without knowing the structure of the network.</p>
+=======
+<p>As aforementioned, cascading failures can be thought of as the transitioning of a component from one state to another influenced by the state of neighboring components. The Watt’s model <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span> focuses on small initial shocks relative to the size of the network that cascade into large failures of the system. An interesting aspect of cascading failures is that not all shocks result in a global cascade. As we’ll find out, some nodes have a higher threshold and therefore are less vulnerable. Or some nodes are simply less connected than other nodes despite being vulnerable. In short, it’s difficult to predict which node will result in a cascading failure without knowing the structure of the network.</p>
+>>>>>>> 25272bf (Watt's code and start of ER, PA, WS distributions)
+>>>>>>> c663b34 (Changes to Code for Cascading)
+>>>>>>> origin/main
 <section id="formal-definition-of-the-watts-model" class="level2">
 <h2 class="anchored" data-anchor-id="formal-definition-of-the-watts-model">Formal Definition of the Watt’s model</h2>
 <p>Formally, the Watt’s model can be described as a <em>simple binary decision rule with externalities</em>:</p>
@@ -241,6 +306,332 @@ window.Quarto = {
 <li><em>A heterogeneous system</em>, this one is self-explanatory.</li>
 </ul>
 </section>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+</section>
+<section id="application-of-the-watts-model" class="level1">
+<h1>Application of the Watt’s Model</h1>
+<section id="how-to-do-this-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-this-in-r">How to do this in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Libraries</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cascade-model" class="level2">
+<h2 class="anchored" data-anchor-id="cascade-model">Cascade Model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cascade.Watts <span class="ot">=</span> <span class="cf">function</span>(g, <span class="at">thrsh.lim =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.20</span>), <span class="at">max.steps =</span> <span class="dv">10000</span>){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  Cascades <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  metrics <span class="ot">=</span> igraph<span class="sc">::</span><span class="fu">degree</span>(g)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify the high, average, and low degree vertices</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  max_node <span class="ot">=</span> <span class="fu">which.max</span>(metrics)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">min</span>(metrics, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    min_node <span class="ot">=</span> <span class="fu">which.min</span>(<span class="fu">ifelse</span>(metrics <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(metrics), metrics, <span class="dv">999</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>(<span class="at">min_node =</span> <span class="fu">which.min</span>(<span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(metrics), metrics, <span class="dv">999</span>)))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  avg_node <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">which</span>(<span class="fu">abs</span>(metrics <span class="sc">-</span> <span class="fu">floor</span>(<span class="fu">mean</span>(metrics, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(metrics <span class="sc">-</span> <span class="fu">floor</span>(<span class="fu">mean</span>(metrics, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))), <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(metrics)), <span class="dv">1</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  seeds <span class="ot">=</span> <span class="fu">list</span>(<span class="at">high =</span> max_node, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">avg =</span> avg_node,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">low =</span> min_node)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For the high, middle, and low vertices initiate a cascade</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(name <span class="cf">in</span> <span class="fu">names</span>(seeds)) {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    target <span class="ot">=</span> seeds[[name]]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(thrsh.lim[<span class="dv">1</span>] <span class="sc">&gt;</span> thrsh.lim[<span class="dv">2</span>]){</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">message</span>(<span class="st">"First limit should be the lower limit! Flipping for you"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      thrsh.lim <span class="ot">=</span> <span class="fu">c</span>(thrsh.lim[<span class="dv">2</span>], thrsh.lim[<span class="dv">1</span>])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Uniformly apply thresholds to all vertices between limits</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>threshold <span class="ot">=</span> <span class="fu">runif</span>(<span class="fu">vcount</span>(g), <span class="at">min =</span> thrsh.lim[<span class="dv">1</span>], <span class="at">max =</span> thrsh.lim[<span class="dv">2</span>])</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>state <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>state[target] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    flip.count <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">sum</span>(<span class="fu">V</span>(g)<span class="sc">$</span>state))</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    step <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initiate Cascade</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span>(step <span class="sc">&lt;</span> max.steps) {</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      step <span class="ot">=</span> step <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      new.state <span class="ot">=</span> <span class="fu">V</span>(g)<span class="sc">$</span>state</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="co"># For each vertex, check if it failed. If so, skip</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If not, then identify its neighbors</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Check how many of the current vertex's neighbors have failed relative to total</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Compare to threshold; if bigger then fail</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Repeat</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (v <span class="cf">in</span> <span class="fu">V</span>(g)) {</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">V</span>(g)<span class="sc">$</span>state[v] <span class="sc">==</span> <span class="dv">1</span>) <span class="cf">next</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        neighbors.v <span class="ot">=</span> <span class="fu">neighbors</span>(g, v)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">length</span>(neighbors.v) <span class="sc">==</span> <span class="dv">0</span>) <span class="cf">next</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>          active_fraction <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">V</span>(g)<span class="sc">$</span>state[neighbors.v]) <span class="sc">/</span> <span class="fu">length</span>(neighbors.v)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (active_fraction <span class="sc">&gt;=</span> <span class="fu">V</span>(g)<span class="sc">$</span>threshold[v]) {</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>          new.state[v] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(<span class="fu">all</span>(new.state <span class="sc">==</span> <span class="fu">V</span>(g)<span class="sc">$</span>state)) <span class="cf">break</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">V</span>(g)<span class="sc">$</span>state <span class="ot">=</span> new.state</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>      flip.count <span class="ot">=</span> <span class="fu">c</span>(flip.count, <span class="fu">sum</span>(<span class="fu">V</span>(g)<span class="sc">$</span>state))</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    Cascades[[name]] <span class="ot">=</span> flip.count <span class="sc">/</span> <span class="fu">vcount</span>(g)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(Cascades) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"High"</span>, <span class="st">"Average"</span>, <span class="st">"Low"</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(Cascades)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial Parameters for Simulation</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation Function</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sim.funk <span class="ot">=</span> <span class="cf">function</span>(rep_id) {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">3887891</span> <span class="sc">+</span> rep_id) </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  g_ba <span class="ot">=</span> <span class="fu">sample_pa</span>(<span class="at">n =</span> n_nodes, <span class="at">power =</span> <span class="dv">1</span>, <span class="at">m =</span> <span class="dv">1</span>, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  g_er <span class="ot">=</span> <span class="fu">sample_gnm</span>(<span class="at">n =</span> n_nodes, <span class="at">m =</span> <span class="fu">ecount</span>(g_ba), <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  g_sw <span class="ot">=</span> <span class="fu">sample_smallworld</span>(<span class="at">dim =</span> <span class="dv">1</span>, <span class="at">size =</span> n_nodes, <span class="at">nei =</span> <span class="fu">floor</span>(<span class="fu">ecount</span>(g_ba)<span class="sc">/</span>n_nodes), <span class="at">p =</span> <span class="fl">0.05</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  ER.set <span class="ot">=</span> <span class="fu">cascade.Watts</span>(g_er, <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="dv">10000</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  BA.set <span class="ot">=</span> <span class="fu">cascade.Watts</span>(g_ba, <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="dv">10000</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  SW.set <span class="ot">=</span> <span class="fu">cascade.Watts</span>(g_sw, <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="dv">10000</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_high =</span> ER.set<span class="sc">$</span>High,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_avg  =</span> ER.set<span class="sc">$</span>Average,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_low  =</span> ER.set<span class="sc">$</span>Low,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_high =</span> BA.set<span class="sc">$</span>High,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_avg  =</span> BA.set<span class="sc">$</span>Average,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_low  =</span> BA.set<span class="sc">$</span>Low,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_high =</span> SW.set<span class="sc">$</span>High,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_avg  =</span> SW.set<span class="sc">$</span>Average,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_low  =</span> SW.set<span class="sc">$</span>Low</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">sim.funk</span>(<span class="dv">1245</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>models <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ER"</span>,<span class="st">"BA"</span>,<span class="st">"SW"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>max_len <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>op <span class="ot">=</span> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(m <span class="cf">in</span> models) {</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">=</span> <span class="fu">grep</span>(<span class="fu">paste0</span>(<span class="st">"^"</span>, m, <span class="st">"_"</span>), <span class="fu">names</span>(results))</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  raw <span class="ot">=</span> results[idx]</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">=</span> <span class="fu">sapply</span>(raw, <span class="cf">function</span>(v) {</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    L <span class="ot">=</span> <span class="fu">length</span>(v)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (L <span class="sc">&lt;</span> max_len) {</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(v, <span class="fu">rep</span>(v[L], max_len <span class="sc">-</span> L))</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>      v[<span class="dv">1</span><span class="sc">:</span>max_len]</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matplot</span>(<span class="dv">1</span><span class="sc">:</span>max_len, mat,</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"o"</span>, <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">xlab =</span> <span class="st">"Step"</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Prop. Failed"</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste</span>(m, <span class="st">"model"</span>),</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1</span>, max_len),</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">names</span>(results)[idx],</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_lecture_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="what-if-we-change-the-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="what-if-we-change-the-parameters">What if we change the parameters?</h2>
+<section id="n-300-with-same-threshold" class="level3">
+<h3 class="anchored" data-anchor-id="n-300-with-same-threshold">N = 300 with same threshold</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_lecture_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="n-30-with-threshold-between-.05-and-.9" class="level3">
+<h3 class="anchored" data-anchor-id="n-30-with-threshold-between-.05-and-.9">N = 30, with threshold between .05 and .9</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_lecture_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+>>>>>>> 25272bf (Watt's code and start of ER, PA, WS distributions)
+</section>
+<section id="application-of-the-watts-model" class="level1">
+<h1>Application of the Watt’s Model</h1>
+<section id="how-to-do-this-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-do-this-in-r">How to do this in R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Libraries</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cascade-model" class="level2">
+<h2 class="anchored" data-anchor-id="cascade-model">Cascade Model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cascade.Watts <span class="ot">=</span> <span class="cf">function</span>(g, <span class="at">thrsh.lim =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.20</span>), <span class="at">max.steps =</span> <span class="dv">10000</span>){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  Cascades <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  metrics <span class="ot">=</span> igraph<span class="sc">::</span><span class="fu">degree</span>(g)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Identify the high, average, and low degree vertices</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  max_node <span class="ot">=</span> <span class="fu">which.max</span>(metrics)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">min</span>(metrics, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    min_node <span class="ot">=</span> <span class="fu">which.min</span>(<span class="fu">ifelse</span>(metrics <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(metrics), metrics, <span class="dv">999</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>(<span class="at">min_node =</span> <span class="fu">which.min</span>(<span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(metrics), metrics, <span class="dv">999</span>)))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  avg_node <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">which</span>(<span class="fu">abs</span>(metrics <span class="sc">-</span> <span class="fu">floor</span>(<span class="fu">mean</span>(metrics, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">==</span> <span class="fu">min</span>(<span class="fu">abs</span>(metrics <span class="sc">-</span> <span class="fu">floor</span>(<span class="fu">mean</span>(metrics, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))), <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(metrics)), <span class="dv">1</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  seeds <span class="ot">=</span> <span class="fu">list</span>(<span class="at">high =</span> max_node, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">avg =</span> avg_node,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">low =</span> min_node)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For the high, middle, and low vertices initiate a cascade</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(name <span class="cf">in</span> <span class="fu">names</span>(seeds)) {</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    target <span class="ot">=</span> seeds[[name]]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(thrsh.lim[<span class="dv">1</span>] <span class="sc">&gt;</span> thrsh.lim[<span class="dv">2</span>]){</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">message</span>(<span class="st">"First limit should be the lower limit! Flipping for you"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      thrsh.lim <span class="ot">=</span> <span class="fu">c</span>(thrsh.lim[<span class="dv">2</span>], thrsh.lim[<span class="dv">1</span>])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Uniformly apply thresholds to all vertices between limits</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>threshold <span class="ot">=</span> <span class="fu">runif</span>(<span class="fu">vcount</span>(g), <span class="at">min =</span> thrsh.lim[<span class="dv">1</span>], <span class="at">max =</span> thrsh.lim[<span class="dv">2</span>])</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>state <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>state[target] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    flip.count <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">sum</span>(<span class="fu">V</span>(g)<span class="sc">$</span>state))</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    step <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initiate Cascade</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span>(step <span class="sc">&lt;</span> max.steps) {</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      step <span class="ot">=</span> step <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>      new.state <span class="ot">=</span> <span class="fu">V</span>(g)<span class="sc">$</span>state</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="co"># For each vertex, check if it failed. If so, skip</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If not, then identify its neighbors</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Check how many of the current vertex's neighbors have failed relative to total</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Compare to threshold; if bigger then fail</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Repeat</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (v <span class="cf">in</span> <span class="fu">V</span>(g)) {</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">V</span>(g)<span class="sc">$</span>state[v] <span class="sc">==</span> <span class="dv">1</span>) <span class="cf">next</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        neighbors.v <span class="ot">=</span> <span class="fu">neighbors</span>(g, v)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">length</span>(neighbors.v) <span class="sc">==</span> <span class="dv">0</span>) <span class="cf">next</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>          active_fraction <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">V</span>(g)<span class="sc">$</span>state[neighbors.v]) <span class="sc">/</span> <span class="fu">length</span>(neighbors.v)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (active_fraction <span class="sc">&gt;=</span> <span class="fu">V</span>(g)<span class="sc">$</span>threshold[v]) {</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>          new.state[v] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(<span class="fu">all</span>(new.state <span class="sc">==</span> <span class="fu">V</span>(g)<span class="sc">$</span>state)) <span class="cf">break</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">V</span>(g)<span class="sc">$</span>state <span class="ot">=</span> new.state</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>      flip.count <span class="ot">=</span> <span class="fu">c</span>(flip.count, <span class="fu">sum</span>(<span class="fu">V</span>(g)<span class="sc">$</span>state))</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    Cascades[[name]] <span class="ot">=</span> flip.count <span class="sc">/</span> <span class="fu">vcount</span>(g)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(Cascades) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"High"</span>, <span class="st">"Average"</span>, <span class="st">"Low"</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(Cascades)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial Parameters for Simulation</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation Function</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sim.funk <span class="ot">=</span> <span class="cf">function</span>(rep_id) {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">3887891</span> <span class="sc">+</span> rep_id) </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  g_ba <span class="ot">=</span> <span class="fu">sample_pa</span>(<span class="at">n =</span> n_nodes, <span class="at">power =</span> <span class="dv">1</span>, <span class="at">m =</span> <span class="dv">1</span>, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  g_er <span class="ot">=</span> <span class="fu">sample_gnm</span>(<span class="at">n =</span> n_nodes, <span class="at">m =</span> <span class="fu">ecount</span>(g_ba), <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  g_sw <span class="ot">=</span> <span class="fu">sample_smallworld</span>(<span class="at">dim =</span> <span class="dv">1</span>, <span class="at">size =</span> n_nodes, <span class="at">nei =</span> <span class="fu">floor</span>(<span class="fu">ecount</span>(g_ba)<span class="sc">/</span>n_nodes), <span class="at">p =</span> <span class="fl">0.05</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  ER.set <span class="ot">=</span> <span class="fu">cascade.Watts</span>(g_er, <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="dv">10000</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  BA.set <span class="ot">=</span> <span class="fu">cascade.Watts</span>(g_ba, <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="dv">10000</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  SW.set <span class="ot">=</span> <span class="fu">cascade.Watts</span>(g_sw, <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="dv">10000</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_high =</span> ER.set<span class="sc">$</span>High,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_avg  =</span> ER.set<span class="sc">$</span>Average,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ER_low  =</span> ER.set<span class="sc">$</span>Low,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_high =</span> BA.set<span class="sc">$</span>High,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_avg  =</span> BA.set<span class="sc">$</span>Average,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">BA_low  =</span> BA.set<span class="sc">$</span>Low,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_high =</span> SW.set<span class="sc">$</span>High,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_avg  =</span> SW.set<span class="sc">$</span>Average,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">SW_low  =</span> SW.set<span class="sc">$</span>Low</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">sim.funk</span>(<span class="dv">1245</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>models <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ER"</span>,<span class="st">"BA"</span>,<span class="st">"SW"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>max_len <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>op <span class="ot">=</span> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(m <span class="cf">in</span> models) {</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  idx <span class="ot">=</span> <span class="fu">grep</span>(<span class="fu">paste0</span>(<span class="st">"^"</span>, m, <span class="st">"_"</span>), <span class="fu">names</span>(results))</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  raw <span class="ot">=</span> results[idx]</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  mat <span class="ot">=</span> <span class="fu">sapply</span>(raw, <span class="cf">function</span>(v) {</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    L <span class="ot">=</span> <span class="fu">length</span>(v)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (L <span class="sc">&lt;</span> max_len) {</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(v, <span class="fu">rep</span>(v[L], max_len <span class="sc">-</span> L))</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>      v[<span class="dv">1</span><span class="sc">:</span>max_len]</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matplot</span>(<span class="dv">1</span><span class="sc">:</span>max_len, mat,</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">"o"</span>, <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>          <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">xlab =</span> <span class="st">"Step"</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Prop. Failed"</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste</span>(m, <span class="st">"model"</span>),</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1</span>, max_len),</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">names</span>(results)[idx],</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">pch =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_lecture_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(op) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="what-if-we-change-the-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="what-if-we-change-the-parameters">What if we change the parameters?</h2>
+<section id="n-300-with-same-threshold" class="level3">
+<h3 class="anchored" data-anchor-id="n-300-with-same-threshold">N = 300 with same threshold</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_lecture_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="n-30-with-threshold-between-.05-and-.9" class="level3">
+<h3 class="anchored" data-anchor-id="n-30-with-threshold-between-.05-and-.9">N = 30, with threshold between .05 and .9</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01_lecture_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+>>>>>>> origin/main
 </section>
 <section id="the-cascade-model-for-cascading-failures" class="level1">
 <h1>The CASCADE model for Cascading Failures</h1>
@@ -412,17 +803,29 @@ An example of insomnia development.
 </blockquote>
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes.</p>
+<p>Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
+<p>The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
+=======
+>>>>>>> origin/main
+<<<<<<< HEAD
 <p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.</p>
 <p>The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
 =======
 <p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes.</p>
 <p>Therefore, an attack on a peripheral node might be contained if the core of interconnected nodes is robust enough to absorb the load or remain connected. However, if a cascade penetrates this core of interconnected nodes, the failure could spread rapidly among them, leading to a collapse of the network’s backbone.</p>
 <p>The failure of a high-degree node immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
+<<<<<<< HEAD
 >>>>>>> 2c651dc (edits on BA)
 =======
 <p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.</p>
 <p>The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
 >>>>>>> 66be600 (add real world example and xiang's function)
+=======
+>>>>>>> 25272bf (Watt's code and start of ER, PA, WS distributions)
+>>>>>>> c663b34 (Changes to Code for Cascading)
+>>>>>>> origin/main
 </section>
 </section>
 </section>
@@ -635,7 +1038,6 @@ Hidden Message.
 
 </section>
 
-
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-ash2007pasmaia" class="csl-entry" role="listitem">
 Ash, J., &amp; Newth, D. (2007). Optimizing complex networks for resilience against cascading failure. <em>Physica A: Statistical Mechanics and Its Applications</em>, <em>380</em>, 673–683. <a href="https://doi.org/10.1016/j.physa.2006.12.058">https://doi.org/10.1016/j.physa.2006.12.058</a>
@@ -649,12 +1051,10 @@ Spielman, A. J., Caruso, L. S., &amp; Glovinsky, P. B. (1987). A behavioral pers
 <div id="ref-valdez2020jcn" class="csl-entry" role="listitem">
 Valdez, L. D., Shekhtman, L., La Rocca, C. E., Zhang, X., Buldyrev, S. V., Trunfio, P. A., Braunstein, L. A., &amp; Havlin, S. (2020). Cascading failures in complex networks. <em>Journal of Complex Networks</em>, <em>8</em>(2), cnaa013. <a href="https://doi.org/10.1093/comnet/cnaa013">https://doi.org/10.1093/comnet/cnaa013</a>
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><em>A simple model of global cascades on random networks (Watts, 2002)</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main>
+<div id="ref-watts2002p" class="csl-entry" role="listitem">
+Watts, D. J. (2002). A simple model of global cascades on random networks. <em>PNAS</em>, <em>9</em>(99). <a href="https://doi.org/10.1073 pnas.082090499">https://doi.org/10.1073 pnas.082090499</a>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -691,18 +1091,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -734,7 +1123,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -742,7 +1153,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
