@@ -6,17 +6,13 @@ bibliography: references.bib
 csl: https://www.zotero.org/styles/apa
 ---
 
-
 # Failures in graphs?
 
 Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.
 
-In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you're feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system [@valdez2020jcn]. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.
+In these networks, we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you're feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system [@valdez2020jcn]. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.
 
 Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities* [@watts2002p]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.
-
-<!-- Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[@watts2002p]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another. -->
-
 
 Cascading failures leads us to questions such as:
 
@@ -46,12 +42,61 @@ A group of students are running experiments and simulations in their respective 
 
 # Recap on Graph Structures
 
+As we once touched on at some time point long ago, centrality measures can be meaningful if we know a network's degree distribution. In a similar light, Bringmann and colleagues (2019) argued the relevance of centrality measures in psychology are dependent on how we're modeling a given system. As we'll see, the degree distribution of a network not only applies to centrality measures, but also in the context of cascading failures. If the degree distribution of our network follows a Erdős–Rényi graph, does it matter which node we choose to fail? How will a cascading failure differ if our graph is Barabási–Albert versus a Watts-Strogatz? Let's look at these degree distributions more closely again.
+
+## Erdős–Rényi random graph
+
+The Erdős–Rényi random graph is described as a distribution of graphs $G(n, p)$ where $n$ is the number of nodes in a graph and $p$ is the probability of an edge between two nodes.
+
+From what we already learned, we know the degree distribution of this random graph is binomial. Think back to coin flip analogy. There is a $p$ probability of getting a heads (edge) and a 1-$p$ probability of tails (no edge).
+
+This gives rise to the probability mass function: $$P(\deg(v) = k) = \binom{n-1}{k} p^k (1 - p)^{n - 1 - k}$$
+
+where $k \in \{0, 1,\dots, (n-1)\}$. Additionally, if we take the average degree of a Erdős–Rényi random graph we would see that it is close to the $\mathbb{E}[\deg(v)$. As an example, here we generate two random graphs with the same number of nodes with varying edge probability.
+
+```{r message = FALSE}
+library(igraph)
+gs = list(
+  g1 = sample_gnp(n = 10, p = 0.50),
+  g2 = sample_gnp(n = 10, p = 0.90))
+par(mfcol = c(1,2))
+invisible(lapply(gs, plot))
+```
+
+Increasing p increases the average degree as shown below:
+
+```{r}
+mean(degree(gs[[1]]))
+mean(degree(gs[[2]]))
+```
+
+## Barabási-Albert random graph
+
+If we remember, Barabási-Albert are graphs where nodes preferentially attach to already well-connected nodes. The degree distribution of this random graph follows a "power law". Formally, this is $P(k) \sim k^{-\gamma}$, where $\gamma$ is a scaling parameter in the range of $2 < \gamma < 3$. Essentially this means many nodes will have few connections and few nodes will have a high degree.
+
+The BA random graph is generated by way of the preferential attachment algorithm. The algorithm starts with a small fully connected network with $|n_{0}|$ nodes that then has nodes incrementally added. Each node will connect with a probability preferentially for high degree nodes as given below. The procedure repeats until we reach the total number of nodes in the graph.
+
+$$\prod(i) = \frac{\deg(i)}{\sum_{j}\deg(j)}$$
+
+```{r}
+ba.1 = sample_pa(n = 30, power = 1, m = 3, directed = FALSE)
+plot(ba.1)
+```
+
+## Watts-Strogatz Small-Worlds
+
+In this graph, nodes tend to all be relatively close to each other. Nodes can access any other node relatively fast. We see this in real-world networks as local clustering. Formally this graph is, $G_{WS}(n, k, \beta)$ where $n$ is the number of nodes, $k$ is the average degree, and $\beta$ is the rewiring probability for each edge. Rewiring probability assigns the edge to another node contingent on not already being connected to the node or creating a self-loop.
+
+```{r}
+ws1 = sample_smallworld(dim = 1, nei = 2, size = 10, p = 0.00)
+plot(ws1)
+```
+
 ## Interactive Display
 
-### PA
+### BA
 
 ```{r echo = FALSE, message = FALSE}
-library(igraph)
 library(visNetwork)
 g = sample_pa(n = 20, power = 1)
 V(g)$name = as.character(1:vcount(g))
@@ -88,14 +133,6 @@ visNetwork(nodes, edges) %>%
   visPhysics(stabilization = TRUE) %>%
   visInteraction(dragNodes = TRUE, dragView = TRUE)
 ```
-
-
-<!-- -   Focus on re-describing the Erdős–Rényi and Barabási–Albert random graphs -->
-<!--     -   With Barabási–Albert, talk more in-depth about preferential attachment and the "growth" of graphs -->
-<!--     -   E.g., graphs in the real-world add and incorporate vertices over time and the addition of vertices follows some known procedures -->
-<!--     -   Define the terms: Preferential attachment and Assortative mixing and how they relate to the evolution of a network's structure -->
-
-## Compare and Contrast to these idea of "controlling" a network
 
 # The Watt's model for Cascading Failures
 
@@ -441,10 +478,6 @@ $$
 -   After the initial disturbance $D$, components whose total load $(L_j+D)$ exceeds $L^{\text{fail}}$ will fail.
 -   The failure of these components then distributes an additional load $P$ (or $p$ in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.
 
-<!-- # Compare and Contrast Watts' Cascades from the CASCADE Model -->
-
-<!-- > The Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail -->
-
 # Watt's Cascades vs. CASCADE Model
 
 A brief distinction between the two models is that the Watt's description is more simplistic: vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let's break down their differences.
@@ -465,17 +498,14 @@ A brief distinction between the two models is that the Watt's description is mor
 
 -   **Watt's model**: Vertices are primarily characterized by their degree $k$ and their individual threshold $\phi$. There isn't an explicit concept of "resilience" beyond the threshold itself.
 
-
-- **CASCADE**: Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$. The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable.
+-   **CASCADE**: Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$. The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable.
 
 ### Complexity of Dynamics
 
-- **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades. 
-  - In the *low connectivity* regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point (the system transitions from safe to vulnerable), cascade sizes follow a power law.
-  - In the *high connectivity* regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.
-
-- **CASCADE**: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold ($L^{\text{fail}}$) and the magnitudes of $D$ and $P$. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point.
-
+-   **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades.
+    -   In the *low connectivity* regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point (the system transitions from safe to vulnerable), cascade sizes follow a power law.
+    -   In the *high connectivity* regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.
+-   **CASCADE**: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold ($L^{\text{fail}}$) and the magnitudes of $D$ and $P$. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point.
 
 In summary, Watts' model is more focused on the contagion of states through local, fractional influence within a network, where nodes don't have intrinsic load capacities but rather susceptibility thresholds. The CASCADE model, conversely, emphasizes the accumulation of load on components that have defined capacities, where failure is a consequence of exceeding this capacity, leading to further load redistribution.
 
@@ -507,9 +537,11 @@ Let's consider insomnia as a complex system where various psychological and beha
 
 -   Neighboring Nodes & Thresholds:
 
-  -   This "Excessive Time in Bed" node influences other nodes, like "Sleep Fragmentation" and "Weakened Sleep-Wake Cycle."
-  -   The "Sleep Fragmentation" node might have a threshold: if "Excessive Time in Bed" is active AND, say, "Anxiety about Sleep" (another node, perhaps activated by the precipitating factor) is also active, its threshold is met, and it "fails" (sleep becomes more fragmented).
-  -   The "Weakened Sleep-Wake Cycle" node might fail if "Excessive Time in Bed" stays active for a certain duration or intensity.
+-   This "Excessive Time in Bed" node influences other nodes, like "Sleep Fragmentation" and "Weakened Sleep-Wake Cycle."
+
+-   The "Sleep Fragmentation" node might have a threshold: if "Excessive Time in Bed" is active AND, say, "Anxiety about Sleep" (another node, perhaps activated by the precipitating factor) is also active, its threshold is met, and it "fails" (sleep becomes more fragmented).
+
+-   The "Weakened Sleep-Wake Cycle" node might fail if "Excessive Time in Bed" stays active for a certain duration or intensity.
 
 </details>
 
@@ -533,18 +565,13 @@ BA graphs are characterized by a few high-degree "hubs" (specific nodes that are
 
 -   Removing a random (likely low-degree) node typically has little impact on the overall network integrity because the hubs maintain connectivity.
 
--   However, they are more vulnerable to the targeted failure of their hubs. Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can: 
-  1. Disconnect large parts of the network.
-  2. Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade. 
-  
+-   However, they are more vulnerable to the targeted failure of their hubs. Since hubs are connected to a large number of other nodes and often handle significant portions of network flow or influence, their failure can:
+
+1.  Disconnect large parts of the network.
+2.  Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade.
+
 -   Contrary to ER networks, cascades in BA networks can be rapid and devastating. The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.
 
-
-<!-- -   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why? -->
-
-<!-- -   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play? -->
-
-<!--     -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain. -->
 
 #### Assortativeness in Barabási–Albert Graphs
 
@@ -552,42 +579,43 @@ BA graphs are characterized by a few high-degree "hubs" (specific nodes that are
 
 Recall the "rich get richer" property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.
 
-
 The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.
 
 ## Real-world networks' stability
 
 Instead of purely random or preferential attachment, real-world networks can be grown with resilience in mind. This might involve selectively adding redundant links, reinforcing nodes that are becoming too critical, or ensuring that new nodes connect in ways that don't overly stress existing components. Assortativity can be a tool for this:
 
-- By having important nodes (hubs) connect to each other, a robust core can be formed. If one hub in this core fails, other hubs within the core might be able to take up the slack or maintain critical pathways. This can create a resilient core.
+-   By having important nodes (hubs) connect to each other, a robust core can be formed. If one hub in this core fails, other hubs within the core might be able to take up the slack or maintain critical pathways. This can create a resilient core.
 
-- In naturally disassortative networks, recognizing that hubs connect to many low-degree, dependent nodes allows for targeted protection strategies.
+-   In naturally disassortative networks, recognizing that hubs connect to many low-degree, dependent nodes allows for targeted protection strategies.
 
-- This structure can also help in "islanding" or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network if the inter-modular connections are managed or severed. A failure within one module can be contained, preventing a global cascade.
+-   This structure can also help in "islanding" or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network if the inter-modular connections are managed or severed. A failure within one module can be contained, preventing a global cascade.
 
-- High clustering provides alternative pathways through which flows can pass, avoiding the failed component.
+-   High clustering provides alternative pathways through which flows can pass, avoiding the failed component.
 
-- Longer path lengths also promote robustness of the network. A disturbance needs to pass through a greater number of intermediate steps before the entire network is exposed to failure. Longer delays increase the change the network will resolve the perturbation.
+-   Longer path lengths also promote robustness of the network. A disturbance needs to pass through a greater number of intermediate steps before the entire network is exposed to failure. Longer delays increase the change the network will resolve the perturbation.
 
 #### The brain as an example of a Disassortative Network
 
-- Certain control systems (hubs) in the brain might manage specific functions (loners).
+-   Certain control systems (hubs) in the brain might manage specific functions (loners).
 
-- If such a control system (hub) fails, the downstream dependent functions (loners) will fail. However, this failure might be contained within that "module" without causing catastrophic failure of the entire system (e.g., damage to the occipital lobe causes loss of sight, not death).
+-   If such a control system (hub) fails, the downstream dependent functions (loners) will fail. However, this failure might be contained within that "module" without causing catastrophic failure of the entire system (e.g., damage to the occipital lobe causes loss of sight, not death).
 
-- This disassortative structure can be a form of modular redundancy, preventing cascades from spreading throughout the entire system.
+-   This disassortative structure can be a form of modular redundancy, preventing cascades from spreading throughout the entire system.
 
 # Coding load-based models
 
-- **Nodes**, $j = 1, 2, 3, \ldots N$, have an initial load, $L_j$, and capacity, $C_j$.
+-   **Nodes**, $j = 1, 2, 3, \ldots N$, have an initial load, $L_j$, and capacity, $C_j$.
 
-- The **initial load** is calculated based on node degree, $k_j$, and adjustable parameters $\alpha$ and $\beta$, that control the intensity of the initial load on nodes: $L_j = \beta k^{\alpha}_j$.
+-   The **initial load** is calculated based on node degree, $k_j$, and adjustable parameters $\alpha$ and $\beta$, that control the intensity of the initial load on nodes: $L_j = \beta k^{\alpha}_j$.
 
-- The **capacity** $C_j$ of each node is proportional to its initial load and a tolerance factor, $T$: $C_j = L_j \cdot T$. If $T = 1.2$, nodes can handle 20% more than their initial load.
+-   The **capacity** $C_j$ of each node is proportional to its initial load and a tolerance factor, $T$: $C_j = L_j \cdot T$.
 
-- Node $j$ will **fail** when the load it receives plus the initial load on its own node is greater than its processing capacity, $L_j + L_{ji} > C_j$
+-   Node $j$ will **fail** when the load it receives plus the initial load on its own node is greater than its processing capacity, $L_j + L_{ji} > C_j$
+
 
 - When a node fails, its current load is **redistributed** among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to $\alpha$) receive a larger fraction of the failed node's load: $\Delta L_{ji} = L_i \frac{k_j^{\alpha}}{\underset{n \in r_i}{\sum}k_n^{\alpha}}$.
+
 
 
 ```{r}
@@ -708,6 +736,7 @@ for(m in models) {
 par(op)
 ```
 
+
 ### What do we see?
 
 - **ER & SW**: Tend to show more uniform failure patterns. The specific starting node (high, avg, low degree) has less differential impact because connectivity is more homogeneous. SW models might take longer to fail completely due to their lattice-like local structure.
@@ -715,7 +744,6 @@ par(op)
 - **BA**: Show significant heterogeneity. Failing a high-degree hub often leads to rapid and extensive cascades, potentially total failure. Failing a low-degree node might have minimal impact. This is because hubs are often the sole connection for many other nodes.
 
 The choice of which "central" node to target for intervention or to study for failure initiation only makes sense after you understand the network's underlying degree distribution (topology). Targeting a high-degree node is critical in a power-law network but less so in an ER network.
-
 
 
 # Discussion
