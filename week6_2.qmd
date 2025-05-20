@@ -489,7 +489,7 @@ In **engineered/physical systems**, the thresholds can often be estimated or are
 
 In **social/economical/biological systems** a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts' model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A biological "failure" can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.
 
-> What is a "threshold" for psychological vertices?
+> What is a "threshold" for psychological vertices? Is it reasonable to assume psychological symptoms *have* thresholds for activation influenced by connected symptoms?
 
 <details>
 
@@ -569,7 +569,7 @@ Instead of purely random or preferential attachment, real-world networks can be 
 
 - Longer path lengths also promote robustness of the network. A disturbance needs to pass through a greater number of intermediate steps before the entire network is exposed to failure. Longer delays increase the change the network will resolve the perturbation.
 
-#### Disassortative Networks (e.g., Brain):
+#### The brain as an example of a Disassortative Network
 
 - Certain control systems (hubs) in the brain might manage specific functions (loners).
 
@@ -719,6 +719,8 @@ The choice of which "central" node to target for intervention or to study for fa
 
 
 # Discussion
+
+- For Psychological Networks, how do abstract concepts like "load," "capacity," and "threshold" translate?
 
 - In a electrical power grid, repairs of damaged equipment, frequent maintenance, equipment replacement with more potent ones, or using alarm systems, are some response options to reduce the probability of blackouts. In psychological networks, 
   - What could be an example of a weak system? 
