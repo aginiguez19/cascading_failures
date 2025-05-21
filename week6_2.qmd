@@ -577,11 +577,9 @@ BA graphs are characterized by a few high-degree "hubs" (specific nodes that are
 
 > "A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections." [@ash2007pasmaia, p.6]
 
-<<<<<<< HEAD
-Recall the "rich get richer" property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.
-=======
+
 Recall the "rich get richer" property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. The BA graph is generally resilient up to the point that the hub fails.
->>>>>>> 4a0af2c (add more discussion)
+
 
 The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.
 
