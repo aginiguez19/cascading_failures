@@ -427,7 +427,7 @@ par(op)
 
 # The CASCADE model for Cascading Failures
 
-The CASCADE is a probabilistic model for understanding the propagation of cascading failures [@dobson2007caijons]. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. CASCADE focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.
+The CASCADE model focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others [@dobson2007caijons].
 
 ## Formal definition of the CASCADE model:
 
@@ -480,32 +480,38 @@ $$
 
 # Watt's Cascades vs. CASCADE Model
 
-A brief distinction between the two models is that the Watt's description is more simplistic: vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let's break down their differences.
+In Watt's model for cascading failures, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let's break down their differences.
 
 ### Thresholds and Failure
 
--   **Watt's model**: Failure is determined by the fraction of a node's *neighbors* that have already failed. A node $i$ with degree $k_i$ and threshold $\phi_i$ fails if at least a threshold fraction $\phi$ out of its $k$ neighbors are in state 1 (fail state), otherwise it adopts state 0. The threshold $\phi_i$ represents the node's susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood.
+-   **Watt's model**: Failure is determined by the fraction of a node's *neighbors* that have already failed. A node $i$ with degree $k_i$ and threshold $\phi_i$ fails if at least a threshold fraction $\phi$ out of its $k$ neighbors are in state 1 (fail state). 
+<!-- otherwise it adopts state 0. The threshold $\phi_i$ represents the node's susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood. -->
 
--   **CASCADE**: Failure is determined by a node's internal load exceeding its predefined capacity ($L^{\text{fail}}$). Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components. The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense.
+-   **CASCADE**: Failure is determined by a node's internal load exceeding its predefined capacity ($L^{\text{fail}}$). The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense.
+<!-- Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components.  -->
 
 ### Influence mechanism
 
 -   **Watt's model**: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. What matters is the structure of the network (who is connected to whom).
 
--   **CASCADE**: Influence is through load redistribution. When a node fails, it transfers a fixed load $P$ to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.
+-   **CASCADE**: Influence is through load redistribution. When a node fails, it transfers a fixed load $P$ to other components. 
+<!-- While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition. -->
 
 ### Vertex properties
 
 -   **Watt's model**: Vertices are primarily characterized by their degree $k$ and their individual threshold $\phi$. There isn't an explicit concept of "resilience" beyond the threshold itself.
 
--   **CASCADE**: Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$. The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable.
+-   **CASCADE**: Vertices are characterized by their initial load $L_j$ and a common failure load $L^{\text{fail}}$. The "resilience" of a node is the difference between its current load and $L^{\text{fail}}$. A node with a high initial load is more vulnerable.
+<!-- Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable. -->
 
 ### Complexity of Dynamics
 
 -   **Watt's model**: The dynamics are driven by changes in neighbor states. The "vulnerable" nodes (low threshold relative to degree) play a crucial role in initiating widespread cascades.
     -   In the *low connectivity* regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point (the system transitions from safe to vulnerable), cascade sizes follow a power law.
     -   In the *high connectivity* regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.
--   **CASCADE**: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold ($L^{\text{fail}}$) and the magnitudes of $D$ and $P$. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point.
+-   **CASCADE**: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold ($L^{\text{fail}}$) and the magnitudes of $D$ and $P$.
+
+<!-- It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point. -->
 
 In summary, Watts' model is more focused on the contagion of states through local, fractional influence within a network, where nodes don't have intrinsic load capacities but rather susceptibility thresholds. The CASCADE model, conversely, emphasizes the accumulation of load on components that have defined capacities, where failure is a consequence of exceeding this capacity, leading to further load redistribution.
 
@@ -515,9 +521,15 @@ In summary, Watts' model is more focused on the contagion of states through loca
 
 In the CASCADE model, the threshold is essentially defined by a node's capacity and its load. In Watts' model, the threshold ($\phi$) for a node determines the fraction of its neighbors that must be "on" for it to switch "on."
 
-In **engineered/physical systems**, the thresholds can often be estimated or are known from design specifications. For example, a power line has a maximum current capacity, a router has a maximum data throughput, and a bridge has a maximum weight limit. These thresholds are based on physical properties and engineering design tolerances. However, even in these systems, thresholds can be dynamic, affected by environmental conditions (e.g., temperature affecting power line sag and capacity), aging, maintenance levels, or even "hidden failures" where a component's actual capacity is less than assumed.
+In **engineered/physical systems**, the thresholds can often be estimated or are known from design specifications. For example, a power line has a maximum current capacity, a router has a maximum data throughput, and a bridge has a maximum weight limit. 
 
-In **social/economical/biological systems** a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts' model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A biological "failure" can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.
+These thresholds are based on physical properties and engineering design tolerances. However, even in these systems, thresholds can be dynamic, affected by environmental conditions (e.g., temperature affecting power line sag and capacity), aging, maintenance levels, or even "hidden failures" where a component's actual capacity is less than assumed.
+
+In **social/economical/biological systems** a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. 
+
+In Watts' model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. 
+
+A biological "failure" can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.
 
 > What is a "threshold" for psychological vertices? Is it reasonable to assume psychological symptoms *have* thresholds for activation influenced by connected symptoms?
 
@@ -570,7 +582,8 @@ BA graphs are characterized by a few high-degree "hubs" (specific nodes that are
 1.  Disconnect large parts of the network.
 2.  Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade.
 
--   Contrary to ER networks, cascades in BA networks can be rapid and devastating. The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.
+-   Contrary to ER networks, cascades in BA networks can be rapid and devastating. The heterogeneity of node loads means that some nodes are inherently much more critical than others. 
+<!-- There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes. -->
 
 
 #### Assortativeness in Barabási–Albert Graphs
@@ -593,7 +606,9 @@ Instead of purely random or preferential attachment, real-world networks can be 
 
 -   In naturally disassortative networks, recognizing that hubs connect to many low-degree, dependent nodes allows for targeted protection strategies.
 
--   This structure can also help in "islanding" or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network if the inter-modular connections are managed or severed. A failure within one module can be contained, preventing a global cascade.
+-   This structure can also help in "islanding" or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network.
+<!-- if the inter-modular connections are managed or severed.  -->
+<!-- A failure within one module can be contained, preventing a global cascade. -->
 
 -   High clustering provides alternative pathways through which flows can pass, avoiding the failed component.
 
@@ -745,9 +760,301 @@ par(op)
 
 - **ER & SW**: Tend to show more uniform failure patterns. The specific starting node (high, avg, low degree) has less differential impact because connectivity is more homogeneous. SW models might take longer to fail completely due to their lattice-like local structure.
 
-- **BA**: Show significant heterogeneity. Failing a high-degree hub often leads to rapid and extensive cascades, potentially total failure. Failing a low-degree node might have minimal impact. This is because hubs are often the sole connection for many other nodes.
+- **BA**: Show significant heterogeneity. Failing a high-degree hub often leads to rapid and extensive cascades. Failing a low-degree node might have minimal impact. This is because hubs are often the sole connection for many other nodes.
 
-The choice of which "central" node to target for intervention or to study for failure initiation only makes sense after you understand the network's underlying degree distribution (topology). Targeting a high-degree node is critical in a power-law network but less so in an ER network.
+The choice of which "central" node to target for intervention or to study for failure initiation may depend  on first understanding the network's underlying degree distribution. For example, targeting a high-degree node seems critical in a power-law network but less so in an ER network.
+
+## Targeting multiple weak nodes
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+cascade.Xiang.multi = function(g, seed, beta = 1, T_cap = 1.2, alpha = 1, max.steps = 10000) {
+  N = vcount(g)
+  deg = igraph::degree(g)
+  load0 = beta * (deg^alpha)
+  cap = T_cap * load0
+  
+  load = load0
+  failed = logical(N)
+  failed[seed] = TRUE
+  
+  for(s in seed){
+    
+    nbrs = as.integer(neighbors(g, s))
+    active_nbrs = nbrs[!failed[nbrs]] # neighbors that are not themselves initial targets
+    
+    if (length(active_nbrs) > 0) {
+      # use a small epsilon for degrees if they are 0 to avoid 0 weights if alpha > 0
+      # or sum(wts) = 0 if all active_nbrs have deg=0
+      deg_active_nbrs = deg[active_nbrs]
+      wts = (deg_active_nbrs + ifelse(deg_active_nbrs==0, 1e-9, 0))^alpha
+      
+      if(sum(wts) > 0){
+        load[active_nbrs] = load[active_nbrs] + load0[s] * (wts / sum(wts))
+      } else if (length(active_nbrs) > 0) { # if sum(wts) is 0 but there are neighbors (e.g. all deg=0)
+        load[active_nbrs] = load[active_nbrs] + load0[s] / length(active_nbrs) # Distribute evenly
+      }
+    }
+    load[s] = 0
+  }
+  
+  series = c(sum(failed) / N) 
+  step = 0
+  
+  while (step < max.steps) {
+    step = step + 1
+    
+    # identify nodes that will fail in this step
+    to_fail = which(!failed & (load > cap))
+    if (!length(to_fail)) break
+    
+    failed_nodes = c() # track nodes that actually fail in this iteration
+    
+    for (v in to_fail) {
+      if(failed[v]) next # should not happen due to `which` condition, but safe check
+      
+      failed[v] = TRUE
+      failed_nodes = c(failed_nodes, v)
+      
+      load_to_redistribute = load[v] # this is the load that causes failure
+      load[v] = 0 
+      
+      nbrs2 = as.integer(neighbors(g, v))
+      # redistribute only to neighbors that are not already marked as failed
+      active_nbrs2 = nbrs2[!failed[nbrs2]]
+      
+      if (length(active_nbrs2) > 0) {
+        deg_active_nbrs2 = deg[active_nbrs2]
+        w2 = (deg_active_nbrs2 + ifelse(deg_active_nbrs2==0, 1e-9, 0))^alpha
+        
+        if(sum(w2) > 0){
+          load[active_nbrs2] = load[active_nbrs2] + load_to_redistribute * (w2 / sum(w2))
+        } else if (length(active_nbrs2) > 0) {
+          load[active_nbrs2] = load[active_nbrs2] + load_to_redistribute / length(active_nbrs2)
+        }
+      }
+    }
+    series = c(series, sum(failed) / N)
+  }
+  return(series)
+  
+}
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+set.seed(8852)
+n_nodes = 100
+m_param = 2
+n_min_deg_nodes = 5 # number nodes with the minimum degree
+
+g_ba = sample_pa(n=n_nodes, power=1, m=m_param, directed=FALSE)
+V(g_ba)$id = 1:vcount(g_ba)
+
+# 1. Identify target nodes
+hub = which.max(degree(g_ba))
+
+# Select multiple low-degree nodes
+# For example, all nodes with the minimum degree, or a sample of nodes with low degrees
+deg = igraph::degree(g_ba)
+min_deg = min(deg[deg > 0]) # Smallest non-zero degree
+# Take up to nodes with the minimum degree, or fewer if not that many exist
+low_deg = V(g_ba)[deg == min_deg]$id
+
+if(length(low_deg) > n_min_deg_nodes) {
+  low_deg = sample(low_deg, n_min_deg_nodes)
+}
+if(length(low_deg) == 0 && min_deg > 0) { # if no nodes at true min_deg
+    low_deg = V(g_ba)[order(deg)[1:min(n_min_deg_nodes, n_nodes)]]$id
+} else if (length(low_deg) == 0){ # if all are 0 degree except hub
+    cat("Warning: Could not find suitable low-degree nodes.\n")
+    low_deg = V(g_ba)[order(deg)[1]]$id # just pick the lowest
+}
+
+
+# 2. Run Cascades using Xiang et al.'s model
+cascade_hub_xiang = cascade.Xiang.multi(g = g_ba,
+                                            seed = hub,
+                                            T_cap = 1.1, 
+                                            alpha = 1.2,
+                                            max.steps = 10000)
+
+cascade_low_xiang = cascade.Xiang.multi(g = g_ba,
+                                        seed = low_deg,
+                                        T_cap = 1.1, 
+                                        alpha = 1.2,
+                                        max.steps = 10000)
+
+max_len = max(length(cascade_hub_xiang), length(cascade_low_xiang), n_nodes)
+padded_hub = c(cascade_hub_xiang, rep(tail(cascade_hub_xiang,1), max_len - length(cascade_hub_xiang)))
+padded_low = c(cascade_low_xiang, rep(tail(cascade_low_xiang,1), max_len - length(cascade_low_xiang)))
+
+plot(padded_hub, type="o", col="red", pch=1, ylim=c(0,1),
+     xlab="Step", ylab="Proportion Failed", main="Hub vs. Multiple Low-Degree ")
+lines(padded_low, type="o", col="green", pch=2)
+legend("bottomright", legend=c("Fail Single Hub",
+                               paste("Fail", n_min_deg_nodes,"Low-Degree Nodes")),
+       col=c("red", "green"), pch=c(1,2), lty=1, bty="n")
+
+```
+
+
+## Attacking one hub in the presence of multiple hubs
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+set.seed(11123)
+n1 = 50 
+n2 = 50 
+m_param = 2 
+num_additional_inter_edges = 0 # number of EXTRA edges to connect hub neighborhoods
+
+# 1. Create two BA graphs
+g1 = sample_pa(n=n1, power=1, m=m_param, directed=FALSE)
+V(g1)$name = paste0("g1v", 1:vcount(g1)) 
+
+g2 = sample_pa(n=n2, power=1, m=m_param, directed=FALSE)
+V(g2)$name = paste0("g2v", 1:vcount(g2))
+
+# 2. Find the hub (highest degree node) in each graph
+hub1 = which.max(degree(g1))
+hub2 = which.max(degree(g2))
+
+# Get neighbors of these hubs in their original graphs
+nbrs_hub1 = neighbors(g1, hub1)
+nbrs_hub2 = neighbors(g2, hub2)
+
+# 3. Combine the graphs
+combined_g = disjoint_union(g1, g2)
+
+# 4. Identify hubs and their neighbors in the combined graph
+hub1_combined = hub1
+hub2_combined = n1 + hub2
+
+# Map original neighbor indices to combined graph indices
+neighbors_hub1_combined = as.integer(nbrs_hub1) # these are already correct as they are from g1
+neighbors_hub2_combined = as.integer(nbrs_hub2) + n1 # offset for g2 nodes
+
+# 5. Add edges to connect the hub regions
+edges_to_add = c()
+
+# 5a. Direct hub-to-hub connection
+edges_to_add = c(edges_to_add, hub1_combined, hub2_combined)
+
+# 5b. Additional sparse connections between hub neighborhoods
+if (length(neighbors_hub1_combined) > 0 && length(neighbors_hub2_combined) > 0 && num_additional_inter_edges > 0) {
+  
+  # Ensure we don't try to sample more unique pairs than available
+  max_edges = length(neighbors_hub1_combined) * length(neighbors_hub2_combined)
+  edges_to_attempt = min(num_additional_inter_edges, max_edges)
+  
+  added_count = 0
+  attempt_limit = edges_to_attempt * 5 # try a few times to get unique edges
+  current_attempts = 0
+  
+  # store existing edges to check for duplicates
+  existing_edges_mat = as_edgelist(combined_g, names=FALSE)
+  if(length(edges_to_add) > 0) { # include the hub-hub edge if already defined
+    existing_edges_mat = rbind(existing_edges_mat, matrix(edges_to_add, ncol=2, byrow=TRUE))
+  }
+  
+  while(added_count < edges_to_attempt && current_attempts < attempt_limit){
+    current_attempts = current_attempts + 1
+    # randomly pick one neighbor from each hub's neighborhood
+    n1_sample = sample(neighbors_hub1_combined, 1)
+    n2_sample = sample(neighbors_hub2_combined, 1)
+    
+    new_edge = sort(c(n1_sample, n2_sample)) # sort to handle undirected nature for duplicate check
+    
+    # check if this edge (or its reverse) already exists or is planned
+    is_duplicate = FALSE
+    if (nrow(existing_edges_mat) > 0) {
+      for(k in 1:nrow(existing_edges_mat)){
+        if(all(sort(existing_edges_mat[k,]) == new_edge)){
+          is_duplicate = TRUE
+          break
+        }
+      }
+    }
+    # check against already selected additional edges for this loop
+    if (!is_duplicate && length(edges_to_add) > 0) {
+      temp_added_edges = matrix(edges_to_add, ncol=2, byrow=TRUE)
+      for(k in 1:nrow(temp_added_edges)){
+        if(all(sort(temp_added_edges[k,]) == new_edge)){
+          is_duplicate = TRUE
+          break
+        }
+      }
+    }
+    
+    if(!is_duplicate){
+      edges_to_add = c(edges_to_add, n1_sample, n2_sample)
+      added_count = added_count + 1
+      cat("Adding inter-neighborhood edge between", n1_sample, "and", n2_sample, "\n")
+    }
+  }
+  
+}
+
+# create the final connected graph
+combined_g_connected_multi = add_edges(combined_g, edges_to_add)
+V(combined_g_connected_multi)$id = 1:vcount(combined_g_connected_multi)
+
+# 6. Create a single BA graph of comparable size for comparison (as before)
+n_total = n1 + n2
+g_single_ba = sample_pa(n=n_total, power=1, m=m_param, directed=FALSE)
+V(g_single_ba)$id = 1:vcount(g_single_ba)
+
+# 7. Run Cascades and Compare
+# fail one of the original hubs in the multi-connected graph
+seed_multi_connected = hub1
+cascade_multi_connected_xiang = cascade.Xiang.multi(
+  g = combined_g_connected_multi,
+  seed = seed_multi_connected,
+  T_cap = 1.2, alpha = 1.5)
+# Cascade in the single BA graph, failing its main hub
+hub_single_ba = which.max(degree(g_single_ba))
+cascade_single_ba_xiang = cascade.Xiang.multi(
+  g = g_single_ba,
+  seed = hub_single_ba,
+  T_cap = 1.2, alpha = 1.5)
+
+
+max_len = max(length(cascade_multi_connected_xiang), 
+              length(cascade_single_ba_xiang), n_total)
+
+
+if(length(cascade_multi_connected_xiang) < max_len) {
+  padded_multi_connected_xiang = c(cascade_multi_connected_xiang, 
+                                   rep(tail(cascade_multi_connected_xiang,1), 
+                                       max_len - length(cascade_multi_connected_xiang)))
+} else {
+  padded_multi_connected_xiang = cascade_multi_connected_xiang[1:max_len]
+}
+
+padded_single_ba_xiang = cascade_single_ba_xiang
+if(length(cascade_single_ba_xiang) < max_len) {
+  padded_single_ba_xiang = c(cascade_single_ba_xiang, rep(tail(cascade_single_ba_xiang,1), 
+                                                          max_len - length(padded_single_ba_xiang)))
+} else {
+  padded_single_ba_xiang = cascade_single_ba_xiang[1:max_len]
+}
+
+
+plot(padded_multi_connected_xiang, type="o", col="blue", pch=1, ylim=c(0,1),
+     xlab="Step", ylab="Proportion Failed", main="Multi Hub Connection")
+lines(padded_single_ba_xiang, type="o", col="red", pch=2)
+legend("bottomright", 
+       legend=c("Multi-Connected BA",
+                "Single BA"),
+       col=c("blue", "red"), pch=c(1,2), lty=1, bty="n")
+```
+
+
+### Before our discussion, let's play a little game...
 
 
 # Discussion
@@ -763,6 +1070,6 @@ The choice of which "central" node to target for intervention or to study for fa
 
 # Disclaimer
 
-MC used AI to help with grammar and to generate ideas.
+MC used AI to help with writing and to generate ideas for text and code.
 
 # References
