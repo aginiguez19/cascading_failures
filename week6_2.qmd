@@ -517,7 +517,7 @@ In summary, Watts' model is more focused on the contagion of states through loca
 
 > Given these differences, which cascading failure model would be more appropriate to your research area?
 
-## Can We Know the Thresholds for Vertices?
+## Can we know the thresholds for vertices?
 
 In the CASCADE model, the threshold is essentially defined by a node's capacity and its load. In Watts' model, the threshold ($\phi$) for a node determines the fraction of its neighbors that must be "on" for it to switch "on."
 
@@ -557,7 +557,7 @@ Let's consider insomnia as a complex system where various psychological and beha
 
 </details>
 
-# Weave in Graph Structures
+# Weave in graph structures
 
 ## Contrasting Erdős–Rényi and Barabási–Albert random graphs
 
@@ -846,7 +846,7 @@ cascade.Xiang.multi = function(g, seed, beta = 1, T_cap = 1.2, alpha = 1, max.st
 #| code-fold: true
 #| code-summary: "Show the code"
 set.seed(8852)
-n_nodes = 100
+n_nodes = 50
 m_param = 2
 n_min_deg_nodes = 5 # number nodes with the minimum degree
 
@@ -878,13 +878,13 @@ if(length(low_deg) == 0 && min_deg > 0) { # if no nodes at true min_deg
 cascade_hub_xiang = cascade.Xiang.multi(g = g_ba,
                                             seed = hub,
                                             T_cap = 1.1, 
-                                            alpha = 1.2,
+                                            alpha = 1,
                                             max.steps = 10000)
 
 cascade_low_xiang = cascade.Xiang.multi(g = g_ba,
                                         seed = low_deg,
                                         T_cap = 1.1, 
-                                        alpha = 1.2,
+                                        alpha = 1,
                                         max.steps = 10000)
 
 max_len = max(length(cascade_hub_xiang), length(cascade_low_xiang), n_nodes)
@@ -1014,13 +1014,13 @@ seed_multi_connected = hub1
 cascade_multi_connected_xiang = cascade.Xiang.multi(
   g = combined_g_connected_multi,
   seed = seed_multi_connected,
-  T_cap = 1.2, alpha = 1.5)
-# Cascade in the single BA graph, failing its main hub
+  T_cap = 1.2, alpha = 1)
+# cascade in the single BA graph, failing its main hub
 hub_single_ba = which.max(degree(g_single_ba))
 cascade_single_ba_xiang = cascade.Xiang.multi(
   g = g_single_ba,
   seed = hub_single_ba,
-  T_cap = 1.2, alpha = 1.5)
+  T_cap = 1.2, alpha = 1)
 
 
 max_len = max(length(cascade_multi_connected_xiang), 
@@ -1052,10 +1052,6 @@ legend("bottomright",
                 "Single BA"),
        col=c("blue", "red"), pch=c(1,2), lty=1, bty="n")
 ```
-
-
-### Before our discussion, let's play a little game...
-
 
 # Discussion
 
