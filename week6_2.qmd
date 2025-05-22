@@ -849,7 +849,14 @@ set.seed(8852)
 n_nodes = 50
 m_param = 2
 n_min_deg_nodes = 5 # number nodes with the minimum degree
-
+# g = sample_pa(100, 0.15, 4, directed = FALSE)
+# plot(g)
+# assortativity_degree(g)
+# cascade_multi_connected_xiang = cascade.Xiang.multi(
+#   g = g,
+#   seed = which.max(degree(g)),
+#   T_cap = 1.2, alpha = 1)
+# cascade_multi_connected_xiang
 g_ba = sample_pa(n=n_nodes, power=1, m=m_param, directed=FALSE)
 V(g_ba)$id = 1:vcount(g_ba)
 
