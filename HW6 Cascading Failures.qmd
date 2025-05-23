@@ -46,7 +46,7 @@ Using `sim.funk()` or perhaps write your own. Track the high, avg, and low node 
 
 ### **Question 4**:
 
-Change the metric and parameters ($\beta$ or the tolerane factor for instance) in the function `cascade.Xiang()`. Keep maxsteps the same. For metrics choose between strength, betweenness, or closeness and save the function. If you choose strength remember to account for the edge weights. Explain what you think might happen to one of your graphs with the given parameters.
+Change the metric and parameters ($\beta$ or the tolerance factor for instance) in the function `cascade.Xiang()`. Keep maxsteps the same. For metrics choose between strength, betweenness, or closeness and save the function. If you choose strength remember to account for the edge weights. Explain what you think might happen to one of your graphs with the given parameters.
 
 #### Answer
 
