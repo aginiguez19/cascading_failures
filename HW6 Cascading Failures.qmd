@@ -1,0 +1,65 @@
+---
+title: "HW 6: Cascading Failures"
+author: " "
+date:
+format: html
+editor: visual
+---
+
+# Introduction
+
+Welcome to the Homework Assignment for cascading failures! For this week's assignment, you'll simulate data and interpret the results yourself.
+
+## Instructions
+
+Below, you will find a template of the questions and fields to provide answers in either `R` or text format. Please use a mix of code and text to answer each question.
+
+### **Question 1**:
+
+Generate a Barabási-Albert, Watts-Strogatz , or Erdős–Rényi random graph with your choice of $N$ number of nodes. Feel free to change any other parameter. For example, `sample_pa(n = 30, power = 1, m = 1, directed = FALSE)` using the `igraph` package. Plot your graph.
+
+#### Answer
+
+```{r}
+
+```
+
+### **Question 2**:
+
+Change the metric and threshold in the function `cascade.Watts()`. Keep maxsteps the same. For metrics choose between strength, betweenness, or closeness and save the function. If you choose strength remember to account for the edge weights. Explain what you think might happen to one of your graphs with the given parameters.
+
+#### Answer
+
+```{r}
+
+```
+
+### **Question 3**:
+
+Using `sim.funk()` or perhaps write your own. Track the high, avg, and low node of whatever metric you chose. Plot the results over many replications and interpret the patterns that arise.
+
+#### Answer
+
+```{r}
+
+```
+
+### **Question 4**:
+
+Change the metric and parameters ($\beta$ or the tolerane factor for instance) in the function `cascade.Xiang()`. Keep maxsteps the same. For metrics choose between strength, betweenness, or closeness and save the function. If you choose strength remember to account for the edge weights. Explain what you think might happen to one of your graphs with the given parameters.
+
+#### Answer
+
+```{r}
+
+```
+
+### **Question 5** :
+
+Using `sim.funk()` or perhaps use the function that your wrote. Track the high, avg, and low node of whatever metric you chose. Plot the results over many replications and interpret the patterns that arise.
+
+#### Answer
+
+```{r}
+
+```
