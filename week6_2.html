@@ -160,15 +160,8 @@ window.Quarto = {
 <section id="failures-in-graphs" class="level1">
 <h1>Failures in graphs?</h1>
 <p>Well established in this class is the fact that graphs are made up of nodes (components) and edges (links). We have many real-world examples of graphs to take from: the internet, power grids, ecology, physiology, and of course psychological systems.</p>
-<<<<<<< HEAD
-<p>In these networks often times we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al., 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.</p>
-<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em> <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
-<!-- Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are "hyped-up". We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as *binary decisions with externalities*[@watts2002p]. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another. -->
-=======
 <p>In these networks, we see the interplay of processes internal and external to the system. Think of a transmission line malfunctioning in an electrical power grid. Or possibly a perturbation to a system that disrupts communication among nodes. These two examples hint at an important dynamical process termed cascading failure or avalanche (if you’re feeling fancy). Although rare, they can have severe consequences. In general, a cascading failure refers to some trigger mechanism that produces further failures in the system which ultimately may lead to a complete collapse of the system <span class="citation" data-cites="valdez2020jcn">(<a href="#ref-valdez2020jcn" role="doc-biblioref">Valdez et al., 2020</a>)</span>. Further failures occur because components vary in their ability to handle a certain load that is redistributed to them after an initial failure.</p>
-<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
-<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em><span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
->>>>>>> 753b4f1 (Hopefully the last update. Added degree distributions)
+<p>Similarly, in social systems we might think of a cascading failure being dependent on the information other people may have and subsequently their decisions. This is quite common in fads or things that are “hyped-up”. We might choose to wear Levi jeans because many of our peers are wearing Levi jeans. We might choose to see one movie over another based on reviews or recommendations by friends. Economists define these scenarios as <em>binary decisions with externalities</em> <span class="citation" data-cites="watts2002p">(<a href="#ref-watts2002p" role="doc-biblioref">Watts, 2002</a>)</span>. Important to note is that a personal threshold must be reached before a transition occurs in conjunction with what others have decided. Furthermore, rather than components failing it is a component transitioning from one state to another.</p>
 <p>Cascading failures leads us to questions such as:</p>
 <ul>
 <li><p>How does the structure of a network impact its resilience to failures?</p></li>
@@ -220,11 +213,11 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">degree</span>(gs[[<span class="dv">1</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.2</code></pre>
+<pre><code>[1] 5.6</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">degree</span>(gs[[<span class="dv">2</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.6</code></pre>
+<pre><code>[1] 7.8</code></pre>
 </div>
 </div>
 </section>
@@ -266,13 +259,8 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="ba">BA</h3>
 <div class="cell">
 <div class="cell-output-display">
-<<<<<<< HEAD
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-4e601b0ec9f8111afa62" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4e601b0ec9f8111afa62">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"to":["1","1","3","4","2","4","3","3","1","2","10","3","4","13","3","3","11","6","3"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
-=======
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-1f75322a0503dd47dc0e" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1f75322a0503dd47dc0e">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"to":["1","1","1","2","1","6","1","7","1","1","1","11","11","1","2","1","1","1","16"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
->>>>>>> 753b4f1 (Hopefully the last update. Added degree distributions)
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-915ab1a02c42fb39881e" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-915ab1a02c42fb39881e">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"to":["1","1","1","1","1","6","1","6","1","5","5","10","6","9","1","1","1","9","1"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -280,13 +268,8 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="er">ER</h3>
 <div class="cell">
 <div class="cell-output-display">
-<<<<<<< HEAD
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-9b2532c3a4ed58d7b043" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-9b2532c3a4ed58d7b043">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["1","3","1","2","3","1","4","5","1","2","3","4","5","1","2","4","6","2","3","5","7","1","2","5","1","2","4","6","7","9","10","3","5","6","7","8","10","3","4","5","6","7","8","11","12","5","7","9","11","13","2","4","6","7","8","9","3","4","6","8","10","13","14","3","4","5","7","8","9","10","12","15","2","3","6","9","10","11","14","3","4","11","12","13","16","17","18","1","2","5","6","10","12","15","17","18"],"to":["2","4","5","5","5","6","6","6","7","7","7","7","7","8","8","8","8","9","9","9","9","10","10","10","11","11","11","11","11","11","11","12","12","12","12","12","12","13","13","13","13","13","13","13","13","14","14","14","14","14","15","15","15","15","15","15","16","16","16","16","16","16","16","17","17","17","17","17","17","17","17","17","18","18","18","18","18","18","18","19","19","19","19","19","19","19","19","20","20","20","20","20","20","20","20","20"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
-=======
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-c74d9e7e9f5e928c33dd" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c74d9e7e9f5e928c33dd">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["1","2","1","2","4","1","3","4","2","3","4","3","5","7","1","2","6","8","3","4","5","6","7","9","1","2","6","8","9","1","2","4","5","6","8","10","11","1","3","4","5","7","8","1","2","3","5","8","9","10","2","6","11","12","13","1","2","4","5","6","8","9","12","13","15","2","4","6","8","10","12","13","16","1","2","3","5","7","8","12","15","16","3","7","10","13","14","15","16","17","2","4","5","8","10","15","16","17","19"],"to":["2","3","4","5","5","6","6","6","7","7","7","8","8","8","9","9","9","9","10","10","10","10","10","10","11","11","11","11","11","12","12","12","12","12","12","12","12","13","13","13","13","13","13","14","14","14","14","14","14","14","15","15","15","15","15","16","16","16","16","16","16","16","16","16","16","17","17","17","17","17","17","17","17","18","18","18","18","18","18","18","18","18","19","19","19","19","19","19","19","19","20","20","20","20","20","20","20","20","20"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
->>>>>>> 753b4f1 (Hopefully the last update. Added degree distributions)
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-dd24ea091e88e3b8a076" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-dd24ea091e88e3b8a076">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["1","1","2","3","4","1","2","3","1","2","4","2","3","6","2","4","7","8","1","2","3","4","5","8","1","2","3","4","7","9","10","3","6","9","2","3","4","6","7","8","9","11","2","3","4","5","6","7","9","10","13","4","6","7","11","12","13","5","7","8","1","2","3","4","6","7","9","11","13","1","2","4","5","8","11","12","16","17","1","2","3","5","7","9","12","13","14","16","17","18","1","3","5","7","9","10","12","13","15","16"],"to":["2","3","4","4","5","6","6","6","7","7","7","8","8","8","9","9","9","9","10","10","10","10","10","10","11","11","11","11","11","11","11","12","12","12","13","13","13","13","13","13","13","13","14","14","14","14","14","14","14","14","14","15","15","15","15","15","15","16","16","16","17","17","17","17","17","17","17","17","17","18","18","18","18","18","18","18","18","18","19","19","19","19","19","19","19","19","19","19","19","19","20","20","20","20","20","20","20","20","20","20"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -294,21 +277,10 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="ws">WS</h3>
 <div class="cell">
 <div class="cell-output-display">
-<<<<<<< HEAD
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-f6001a0e2d19b0893c97" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f6001a0e2d19b0893c97">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["2","2","3","4","5","6","6","8","9","10","2","13","13","15","9","16","17","18","19","13","1","5","2","8","3","4","5","6","7","8","1","3","11","1","13","14","11","16","11","7"],"to":["4","5","4","5","17","7","12","20","12","11","16","14","16","19","17","17","18","19","20","18","3","18","20","15","5","6","7","8","9","18","4","10","13","14","15","16","17","18","20","8"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-c0d9774a8040d3694a8c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c0d9774a8040d3694a8c">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["2","10","3","5","6","5","7","1","5","10","8","6","9","14","6","7","17","8","19","1","14","2","16","15","1","4","7","6","9","5","9","12","3","9","9","4","5","16","9","18"],"to":["6","13","4","11","20","9","10","8","10","11","11","7","11","17","11","17","18","18","20","9","15","19","20","19","18","6","20","12","20","8","18","19","13","14","15","19","15","18","19","20"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<!-- -   Focus on re-describing the Erdős–Rényi and Barabási–Albert random graphs -->
-<!--     -   With Barabási–Albert, talk more in-depth about preferential attachment and the "growth" of graphs -->
-<!--     -   E.g., graphs in the real-world add and incorporate vertices over time and the addition of vertices follows some known procedures -->
-<!--     -   Define the terms: Preferential attachment and Assortative mixing and how they relate to the evolution of a network's structure -->
-=======
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-a2a9ca7e3d4b37a1da12" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a2a9ca7e3d4b37a1da12">{"x":{"nodes":{"id":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],"label":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]},"edges":{"from":["10","3","3","4","1","6","9","9","1","11","11","11","13","5","8","2","17","1","11","2","1","1","1","2","3","4","5","8","1","3","9","2","1","14","9","14","15","16","7","7"],"to":["15","7","4","5","7","16","10","14","9","20","16","18","14","19","19","14","18","18","19","20","19","6","2","4","20","6","11","11","12","10","18","12","11","18","13","19","17","19","10","18"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"physics":{"stabilization":true},"interaction":{"dragNodes":true,"dragView":true,"zoomSpeed":1}},"groups":null,"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
->>>>>>> 753b4f1 (Hopefully the last update. Added degree distributions)
 </section>
 </section>
 </section>
@@ -522,7 +494,7 @@ window.Quarto = {
 </section>
 <section id="the-cascade-model-for-cascading-failures" class="level1">
 <h1>The CASCADE model for Cascading Failures</h1>
-<p>The CASCADE is a probabilistic model for understanding the propagation of cascading failures <span class="citation" data-cites="dobson2007caijons">(<a href="#ref-dobson2007caijons" role="doc-biblioref">Dobson et al., 2007</a>)</span>. It was developed to capture the weakening of a system as a cascade proceeds, particularly in the context of blackout of power transmitting systems, but made sufficiently simple and general that it could be applied to cascading failure in various large, interconnected infrastructures. CASCADE focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others.</p>
+<p>The CASCADE model focuses on components failing when their load exceeds a threshold, how an initial disturbance loads the system, and how the failure of some components transfers additional load to others <span class="citation" data-cites="dobson2007caijons">(<a href="#ref-dobson2007caijons" role="doc-biblioref">Dobson et al., 2007</a>)</span>.</p>
 <section id="formal-definition-of-the-cascade-model" class="level2">
 <h2 class="anchored" data-anchor-id="formal-definition-of-the-cascade-model">Formal definition of the CASCADE model:</h2>
 <p>The model considers a system with <span class="math inline">\(N\)</span> components, each with a random initial load.</p>
@@ -584,32 +556,30 @@ window.Quarto = {
 <li>After the initial disturbance <span class="math inline">\(D\)</span>, components whose total load <span class="math inline">\((L_j+D)\)</span> exceeds <span class="math inline">\(L^{\text{fail}}\)</span> will fail.</li>
 <li>The failure of these components then distributes an additional load <span class="math inline">\(P\)</span> (or <span class="math inline">\(p\)</span> in normalized terms) to other components, potentially causing further failures. This process continues iteratively, defining the cascade.</li>
 </ul>
-<!-- # Compare and Contrast Watts' Cascades from the CASCADE Model -->
-<!-- > The Watt's description is more simplistic, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail -->
 </section>
 </section>
 <section id="watts-cascades-vs.-cascade-model" class="level1">
 <h1>Watt’s Cascades vs.&nbsp;CASCADE Model</h1>
-<p>A brief distinction between the two models is that the Watt’s description is more simplistic: vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let’s break down their differences.</p>
+<p>In Watt’s model for cascading failures, vertices have no thresholds internal to themselves but are influenced entirely by neighbors. In the CASCADE model, vertices have resilience and an initial load such that they can exhibit more nuanced dynamics in how they fail. Let’s break down their differences.</p>
 <section id="thresholds-and-failure" class="level3">
 <h3 class="anchored" data-anchor-id="thresholds-and-failure">Thresholds and Failure</h3>
 <ul>
-<li><p><strong>Watt’s model</strong>: Failure is determined by the fraction of a node’s <em>neighbors</em> that have already failed. A node <span class="math inline">\(i\)</span> with degree <span class="math inline">\(k_i\)</span> and threshold <span class="math inline">\(\phi_i\)</span> fails if at least a threshold fraction <span class="math inline">\(\phi\)</span> out of its <span class="math inline">\(k\)</span> neighbors are in state 1 (fail state), otherwise it adopts state 0. The threshold <span class="math inline">\(\phi_i\)</span> represents the node’s susceptibility to peer influence or stress from neighbors. Vertices do not have an internal “load” capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood.</p></li>
-<li><p><strong>CASCADE</strong>: Failure is determined by a node’s internal load exceeding its predefined capacity (<span class="math inline">\(L^{\text{fail}}\)</span>). Nodes have an initial load <span class="math inline">\(L_j\)</span>, and this load increases due to an initial system-wide disturbance <span class="math inline">\(D\)</span> and subsequent load transfers <span class="math inline">\(P\)</span> from other failed components. The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense.</p></li>
+<li><p><strong>Watt’s model</strong>: Failure is determined by the fraction of a node’s <em>neighbors</em> that have already failed. A node <span class="math inline">\(i\)</span> with degree <span class="math inline">\(k_i\)</span> and threshold <span class="math inline">\(\phi_i\)</span> fails if at least a threshold fraction <span class="math inline">\(\phi\)</span> out of its <span class="math inline">\(k\)</span> neighbors are in state 1 (fail state). <!-- otherwise it adopts state 0. The threshold $\phi_i$ represents the node's susceptibility to peer influence or stress from neighbors. Vertices do not have an internal "load" capacity in the same way as the CASCADE model; their failure is purely a response to the state of their local neighborhood. --></p></li>
+<li><p><strong>CASCADE</strong>: Failure is determined by a node’s internal load exceeding its predefined capacity (<span class="math inline">\(L^{\text{fail}}\)</span>). The threshold is an absolute load limit, not directly dependent on the number or state of its neighbors in the topological sense. <!-- Nodes have an initial load $L_j$, and this load increases due to an initial system-wide disturbance $D$ and subsequent load transfers $P$ from other failed components.  --></p></li>
 </ul>
 </section>
 <section id="influence-mechanism" class="level3">
 <h3 class="anchored" data-anchor-id="influence-mechanism">Influence mechanism</h3>
 <ul>
 <li><p><strong>Watt’s model</strong>: Influence is local and topological. A node is influenced directly and only by the state (failed or not) of its immediate neighbors in the graph. What matters is the structure of the network (who is connected to whom).</p></li>
-<li><p><strong>CASCADE</strong>: Influence is through load redistribution. When a node fails, it transfers a fixed load <span class="math inline">\(P\)</span> to other components. While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition.</p></li>
+<li><p><strong>CASCADE</strong>: Influence is through load redistribution. When a node fails, it transfers a fixed load <span class="math inline">\(P\)</span> to other components. <!-- While the underlying network structure can be implicitly present in how loads might realistically be distributed, the primary mechanism is the global or semi-global impact of load addition. --></p></li>
 </ul>
 </section>
 <section id="vertex-properties" class="level3">
 <h3 class="anchored" data-anchor-id="vertex-properties">Vertex properties</h3>
 <ul>
 <li><p><strong>Watt’s model</strong>: Vertices are primarily characterized by their degree <span class="math inline">\(k\)</span> and their individual threshold <span class="math inline">\(\phi\)</span>. There isn’t an explicit concept of “resilience” beyond the threshold itself.</p></li>
-<li><p><strong>CASCADE</strong>: Vertices are characterized by their initial load <span class="math inline">\(L_j\)</span> and a common failure load <span class="math inline">\(L^{\text{fail}}\)</span>. The “resilience” of a node is the difference between its current load and <span class="math inline">\(L^{\text{fail}}\)</span>. Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable.</p></li>
+<li><p><strong>CASCADE</strong>: Vertices are characterized by their initial load <span class="math inline">\(L_j\)</span> and a common failure load <span class="math inline">\(L^{\text{fail}}\)</span>. The “resilience” of a node is the difference between its current load and <span class="math inline">\(L^{\text{fail}}\)</span>. A node with a high initial load is more vulnerable. <!-- Nodes can have different initial loads, making some inherently closer to failure than others even before the cascade begins. This implies that a node with a high initial load is more vulnerable. --></p></li>
 </ul>
 </section>
 <section id="complexity-of-dynamics" class="level3">
@@ -620,18 +590,22 @@ window.Quarto = {
 <li>In the <em>low connectivity</em> regime, the network is sparse, and cascade propagation is mainly limited by connectivity. At the critical point (the system transitions from safe to vulnerable), cascade sizes follow a power law.</li>
 <li>In the <em>high connectivity</em> regime the network is dense. The propagation of cascades is limited by the stability of individual nodes. Most nodes have many neighbors, making them less susceptible to single-node influence. This results in a bimodal distribution of cascade sizes: many small cascades that die out quickly and, rarely, extremely large global cascades.</li>
 </ul></li>
-<li><strong>CASCADE</strong>: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold (<span class="math inline">\(L^{\text{fail}}\)</span>) and the magnitudes of <span class="math inline">\(D\)</span> and <span class="math inline">\(P\)</span>. It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer (<span class="math inline">\(P\)</span>), approach a critical point.</li>
+<li><strong>CASCADE</strong>: The system dynamics are driven by accumulating load, with overall stress being a key factor. This stress depends on how close the initial loads are to the failure threshold (<span class="math inline">\(L^{\text{fail}}\)</span>) and the magnitudes of <span class="math inline">\(D\)</span> and <span class="math inline">\(P\)</span>.</li>
 </ul>
+<!-- It examines the probability distribution of failed components and how this changes as system parameters, such as overall loading or load transfer ($P$), approach a critical point. -->
 <p>In summary, Watts’ model is more focused on the contagion of states through local, fractional influence within a network, where nodes don’t have intrinsic load capacities but rather susceptibility thresholds. The CASCADE model, conversely, emphasizes the accumulation of load on components that have defined capacities, where failure is a consequence of exceeding this capacity, leading to further load redistribution.</p>
 <blockquote class="blockquote">
 <p>Given these differences, which cascading failure model would be more appropriate to your research area?</p>
 </blockquote>
 </section>
 <section id="can-we-know-the-thresholds-for-vertices" class="level2">
-<h2 class="anchored" data-anchor-id="can-we-know-the-thresholds-for-vertices">Can We Know the Thresholds for Vertices?</h2>
+<h2 class="anchored" data-anchor-id="can-we-know-the-thresholds-for-vertices">Can we know the thresholds for vertices?</h2>
 <p>In the CASCADE model, the threshold is essentially defined by a node’s capacity and its load. In Watts’ model, the threshold (<span class="math inline">\(\phi\)</span>) for a node determines the fraction of its neighbors that must be “on” for it to switch “on.”</p>
-<p>In <strong>engineered/physical systems</strong>, the thresholds can often be estimated or are known from design specifications. For example, a power line has a maximum current capacity, a router has a maximum data throughput, and a bridge has a maximum weight limit. These thresholds are based on physical properties and engineering design tolerances. However, even in these systems, thresholds can be dynamic, affected by environmental conditions (e.g., temperature affecting power line sag and capacity), aging, maintenance levels, or even “hidden failures” where a component’s actual capacity is less than assumed.</p>
-<p>In <strong>social/economical/biological systems</strong> a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress. In Watts’ model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources. A biological “failure” can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.</p>
+<p>In <strong>engineered/physical systems</strong>, the thresholds can often be estimated or are known from design specifications. For example, a power line has a maximum current capacity, a router has a maximum data throughput, and a bridge has a maximum weight limit.</p>
+<p>These thresholds are based on physical properties and engineering design tolerances. However, even in these systems, thresholds can be dynamic, affected by environmental conditions (e.g., temperature affecting power line sag and capacity), aging, maintenance levels, or even “hidden failures” where a component’s actual capacity is less than assumed.</p>
+<p>In <strong>social/economical/biological systems</strong> a threshold could relate to the point at which an individual or entity changes their behavior, opinion, or state due to influence from others or accumulated stress.</p>
+<p>In Watts’ model, this is the fraction of neighbors adopting a behavior that triggers an individual to also adopt it. For example, in decision making people could assume others have better information and follow their actions. It could also be the desire to align with the perceived majority or norm, or to be influenced by trusted sources.</p>
+<p>A biological “failure” can be illustrated by a PhD student who becomes overwhelmed and unable to progress with their research. In this scenario, the threshold could be influenced by factors such as the volume of TA responsibilities, the complexity of the research, and the level of support received from their advisor.</p>
 <blockquote class="blockquote">
 <p>What is a “threshold” for psychological vertices? Is it reasonable to assume psychological symptoms <em>have</em> thresholds for activation influenced by connected symptoms?</p>
 </blockquote>
@@ -654,7 +628,7 @@ An example of insomnia development.
 </section>
 </section>
 <section id="weave-in-graph-structures" class="level1">
-<h1>Weave in Graph Structures</h1>
+<h1>Weave in graph structures</h1>
 <section id="contrasting-erdősrényi-and-barabásialbert-random-graphs" class="level2">
 <h2 class="anchored" data-anchor-id="contrasting-erdősrényi-and-barabásialbert-random-graphs">Contrasting Erdős–Rényi and Barabási–Albert random graphs</h2>
 <section id="erdősrényi-er-graphs" class="level3">
@@ -678,18 +652,16 @@ An example of insomnia development.
 <li>Cause a massive redistribution of load onto their neighbors, which are often less capable of handling such an increase, thereby triggering a cascade.</li>
 </ol>
 <ul>
-<li>Contrary to ER networks, cascades in BA networks can be rapid and devastating. The heterogeneity of node loads means that some nodes are inherently much more critical than others. There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes.</li>
+<li>Contrary to ER networks, cascades in BA networks can be rapid and devastating. The heterogeneity of node loads means that some nodes are inherently much more critical than others. <!-- There can be a large range of tolerance parameters where scale-free networks are stable against random removals but unstable with respect to load-based removals of the highest-load nodes. --></li>
 </ul>
-<!-- -   Do you expect Erdős–Rényi and Barabási–Albert random graphs to exhibit different properties in their susceptibility to cascading failures? Why? -->
-<!-- -   For Barabási–Albert random graphs, do you expect the property of assortivity to come into play? -->
-<!--     -   The fact is, when real-world networks develop, they build in structural stability to be resilient to failure. Assortivity can be a tool for this. Explain. -->
 <section id="assortativeness-in-barabásialbert-graphs" class="level4">
 <h4 class="anchored" data-anchor-id="assortativeness-in-barabásialbert-graphs">Assortativeness in Barabási–Albert Graphs</h4>
 <blockquote class="blockquote">
 <p>“A network displays assortative mixing if the nodes in the networks that have many connections tend to be connected to other nodes with many connections. A network is said to be disassortative if the highly connected nodes tend to be connected to nodes with few connections.” <span class="citation" data-cites="ash2007pasmaia">(<a href="#ref-ash2007pasmaia" role="doc-biblioref">Ash &amp; Newth, 2007, p. 6</a>)</span></p>
 </blockquote>
-<p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. That means the BA graph is generally resilient up to the point that the hub fails.</p>
+<p>Recall the “rich get richer” property of BA graphs. That means that high-degree nodes tend to connect to many low-degree nodes. The BA graph is generally resilient up to the point that the hub fails.</p>
 <p>The failure of a hub immediately affects a large number of low-degree nodes, potentially isolating them or overloading them if they were dependent on it. Cascades might spread outwards from a failed hub to its many low-degree neighbors.</p>
+<p>In assortative networks, failure of a hub might be buffered if its load/impact is shared among other connected hubs. The network might be robust if the interconnected core of hubs can handle disturbances.</p>
 </section>
 </section>
 </section>
@@ -699,7 +671,7 @@ An example of insomnia development.
 <ul>
 <li><p>By having important nodes (hubs) connect to each other, a robust core can be formed. If one hub in this core fails, other hubs within the core might be able to take up the slack or maintain critical pathways. This can create a resilient core.</p></li>
 <li><p>In naturally disassortative networks, recognizing that hubs connect to many low-degree, dependent nodes allows for targeted protection strategies.</p></li>
-<li><p>This structure can also help in “islanding” or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network if the inter-modular connections are managed or severed. A failure within one module can be contained, preventing a global cascade.</p></li>
+<li><p>This structure can also help in “islanding” or modularizing failures. If the core is highly interconnected but has sparser connections to the periphery, a failure within the core might be devastating to the core itself but could potentially be prevented from spreading extensively to the rest of the network. <!-- if the inter-modular connections are managed or severed.  --> <!-- A failure within one module can be contained, preventing a global cascade. --></p></li>
 <li><p>High clustering provides alternative pathways through which flows can pass, avoiding the failed component.</p></li>
 <li><p>Longer path lengths also promote robustness of the network. A disturbance needs to pass through a greater number of intermediate steps before the entire network is exposed to failure. Longer delays increase the change the network will resolve the perturbation.</p></li>
 </ul>
@@ -718,7 +690,7 @@ An example of insomnia development.
 <ul>
 <li><p><strong>Nodes</strong>, <span class="math inline">\(j = 1, 2, 3, \ldots N\)</span>, have an initial load, <span class="math inline">\(L_j\)</span>, and capacity, <span class="math inline">\(C_j\)</span>.</p></li>
 <li><p>The <strong>initial load</strong> is calculated based on node degree, <span class="math inline">\(k_j\)</span>, and adjustable parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, that control the intensity of the initial load on nodes: <span class="math inline">\(L_j = \beta k^{\alpha}_j\)</span>.</p></li>
-<li><p>The <strong>capacity</strong> <span class="math inline">\(C_j\)</span> of each node is proportional to its initial load and a tolerance factor, <span class="math inline">\(T\)</span>: <span class="math inline">\(C_j = L_j \cdot T\)</span>. If <span class="math inline">\(T = 1.2\)</span>, nodes can handle 20% more than their initial load.</p></li>
+<li><p>The <strong>capacity</strong> <span class="math inline">\(C_j\)</span> of each node is proportional to its initial load and a tolerance factor, <span class="math inline">\(T\)</span>: <span class="math inline">\(C_j = L_j \cdot T\)</span>.</p></li>
 <li><p>Node <span class="math inline">\(j\)</span> will <strong>fail</strong> when the load it receives plus the initial load on its own node is greater than its processing capacity, <span class="math inline">\(L_j + L_{ji} &gt; C_j\)</span></p></li>
 <li><p>When a node fails, its current load is <strong>redistributed</strong> among its still active neighbors. The redistribution is preferential: neighbors with higher degrees (or a function of degree related to <span class="math inline">\(\alpha\)</span>) receive a larger fraction of the failed node’s load: <span class="math inline">\(\Delta L_{ji} = L_i \frac{k_j^{\alpha}}{\underset{n \in r_i}{\sum}k_n^{\alpha}}\)</span>.</p></li>
 </ul>
@@ -845,15 +817,323 @@ An example of insomnia development.
 <h3 class="anchored" data-anchor-id="what-do-we-see">What do we see?</h3>
 <ul>
 <li><p><strong>ER &amp; SW</strong>: Tend to show more uniform failure patterns. The specific starting node (high, avg, low degree) has less differential impact because connectivity is more homogeneous. SW models might take longer to fail completely due to their lattice-like local structure.</p></li>
-<li><p><strong>BA</strong>: Show significant heterogeneity. Failing a high-degree hub often leads to rapid and extensive cascades, potentially total failure. Failing a low-degree node might have minimal impact. This is because hubs are often the sole connection for many other nodes.</p></li>
+<li><p><strong>BA</strong>: Show significant heterogeneity. Failing a high-degree hub often leads to rapid and extensive cascades. Failing a low-degree node might have minimal impact. This is because hubs are often the sole connection for many other nodes.</p></li>
 </ul>
-<p>The choice of which “central” node to target for intervention or to study for failure initiation only makes sense after you understand the network’s underlying degree distribution (topology). Targeting a high-degree node is critical in a power-law network but less so in an ER network.</p>
+<p>The choice of which “central” node to target for intervention or to study for failure initiation may depend on first understanding the network’s underlying degree distribution. For example, targeting a high-degree node seems critical in a power-law network but less so in an ER network.</p>
+</section>
+<section id="targeting-multiple-weak-nodes" class="level2">
+<h2 class="anchored" data-anchor-id="targeting-multiple-weak-nodes">Targeting multiple weak nodes</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cascade.Xiang.multi <span class="ot">=</span> <span class="cf">function</span>(g, seed, <span class="at">beta =</span> <span class="dv">1</span>, <span class="at">T_cap =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">max.steps =</span> <span class="dv">10000</span>) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">=</span> <span class="fu">vcount</span>(g)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  deg <span class="ot">=</span> igraph<span class="sc">::</span><span class="fu">degree</span>(g)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  load0 <span class="ot">=</span> beta <span class="sc">*</span> (deg<span class="sc">^</span>alpha)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  cap <span class="ot">=</span> T_cap <span class="sc">*</span> load0</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  load <span class="ot">=</span> load0</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  failed <span class="ot">=</span> <span class="fu">logical</span>(N)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  failed[seed] <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(s <span class="cf">in</span> seed){</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    nbrs <span class="ot">=</span> <span class="fu">as.integer</span>(<span class="fu">neighbors</span>(g, s))</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    active_nbrs <span class="ot">=</span> nbrs[<span class="sc">!</span>failed[nbrs]] <span class="co"># neighbors that are not themselves initial targets</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(active_nbrs) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>      <span class="co"># use a small epsilon for degrees if they are 0 to avoid 0 weights if alpha &gt; 0</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>      <span class="co"># or sum(wts) = 0 if all active_nbrs have deg=0</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>      deg_active_nbrs <span class="ot">=</span> deg[active_nbrs]</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>      wts <span class="ot">=</span> (deg_active_nbrs <span class="sc">+</span> <span class="fu">ifelse</span>(deg_active_nbrs<span class="sc">==</span><span class="dv">0</span>, <span class="fl">1e-9</span>, <span class="dv">0</span>))<span class="sc">^</span>alpha</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(<span class="fu">sum</span>(wts) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>        load[active_nbrs] <span class="ot">=</span> load[active_nbrs] <span class="sc">+</span> load0[s] <span class="sc">*</span> (wts <span class="sc">/</span> <span class="fu">sum</span>(wts))</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">length</span>(active_nbrs) <span class="sc">&gt;</span> <span class="dv">0</span>) { <span class="co"># if sum(wts) is 0 but there are neighbors (e.g. all deg=0)</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        load[active_nbrs] <span class="ot">=</span> load[active_nbrs] <span class="sc">+</span> load0[s] <span class="sc">/</span> <span class="fu">length</span>(active_nbrs) <span class="co"># Distribute evenly</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    load[s] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  series <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">sum</span>(failed) <span class="sc">/</span> N) </span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>  step <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (step <span class="sc">&lt;</span> max.steps) {</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    step <span class="ot">=</span> step <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># identify nodes that will fail in this step</span></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>    to_fail <span class="ot">=</span> <span class="fu">which</span>(<span class="sc">!</span>failed <span class="sc">&amp;</span> (load <span class="sc">&gt;</span> cap))</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">length</span>(to_fail)) <span class="cf">break</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>    failed_nodes <span class="ot">=</span> <span class="fu">c</span>() <span class="co"># track nodes that actually fail in this iteration</span></span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (v <span class="cf">in</span> to_fail) {</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(failed[v]) <span class="cf">next</span> <span class="co"># should not happen due to `which` condition, but safe check</span></span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>      failed[v] <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>      failed_nodes <span class="ot">=</span> <span class="fu">c</span>(failed_nodes, v)</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>      load_to_redistribute <span class="ot">=</span> load[v] <span class="co"># this is the load that causes failure</span></span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>      load[v] <span class="ot">=</span> <span class="dv">0</span> </span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>      nbrs2 <span class="ot">=</span> <span class="fu">as.integer</span>(<span class="fu">neighbors</span>(g, v))</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>      <span class="co"># redistribute only to neighbors that are not already marked as failed</span></span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>      active_nbrs2 <span class="ot">=</span> nbrs2[<span class="sc">!</span>failed[nbrs2]]</span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="fu">length</span>(active_nbrs2) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>        deg_active_nbrs2 <span class="ot">=</span> deg[active_nbrs2]</span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>        w2 <span class="ot">=</span> (deg_active_nbrs2 <span class="sc">+</span> <span class="fu">ifelse</span>(deg_active_nbrs2<span class="sc">==</span><span class="dv">0</span>, <span class="fl">1e-9</span>, <span class="dv">0</span>))<span class="sc">^</span>alpha</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="fu">sum</span>(w2) <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>          load[active_nbrs2] <span class="ot">=</span> load[active_nbrs2] <span class="sc">+</span> load_to_redistribute <span class="sc">*</span> (w2 <span class="sc">/</span> <span class="fu">sum</span>(w2))</span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">length</span>(active_nbrs2) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>          load[active_nbrs2] <span class="ot">=</span> load[active_nbrs2] <span class="sc">+</span> load_to_redistribute <span class="sc">/</span> <span class="fu">length</span>(active_nbrs2)</span>
+<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>    series <span class="ot">=</span> <span class="fu">c</span>(series, <span class="fu">sum</span>(failed) <span class="sc">/</span> N)</span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(series)</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8852</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>m_param <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>n_min_deg_nodes <span class="ot">=</span> <span class="dv">5</span> <span class="co"># number nodes with the minimum degree</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>g_ba <span class="ot">=</span> <span class="fu">sample_pa</span>(<span class="at">n=</span>n_nodes, <span class="at">power=</span><span class="dv">1</span>, <span class="at">m=</span>m_param, <span class="at">directed=</span><span class="cn">FALSE</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g_ba)<span class="sc">$</span>id <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(g_ba)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Identify target nodes</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>hub <span class="ot">=</span> <span class="fu">which.max</span>(<span class="fu">degree</span>(g_ba))</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple low-degree nodes</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># For example, all nodes with the minimum degree, or a sample of nodes with low degrees</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>deg <span class="ot">=</span> igraph<span class="sc">::</span><span class="fu">degree</span>(g_ba)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>min_deg <span class="ot">=</span> <span class="fu">min</span>(deg[deg <span class="sc">&gt;</span> <span class="dv">0</span>]) <span class="co"># Smallest non-zero degree</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Take up to nodes with the minimum degree, or fewer if not that many exist</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>low_deg <span class="ot">=</span> <span class="fu">V</span>(g_ba)[deg <span class="sc">==</span> min_deg]<span class="sc">$</span>id</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(low_deg) <span class="sc">&gt;</span> n_min_deg_nodes) {</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  low_deg <span class="ot">=</span> <span class="fu">sample</span>(low_deg, n_min_deg_nodes)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(low_deg) <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> min_deg <span class="sc">&gt;</span> <span class="dv">0</span>) { <span class="co"># if no nodes at true min_deg</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    low_deg <span class="ot">=</span> <span class="fu">V</span>(g_ba)[<span class="fu">order</span>(deg)[<span class="dv">1</span><span class="sc">:</span><span class="fu">min</span>(n_min_deg_nodes, n_nodes)]]<span class="sc">$</span>id</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">length</span>(low_deg) <span class="sc">==</span> <span class="dv">0</span>){ <span class="co"># if all are 0 degree except hub</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Warning: Could not find suitable low-degree nodes.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    low_deg <span class="ot">=</span> <span class="fu">V</span>(g_ba)[<span class="fu">order</span>(deg)[<span class="dv">1</span>]]<span class="sc">$</span>id <span class="co"># just pick the lowest</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Run Cascades using Xiang et al.'s model</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>cascade_hub_xiang <span class="ot">=</span> <span class="fu">cascade.Xiang.multi</span>(<span class="at">g =</span> g_ba,</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">seed =</span> hub,</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">T_cap =</span> <span class="fl">1.1</span>, </span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">max.steps =</span> <span class="dv">10000</span>)</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>cascade_low_xiang <span class="ot">=</span> <span class="fu">cascade.Xiang.multi</span>(<span class="at">g =</span> g_ba,</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">seed =</span> low_deg,</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">T_cap =</span> <span class="fl">1.1</span>, </span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">max.steps =</span> <span class="dv">10000</span>)</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>max_len <span class="ot">=</span> <span class="fu">max</span>(<span class="fu">length</span>(cascade_hub_xiang), <span class="fu">length</span>(cascade_low_xiang), n_nodes)</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>padded_hub <span class="ot">=</span> <span class="fu">c</span>(cascade_hub_xiang, <span class="fu">rep</span>(<span class="fu">tail</span>(cascade_hub_xiang,<span class="dv">1</span>), max_len <span class="sc">-</span> <span class="fu">length</span>(cascade_hub_xiang)))</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>padded_low <span class="ot">=</span> <span class="fu">c</span>(cascade_low_xiang, <span class="fu">rep</span>(<span class="fu">tail</span>(cascade_low_xiang,<span class="dv">1</span>), max_len <span class="sc">-</span> <span class="fu">length</span>(cascade_low_xiang)))</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(padded_hub, <span class="at">type=</span><span class="st">"o"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Step"</span>, <span class="at">ylab=</span><span class="st">"Proportion Failed"</span>, <span class="at">main=</span><span class="st">"Hub vs. Multiple Low-Degree "</span>)</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(padded_low, <span class="at">type=</span><span class="st">"o"</span>, <span class="at">col=</span><span class="st">"green"</span>, <span class="at">pch=</span><span class="dv">2</span>)</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Fail Single Hub"</span>,</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">paste</span>(<span class="st">"Fail"</span>, n_min_deg_nodes,<span class="st">"Low-Degree Nodes"</span>)),</span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week6_2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="attacking-one-hub-in-the-presence-of-multiple-hubs" class="level2">
+<h2 class="anchored" data-anchor-id="attacking-one-hub-in-the-presence-of-multiple-hubs">Attacking one hub in the presence of multiple hubs</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">11123</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">=</span> <span class="dv">50</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">=</span> <span class="dv">50</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>m_param <span class="ot">=</span> <span class="dv">2</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>num_additional_inter_edges <span class="ot">=</span> <span class="dv">0</span> <span class="co"># number of EXTRA edges to connect hub neighborhoods</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create two BA graphs</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">=</span> <span class="fu">sample_pa</span>(<span class="at">n=</span>n1, <span class="at">power=</span><span class="dv">1</span>, <span class="at">m=</span>m_param, <span class="at">directed=</span><span class="cn">FALSE</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g1)<span class="sc">$</span>name <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"g1v"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(g1)) </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">=</span> <span class="fu">sample_pa</span>(<span class="at">n=</span>n2, <span class="at">power=</span><span class="dv">1</span>, <span class="at">m=</span>m_param, <span class="at">directed=</span><span class="cn">FALSE</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g2)<span class="sc">$</span>name <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"g2v"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(g2))</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Find the hub (highest degree node) in each graph</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>hub1 <span class="ot">=</span> <span class="fu">which.max</span>(<span class="fu">degree</span>(g1))</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>hub2 <span class="ot">=</span> <span class="fu">which.max</span>(<span class="fu">degree</span>(g2))</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Get neighbors of these hubs in their original graphs</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>nbrs_hub1 <span class="ot">=</span> <span class="fu">neighbors</span>(g1, hub1)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>nbrs_hub2 <span class="ot">=</span> <span class="fu">neighbors</span>(g2, hub2)</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Combine the graphs</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>combined_g <span class="ot">=</span> <span class="fu">disjoint_union</span>(g1, g2)</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Identify hubs and their neighbors in the combined graph</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>hub1_combined <span class="ot">=</span> hub1</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>hub2_combined <span class="ot">=</span> n1 <span class="sc">+</span> hub2</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Map original neighbor indices to combined graph indices</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>neighbors_hub1_combined <span class="ot">=</span> <span class="fu">as.integer</span>(nbrs_hub1) <span class="co"># these are already correct as they are from g1</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>neighbors_hub2_combined <span class="ot">=</span> <span class="fu">as.integer</span>(nbrs_hub2) <span class="sc">+</span> n1 <span class="co"># offset for g2 nodes</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Add edges to connect the hub regions</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>edges_to_add <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 5a. Direct hub-to-hub connection</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>edges_to_add <span class="ot">=</span> <span class="fu">c</span>(edges_to_add, hub1_combined, hub2_combined)</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="co"># 5b. Additional sparse connections between hub neighborhoods</span></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(neighbors_hub1_combined) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(neighbors_hub2_combined) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> num_additional_inter_edges <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ensure we don't try to sample more unique pairs than available</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  max_edges <span class="ot">=</span> <span class="fu">length</span>(neighbors_hub1_combined) <span class="sc">*</span> <span class="fu">length</span>(neighbors_hub2_combined)</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>  edges_to_attempt <span class="ot">=</span> <span class="fu">min</span>(num_additional_inter_edges, max_edges)</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>  added_count <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>  attempt_limit <span class="ot">=</span> edges_to_attempt <span class="sc">*</span> <span class="dv">5</span> <span class="co"># try a few times to get unique edges</span></span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>  current_attempts <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>  <span class="co"># store existing edges to check for duplicates</span></span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>  existing_edges_mat <span class="ot">=</span> <span class="fu">as_edgelist</span>(combined_g, <span class="at">names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(edges_to_add) <span class="sc">&gt;</span> <span class="dv">0</span>) { <span class="co"># include the hub-hub edge if already defined</span></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>    existing_edges_mat <span class="ot">=</span> <span class="fu">rbind</span>(existing_edges_mat, <span class="fu">matrix</span>(edges_to_add, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>))</span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(added_count <span class="sc">&lt;</span> edges_to_attempt <span class="sc">&amp;&amp;</span> current_attempts <span class="sc">&lt;</span> attempt_limit){</span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>    current_attempts <span class="ot">=</span> current_attempts <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly pick one neighbor from each hub's neighborhood</span></span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>    n1_sample <span class="ot">=</span> <span class="fu">sample</span>(neighbors_hub1_combined, <span class="dv">1</span>)</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>    n2_sample <span class="ot">=</span> <span class="fu">sample</span>(neighbors_hub2_combined, <span class="dv">1</span>)</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>    new_edge <span class="ot">=</span> <span class="fu">sort</span>(<span class="fu">c</span>(n1_sample, n2_sample)) <span class="co"># sort to handle undirected nature for duplicate check</span></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if this edge (or its reverse) already exists or is planned</span></span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>    is_duplicate <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">nrow</span>(existing_edges_mat) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(existing_edges_mat)){</span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">sort</span>(existing_edges_mat[k,]) <span class="sc">==</span> new_edge)){</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>          is_duplicate <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>          <span class="cf">break</span></span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check against already selected additional edges for this loop</span></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span>is_duplicate <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(edges_to_add) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a>      temp_added_edges <span class="ot">=</span> <span class="fu">matrix</span>(edges_to_add, <span class="at">ncol=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(temp_added_edges)){</span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">sort</span>(temp_added_edges[k,]) <span class="sc">==</span> new_edge)){</span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>          is_duplicate <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>          <span class="cf">break</span></span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="sc">!</span>is_duplicate){</span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a>      edges_to_add <span class="ot">=</span> <span class="fu">c</span>(edges_to_add, n1_sample, n2_sample)</span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a>      added_count <span class="ot">=</span> added_count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Adding inter-neighborhood edge between"</span>, n1_sample, <span class="st">"and"</span>, n2_sample, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a><span class="co"># create the final connected graph</span></span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a>combined_g_connected_multi <span class="ot">=</span> <span class="fu">add_edges</span>(combined_g, edges_to_add)</span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(combined_g_connected_multi)<span class="sc">$</span>id <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(combined_g_connected_multi)</span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Create a single BA graph of comparable size for comparison (as before)</span></span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a>n_total <span class="ot">=</span> n1 <span class="sc">+</span> n2</span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a>g_single_ba <span class="ot">=</span> <span class="fu">sample_pa</span>(<span class="at">n=</span>n_total, <span class="at">power=</span><span class="dv">1</span>, <span class="at">m=</span>m_param, <span class="at">directed=</span><span class="cn">FALSE</span>)</span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g_single_ba)<span class="sc">$</span>id <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">vcount</span>(g_single_ba)</span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Run Cascades and Compare</span></span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a><span class="co"># fail one of the original hubs in the multi-connected graph</span></span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a>seed_multi_connected <span class="ot">=</span> hub1</span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a>cascade_multi_connected_xiang <span class="ot">=</span> <span class="fu">cascade.Xiang.multi</span>(</span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a>  <span class="at">g =</span> combined_g_connected_multi,</span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> seed_multi_connected,</span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a>  <span class="at">T_cap =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a><span class="co"># cascade in the single BA graph, failing its main hub</span></span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a>hub_single_ba <span class="ot">=</span> <span class="fu">which.max</span>(<span class="fu">degree</span>(g_single_ba))</span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a>cascade_single_ba_xiang <span class="ot">=</span> <span class="fu">cascade.Xiang.multi</span>(</span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">g =</span> g_single_ba,</span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> hub_single_ba,</span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a>  <span class="at">T_cap =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="dv">1</span>)</span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a>max_len <span class="ot">=</span> <span class="fu">max</span>(<span class="fu">length</span>(cascade_multi_connected_xiang), </span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a>              <span class="fu">length</span>(cascade_single_ba_xiang), n_total)</span>
+<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(cascade_multi_connected_xiang) <span class="sc">&lt;</span> max_len) {</span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a>  padded_multi_connected_xiang <span class="ot">=</span> <span class="fu">c</span>(cascade_multi_connected_xiang, </span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">rep</span>(<span class="fu">tail</span>(cascade_multi_connected_xiang,<span class="dv">1</span>), </span>
+<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a>                                       max_len <span class="sc">-</span> <span class="fu">length</span>(cascade_multi_connected_xiang)))</span>
+<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a>  padded_multi_connected_xiang <span class="ot">=</span> cascade_multi_connected_xiang[<span class="dv">1</span><span class="sc">:</span>max_len]</span>
+<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-129"><a href="#cb20-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a>padded_single_ba_xiang <span class="ot">=</span> cascade_single_ba_xiang</span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(cascade_single_ba_xiang) <span class="sc">&lt;</span> max_len) {</span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a>  padded_single_ba_xiang <span class="ot">=</span> <span class="fu">c</span>(cascade_single_ba_xiang, <span class="fu">rep</span>(<span class="fu">tail</span>(cascade_single_ba_xiang,<span class="dv">1</span>), </span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a>                                                          max_len <span class="sc">-</span> <span class="fu">length</span>(padded_single_ba_xiang)))</span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a>  padded_single_ba_xiang <span class="ot">=</span> cascade_single_ba_xiang[<span class="dv">1</span><span class="sc">:</span>max_len]</span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(padded_multi_connected_xiang, <span class="at">type=</span><span class="st">"o"</span>, <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Step"</span>, <span class="at">ylab=</span><span class="st">"Proportion Failed"</span>, <span class="at">main=</span><span class="st">"Multi Hub Connection"</span>)</span>
+<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(padded_single_ba_xiang, <span class="at">type=</span><span class="st">"o"</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">pch=</span><span class="dv">2</span>)</span>
+<span id="cb20-142"><a href="#cb20-142" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, </span>
+<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Multi-Connected BA"</span>,</span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Single BA"</span>),</span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week6_2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
 <ul>
-<li><p>In a electrical power grid, repairs of damaged equipment, frequent maintenance, equipment replacement with more potent ones, or using alarm systems, are some response options to reduce the probability of blackouts. In psychological networks,</p>
+<li>For Psychological Networks, how do abstract concepts like “load,” “capacity,” and “threshold” translate?
+<ul>
+<li>“Load” could be ongoing stress, cognitive burden, or the current activation level of a symptom.</li>
+<li>“Capacity” could be an individual’s coping resources, resilience, or the threshold at which a symptom becomes overwhelming and “spills over” to affect other areas/symptoms.</li>
+</ul></li>
+<li>In a electrical power grid, repairs of damaged equipment, frequent maintenance, equipment replacement with more potent ones, or using alarm systems, are some response options to reduce the probability of blackouts. In psychological networks,
 <ul>
 <li>What could be an example of a weak system?</li>
 <li>What could be mitigation and reinforcement strategies to prevent or contain cascades? How to identify and reinforce critical components?</li>
@@ -862,7 +1142,7 @@ An example of insomnia development.
 </section>
 <section id="disclaimer" class="level1">
 <h1>Disclaimer</h1>
-<p>MC used AI to help with grammar and to generate ideas.</p>
+<p>MC used AI to help with writing and to generate ideas for text and code.</p>
 </section>
 <section id="references" class="level1 unnumbered">
 
